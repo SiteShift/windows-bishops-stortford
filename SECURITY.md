@@ -58,8 +58,6 @@ APIs: Maps JavaScript API only
 ```
 PLACES_API_KEY=your_server_side_key_here
 PUBLIC_GOOGLE_MAPS_API_KEY=your_client_side_key_here
-PUBLIC_CONTACT_FORM_ENDPOINT=your_webhook_url
-PUBLIC_GA4_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
 ### Vercel Production
