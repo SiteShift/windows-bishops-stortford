@@ -1,14 +1,24 @@
 {
-  "name": "callous-cluster",
+  "name": "windows-bishops-stortford-website",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Professional window installation and repair services website for Bishop's Stortford",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "start": "astro dev",
+    "build": "npm run fetch-businesses && astro build",
+    "build:astro": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "fetch-businesses": "node scripts/fetch-businesses.js"
   },
   "dependencies": {
-    "astro": "^5.12.3"
+    "@astrojs/sitemap": "^3.4.1",
+    "@astrojs/tailwind": "^5.1.5",
+    "astro": "^5.1.3",
+    "autoprefixer": "^10.4.21",
+    "dotenv": "^17.2.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
   }
 }

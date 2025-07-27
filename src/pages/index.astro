@@ -1,16 +1,377 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import GoogleMap from '../components/GoogleMap.astro';
+import ContactForm from '../components/ContactForm.astro';
+import BusinessList from '../components/BusinessList.astro';
+import siteData from '../data/siteData.json';
+import businesses from '../data/businesses.json';
 
+// Generate schema markup for LocalBusiness
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": siteData.business.name,
+  "url": `https://${siteData.site.domain}`,
+  "telephone": siteData.business.telephone,
+  "email": siteData.business.email,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": siteData.business.address.addressLocality,
+    "addressRegion": siteData.business.address.addressRegion,
+    "addressCountry": siteData.business.address.addressCountry
+  },
+  "areaServed": siteData.business.serviceArea.map(area => ({
+    "@type": "Place",
+    "name": area
+  })),
+  "serviceType": "Window Installation and Repair",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "127"
+  }
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title={siteData.site.title} description={siteData.site.description} schema={schema}>
+  <!-- Hero Section -->
+  <section class="relative text-white overflow-hidden h-[70vh] md:h-[80vh] flex items-center" style="background-image: url('/images/bishopsstortfordwindows-heroimage.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative container-custom section-padding">
+      <div class="max-w-4xl">
+        <h1 class="text-5xl lg:text-7xl font-extrabold mb-8 leading-tight tracking-tighter text-white">
+          Windows in Bishop's Stortford
+        </h1>
+        <p class="text-xl lg:text-2xl mb-12 text-white font-medium leading-relaxed max-w-2xl">
+          Professional Window Installation & Repair Services
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6">
+          <a href="#contact" class="btn-primary inline-flex items-center justify-center group">
+            <span>Get Free Quote</span>
+            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Listings Section - 2nd Section for Search Intent -->
+  <section id="businesses">
+    <BusinessList businesses={businesses} maxDisplayed={20} />
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto text-center">
+        <p class="text-xl leading-relaxed text-gray-600 font-medium">
+          Looking for reliable window installers in Bishop's Stortford? Our experienced team provides top-quality double glazing, window repairs, and complete window replacements throughout Hertfordshire.<br><br>
+          
+          With over 15 years serving local homeowners, we combine traditional craftsmanship with modern energy-efficient solutions. Every installation comes with comprehensive warranties and our commitment to exceptional customer service.<br><br>
+          
+          From Victorian terraces to modern developments, we understand the unique requirements of Bishop's Stortford properties. Our local knowledge means faster response times, competitive pricing, and installations that complement your home's character.<br><br>
+          
+          We source premium windows from leading manufacturers, ensuring durability and performance that stands the test of time. Whether you need emergency repairs, energy-saving upgrades, or complete window replacement, our certified installers deliver results that exceed expectations.<br><br>
+          
+          All work is fully insured and meets current building regulations. Contact us today for your free, no-obligation consultation and discover why Bishop's Stortford residents trust us with their window needs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Services Overview -->
+  <section id="services" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-extrabold text-green-800 mb-6 tracking-tight">
+          Our Window Services
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Professional window solutions designed for Bishop's Stortford homes
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+        {siteData.services.map((service) => (
+          <div class="card card-hover text-center p-8">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-green-800 mb-4 tracking-tight">{service.title}</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">{service.description.substring(0, 120)}...</p>
+            <a href={`#${service.id}`} class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold transition-colors">
+              Learn More
+              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Map Section -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-green-800 mb-4 tracking-tight">
+          Serving {siteData.site.town} & Surrounding Areas
+        </h2>
+        <p class="text-xl text-gray-600">
+          Local expertise you can trust, within 5 miles of your doorstep
+        </p>
+      </div>
+      <div class="max-w-5xl mx-auto">
+        <div class="map-container">
+          <GoogleMap 
+            center={siteData.maps.center}
+            zoom={siteData.maps.zoom}
+            title={siteData.maps.title}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Services Sections -->
+  <!-- Double Glazing -->
+  <section id="double-glazing" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-4xl font-extrabold text-green-800 mb-6 tracking-tight">Double Glazing</h2>
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">Professional double glazing installation using premium uPVC, timber, and aluminum frames. Our energy-efficient windows reduce heating costs by up to 30% while eliminating condensation and drafts. Each installation includes argon gas filling and low-E coating for maximum thermal performance.</p>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="ml-4 text-gray-700 leading-relaxed">A+ energy rating as standard across all Bishop's Stortford installations</span>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="ml-4 text-gray-700 leading-relaxed">Local building regulations compliance with fast council approvals</span>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="ml-4 text-gray-700 leading-relaxed">Free home surveys with same-day quotes for Bishop's Stortford residents</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:order-first">
+            <div class="bg-gray-200 rounded-3xl p-12 text-center flex items-center justify-center h-80">
+              <div class="text-gray-500">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <p class="text-lg font-medium">Placeholder Image</p>
+                <p class="text-sm">Double Glazing Service</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Window Repair -->
+  <section id="window-repair" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-4xl font-extrabold text-green-800 mb-6 tracking-tight">Window Repair</h2>
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">Expert window repair services for all frame types and glazing systems. From broken glass replacement to faulty lock mechanisms, our skilled technicians restore your windows to full functionality. We stock common parts for immediate repairs and source specialist components for heritage properties.</p>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="ml-4 text-gray-700 leading-relaxed">Emergency callouts available 24/7 throughout Bishop's Stortford area</span>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="ml-4 text-gray-700 leading-relaxed">Heritage window specialists familiar with local conservation requirements</span>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="ml-4 text-gray-700 leading-relaxed">All repairs guaranteed with 2-year warranty on parts and labor</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="bg-gray-200 rounded-3xl p-12 text-center flex items-center justify-center h-80">
+              <div class="text-gray-500">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <p class="text-lg font-medium">Placeholder Image</p>
+                <p class="text-sm">Window Repair Service</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Window Replacement -->
+  <section id="window-replacement" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-4xl font-extrabold text-green-800 mb-6 tracking-tight">Window Replacement</h2>
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">Complete window replacement service from survey to final installation. We handle planning permissions, building regulations, and coordinate with local authorities. Our replacement windows are designed to match your property's architectural style while delivering modern performance standards.</p>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="ml-4 text-gray-700 leading-relaxed">Free planning permission assistance for Bishop's Stortford conservation areas</span>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="ml-4 text-gray-700 leading-relaxed">Minimal disruption installation typically completed within one day</span>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="ml-4 text-gray-700 leading-relaxed">10-year comprehensive warranty covering frames, glass, and hardware</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:order-first">
+            <div class="bg-gray-200 rounded-3xl p-12 text-center flex items-center justify-center h-80">
+              <div class="text-gray-500">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <p class="text-lg font-medium">Placeholder Image</p>
+                <p class="text-sm">Window Replacement Service</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-extrabold text-green-800 mb-6 tracking-tight">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Everything you need to know about our window services in Bishop's Stortford
+        </p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto space-y-6">
+        {siteData.faqs.map((faq, index) => (
+          <div class="faq-item p-8">
+            <h3 class="text-xl font-bold mb-4 text-green-800 tracking-tight">{faq.question}</h3>
+            <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-green-800 mb-4 tracking-tight">
+          What Our Customers Say
+        </h2>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="testimonial-card">
+          <div class="flex flex-col lg:flex-row items-center gap-8">
+            <div class="flex-shrink-0">
+              <img 
+                src={siteData.testimonial.image} 
+                alt={`${siteData.testimonial.author} testimonial`}
+                class="w-32 h-32 rounded-3xl object-cover shadow-lg"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex-1 text-center lg:text-left">
+              <blockquote class="text-2xl font-medium text-gray-700 mb-6 leading-relaxed">
+                "{siteData.testimonial.text}"
+              </blockquote>
+              <div class="mb-4">
+                <cite class="text-green-800 font-bold text-lg">
+                  Rebecca. S
+                </cite>
+                <p class="text-gray-600">{siteData.testimonial.location}</p>
+              </div>
+              <p class="text-sm text-gray-500 leading-relaxed">{siteData.testimonial.project}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact" class="section-padding hero-gradient text-white relative overflow-hidden">
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="relative container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl lg:text-5xl font-extrabold mb-8 tracking-tight text-white">
+          Get Your Free Quote Today
+        </h2>
+        <p class="text-xl mb-12 text-green-50 leading-relaxed">
+          Ready to upgrade your windows? Get a free, no-obligation quote from {siteData.site.town}'s trusted window specialists.
+        </p>
+        
+        <ContactForm action={siteData.contact.formEndpoint} />
+      </div>
+    </div>
+    
+    <!-- Decorative elements -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-green-400 rounded-full opacity-10 blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-32 w-128 h-128 bg-green-300 rounded-full opacity-10 blur-3xl"></div>
+  </section>
+</Layout>

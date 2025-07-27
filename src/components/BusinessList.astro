@@ -1,0 +1,266 @@
+---
+import type { Business } from '../types/business';
+
+export interface Props {
+  businesses: Business[];
+  maxDisplayed?: number;
+  showContactButton?: boolean;
+}
+
+const { businesses, maxDisplayed = 10, showContactButton = true } = Astro.props;
+
+// Limit the number of businesses displayed
+const displayedBusinesses = businesses.slice(0, maxDisplayed);
+
+// Generate schema markup for each business
+const businessSchemas = displayedBusinesses.map(business => ({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": business.name,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": business.vicinity
+  },
+  "aggregateRating": business.user_ratings_total > 0 ? {
+    "@type": "AggregateRating",
+    "ratingValue": business.rating,
+    "reviewCount": business.user_ratings_total
+  } : undefined,
+  "url": business.website || business.google_url,
+  "telephone": business.phone,
+  "priceRange": business.price_level ? "$".repeat(business.price_level) : undefined
+})).filter(schema => schema.aggregateRating); // Only include businesses with ratings
+
+/**
+ * Get favicon URL for a domain
+ */
+function getFaviconUrl(domain: string | null, size: number = 32): string {
+  if (!domain) {
+    return `https://www.google.com/s2/favicons?domain=maps.google.com&sz=${size}`;
+  }
+  return `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`;
+}
+
+/**
+ * Generate star rating display
+ */
+function generateStars(rating: number): string {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+  
+  return '★'.repeat(fullStars) + 
+         (hasHalfStar ? '☆' : '') + 
+         '☆'.repeat(emptyStars);
+}
+---
+
+<section class="section-padding bg-gray-50">
+  <div class="container-custom">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-extrabold text-green-800 mb-6 tracking-tight">
+          Local Window Companies in Bishop's Stortford
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Compare quotes from trusted local window installers. All businesses shown have good customer ratings and are located within 5km of Bishop's Stortford.
+        </p>
+      </div>
+
+      {displayedBusinesses.length === 0 ? (
+        <div class="text-center py-20">
+          <div class="w-24 h-24 bg-gray-200 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+          <p class="text-xl text-gray-500 font-medium">No local businesses found at this time.</p>
+        </div>
+      ) : (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {displayedBusinesses.map((business) => (
+            <div class="business-card">
+              {/* Business Header */}
+              <div class="flex items-start gap-4 mb-6">
+                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <img 
+                    src={getFaviconUrl(business.domain, 32)}
+                    alt={`${business.name} favicon`}
+                    class="w-8 h-8 rounded-lg"
+                    loading="lazy"
+                    onerror="this.src='https://www.google.com/s2/favicons?domain=maps.google.com&sz=32'"
+                  />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-bold text-xl text-green-800 mb-2 tracking-tight line-clamp-2">
+                    {business.name}
+                  </h3>
+                  <p class="text-sm text-gray-500 font-medium">{business.vicinity}</p>
+                </div>
+              </div>
+
+              {/* Rating */}
+              <div class="flex items-center gap-3 mb-6">
+                <div class="flex items-center">
+                  <span class="rating-stars" aria-label={`${business.rating} star rating`}>
+                    {generateStars(business.rating)}
+                  </span>
+                  <span class="ml-2 font-bold text-gray-800">
+                    {business.rating}
+                  </span>
+                </div>
+                {business.user_ratings_total > 0 && (
+                  <span class="text-sm text-gray-500 font-medium">
+                    ({business.user_ratings_total} reviews)
+                  </span>
+                )}
+              </div>
+
+              {/* Action Buttons */}
+              <div class="flex flex-col gap-3 mt-auto">
+                {showContactButton && (
+                  <button 
+                    type="button"
+                    class="get-contact-btn btn-primary w-full"
+                    data-place-id={business.place_id}
+                    data-business-name={business.name}
+                  >
+                    Get a Free Quote
+                  </button>
+                )}
+              </div>
+
+              {/* Hidden Contact Info (revealed after form submission) */}
+              <div class="contact-details mt-6 p-6 bg-green-50 border-2 border-green-200 rounded-2xl hidden">
+                <h4 class="font-bold text-green-800 mb-4 text-lg">Contact Information:</h4>
+                {business.phone && (
+                  <p class="text-green-700 mb-3 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    <a href={`tel:${business.phone}`} class="hover:underline font-medium">{business.phone}</a>
+                  </p>
+                )}
+                {business.website && (
+                  <p class="text-green-700 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+                    </svg>
+                    <a href={business.website} target="_blank" rel="noopener noreferrer" class="hover:underline font-medium">
+                      {business.domain || 'Visit Website'}
+                    </a>
+                  </p>
+                )}
+                {!business.phone && !business.website && (
+                  <p class="text-green-700">
+                    Contact via Google Maps listing above
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {businesses.length > maxDisplayed && (
+        <div class="text-center mt-12">
+          <div class="inline-flex items-center px-6 py-3 bg-white rounded-2xl shadow-sm border border-gray-200">
+            <p class="text-gray-600 font-medium">
+              Showing {maxDisplayed} of {businesses.length} businesses. 
+              <span class="text-green-600 font-semibold ml-1">Contact us for a complete local directory.</span>
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<!-- Schema.org markup for businesses -->
+{businessSchemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Handle "Get Contact Details" button clicks
+    document.querySelectorAll('.get-contact-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const placeId = this.dataset.placeId;
+        const businessName = this.dataset.businessName;
+        
+        // Find the contact form and pre-fill with business info
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+          // Scroll to contact form
+          contactForm.scrollIntoView({ behavior: 'smooth' });
+          
+          // Pre-fill the service field and add place_id
+          const serviceField = contactForm.querySelector('#service');
+          if (serviceField) {
+            serviceField.value = 'consultation';
+          }
+          
+          // Add hidden field for place_id if it doesn't exist
+          let placeIdField = contactForm.querySelector('input[name="selected_business_place_id"]');
+          if (!placeIdField) {
+            placeIdField = document.createElement('input');
+            placeIdField.type = 'hidden';
+            placeIdField.name = 'selected_business_place_id';
+            contactForm.appendChild(placeIdField);
+          }
+          placeIdField.value = placeId;
+          
+          // Add hidden field for business name
+          let businessNameField = contactForm.querySelector('input[name="selected_business_name"]');
+          if (!businessNameField) {
+            businessNameField = document.createElement('input');
+            businessNameField.type = 'hidden';
+            businessNameField.name = 'selected_business_name';
+            contactForm.appendChild(businessNameField);
+          }
+          businessNameField.value = businessName;
+          
+          // Update form title or add notice
+          const formContainer = contactForm.closest('section');
+          if (formContainer) {
+            const formTitle = formContainer.querySelector('h2');
+            if (formTitle) {
+              formTitle.innerHTML = `Get Contact Details for ${businessName}`;
+            }
+          }
+        }
+        
+        // Track interaction
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'business_contact_request', {
+            'business_name': businessName,
+            'place_id': placeId
+          });
+        }
+      });
+    });
+    
+    // Show contact details after successful form submission
+    // This would typically be handled by the form submission success callback
+    window.showBusinessContact = function(placeId) {
+      const button = document.querySelector(`[data-place-id="${placeId}"]`);
+      if (button) {
+        const contactDetails = button.closest('.business-card').querySelector('.contact-details');
+        if (contactDetails) {
+          contactDetails.classList.remove('hidden');
+          button.style.display = 'none';
+        }
+      }
+    };
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style> 

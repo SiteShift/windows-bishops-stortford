@@ -1,0 +1,23 @@
+[
+  {
+    "place_id": "ChIJ_X3OAs2F2EcRfTG4Rbm-lSY",
+    "name": "Adam's Window Repairs",
+    "rating": 5,
+    "user_ratings_total": 20,
+    "vicinity": "Dimsdale Cres, Bishop's Stortford"
+  },
+  {
+    "place_id": "ChIJO_LwSKyb2EcRtJvLcTCxxpY",
+    "name": "Cuffley Conservatories PVC Window & Door Repair",
+    "rating": null,
+    "user_ratings_total": null,
+    "vicinity": "Grafters Croft, Spellbrook Ln W, Spellbrook, Sawbridgeworth"
+  },
+  {
+    "place_id": "ChIJwUCKTOuR2EcRvi6lFI9ssqA",
+    "name": "Glazing Masters",
+    "rating": 5,
+    "user_ratings_total": 29,
+    "vicinity": "Misty House, Ryes Ln, Bishop's Stortford"
+  }
+]
