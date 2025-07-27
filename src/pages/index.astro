@@ -6,8 +6,8 @@ import BusinessList from '../components/BusinessList.astro';
 import siteData from '../data/siteData.json';
 import businesses from '../data/businesses.json';
 
-// Generate schema markup for LocalBusiness
-const schema = {
+// Generate comprehensive schema markup
+const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": siteData.business.name,
@@ -20,17 +20,90 @@ const schema = {
     "addressRegion": siteData.business.address.addressRegion,
     "addressCountry": siteData.business.address.addressCountry
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.8721,
+    "longitude": 0.1604
+  },
   "areaServed": siteData.business.serviceArea.map(area => ({
     "@type": "Place",
     "name": area
   })),
   "serviceType": "Window Installation and Repair",
+  "description": siteData.site.description,
+  "priceRange": "££",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification", 
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "14:00"
+    }
+  ],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "127"
+    "reviewCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Window Services",
+    "itemListElement": siteData.services.map((service, index) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": service.title,
+        "description": service.description,
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": siteData.business.name
+        }
+      }
+    }))
   }
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": siteData.faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": siteData.business.name,
+  "url": `https://${siteData.site.domain}`,
+  "logo": `https://${siteData.site.domain}/images/windows-logo-cropped.svg`,
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": siteData.business.telephone,
+    "contactType": "customer service",
+    "email": siteData.business.email,
+    "areaServed": "GB",
+    "availableLanguage": "English"
+  },
+  "sameAs": [
+    `https://${siteData.site.domain}`
+  ]
+};
+
+const schema = [localBusinessSchema, faqSchema, organizationSchema];
 ---
 
 <Layout title={siteData.site.title} description={siteData.site.description} schema={schema}>
@@ -98,7 +171,7 @@ const schema = {
         {siteData.services.map((service) => (
           <div class="card card-hover text-center p-8">
             <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Window service icon">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
               </svg>
             </div>
@@ -178,11 +251,11 @@ const schema = {
           <div class="lg:order-first">
             <div class="bg-gray-200 rounded-3xl p-12 text-center flex items-center justify-center h-80">
               <div class="text-gray-500">
-                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Double glazing window installation">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                <p class="text-lg font-medium">Placeholder Image</p>
-                <p class="text-sm">Double Glazing Service</p>
+                <p class="text-lg font-medium">Double Glazing Installation</p>
+                <p class="text-sm">Professional service in Bishop's Stortford</p>
               </div>
             </div>
           </div>
@@ -229,11 +302,11 @@ const schema = {
           <div>
             <div class="bg-gray-200 rounded-3xl p-12 text-center flex items-center justify-center h-80">
               <div class="text-gray-500">
-                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Window repair service">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                <p class="text-lg font-medium">Placeholder Image</p>
-                <p class="text-sm">Window Repair Service</p>
+                <p class="text-lg font-medium">Window Repair Service</p>
+                <p class="text-sm">Expert repairs in Bishop's Stortford</p>
               </div>
             </div>
           </div>
@@ -280,11 +353,11 @@ const schema = {
           <div class="lg:order-first">
             <div class="bg-gray-200 rounded-3xl p-12 text-center flex items-center justify-center h-80">
               <div class="text-gray-500">
-                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Window replacement service">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                <p class="text-lg font-medium">Placeholder Image</p>
-                <p class="text-sm">Window Replacement Service</p>
+                <p class="text-lg font-medium">Window Replacement</p>
+                <p class="text-sm">Complete replacements in Bishop's Stortford</p>
               </div>
             </div>
           </div>
@@ -329,12 +402,12 @@ const schema = {
         <div class="testimonial-card">
           <div class="flex flex-col lg:flex-row items-center gap-8">
             <div class="flex-shrink-0">
-              <img 
-                src={siteData.testimonial.image} 
-                alt={`${siteData.testimonial.author} testimonial`}
-                class="w-32 h-32 rounded-3xl object-cover shadow-lg"
-                loading="lazy"
-              />
+                        <img 
+            src={siteData.testimonial.image} 
+            alt="Customer testimonial - satisfied window installation client"
+            class="w-32 h-32 rounded-3xl object-cover shadow-lg"
+            loading="lazy"
+          />
             </div>
             <div class="flex-1 text-center lg:text-left">
               <blockquote class="text-2xl font-medium text-gray-700 mb-6 leading-relaxed">

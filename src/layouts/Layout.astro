@@ -19,6 +19,8 @@ const { title, description, schema } = Astro.props;
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#357960" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
@@ -26,16 +28,25 @@ const { title, description, schema } = Astro.props;
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Windows Bishop's Stortford" />
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href={`https://windowsbishopsstortford.com${Astro.url.pathname}`} />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={`https://windowsbishopsstortford.com${Astro.url.pathname}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Windows Bishop's Stortford" />
+    <meta property="og:image" content="https://windowsbishopsstortford.com/images/bishopsstortfordwindows-heroimage.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={`https://windowsbishopsstortford.com${Astro.url.pathname}`} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://windowsbishopsstortford.com/images/bishopsstortfordwindows-heroimage.webp" />
 
     <!-- Preload critical resources -->
     <link rel="preload" href="/images/bishopsstortfordwindows-heroimage.webp" as="image" />
