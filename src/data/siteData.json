@@ -87,10 +87,10 @@
   ],
   "testimonial": {
     "text": "Outstanding service from start to finish. The team replaced all our Victorian sash windows while maintaining the original character.",
-    "author": "Sarah Mitchell",
+    "author": "Rebecca S.",
     "location": "Bishop's Stortford",
     "project": "Victorian Sash Window Replacement - 8 windows installed with heritage-style double glazing including authentic glazing bars and traditional hardware",
-    "image": "/images/testimonial-sarah.jpg"
+    "image": "/images/IMG-rebecca-pfp_compressed.webp"
   },
   "contact": {
     "formEndpoint": "https://api.windowsbishopsstortford.com/contact",
