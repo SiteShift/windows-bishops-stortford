@@ -11,8 +11,8 @@
     "domain": "markwell-ltd.com",
     "types": [
       "establishment",
-      "general_contractor",
-      "point_of_interest"
+      "point_of_interest",
+      "general_contractor"
     ],
     "price_level": null
   },
@@ -77,8 +77,8 @@
     "domain": "hertswd.com",
     "types": [
       "establishment",
-      "general_contractor",
-      "point_of_interest"
+      "point_of_interest",
+      "general_contractor"
     ],
     "price_level": null
   },
@@ -109,8 +109,8 @@
     "google_url": "https://maps.google.com/?cid=5194514142468824978",
     "domain": "infiniteglass.co.uk",
     "types": [
-      "general_contractor",
       "point_of_interest",
+      "general_contractor",
       "establishment"
     ],
     "price_level": null
