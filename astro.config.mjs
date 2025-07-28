@@ -12,11 +12,7 @@ export default defineConfig({
     imageService: true,
     webAnalytics: {
       enabled: true,
-    },
-    includeFiles: [
-      './src/data/businesses.json',
-      './src/data/siteData.json'
-    ]
+    }
   }),
   integrations: [tailwind(), sitemap()],
   vite: {

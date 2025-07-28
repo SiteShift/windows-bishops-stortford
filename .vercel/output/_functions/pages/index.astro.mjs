@@ -164,9 +164,9 @@ const businesses = [
 		google_url: "https://maps.google.com/?cid=15059519774935649606",
 		domain: "markwell-ltd.com",
 		types: [
-			"establishment",
 			"point_of_interest",
-			"general_contractor"
+			"general_contractor",
+			"establishment"
 		],
 		price_level: null
 	},
@@ -181,9 +181,9 @@ const businesses = [
 		google_url: "https://maps.google.com/?cid=11579436953705459390",
 		domain: "glazingmasters.co.uk",
 		types: [
-			"general_contractor",
+			"point_of_interest",
 			"establishment",
-			"point_of_interest"
+			"general_contractor"
 		],
 		price_level: null
 	},
@@ -247,8 +247,8 @@ const businesses = [
 		domain: "hertswd.com",
 		types: [
 			"establishment",
-			"point_of_interest",
-			"general_contractor"
+			"general_contractor",
+			"point_of_interest"
 		],
 		price_level: null
 	},
@@ -264,8 +264,8 @@ const businesses = [
 		domain: "cuffleyconservatories.co.uk",
 		types: [
 			"establishment",
-			"point_of_interest",
-			"locksmith"
+			"locksmith",
+			"point_of_interest"
 		],
 		price_level: null
 	}
