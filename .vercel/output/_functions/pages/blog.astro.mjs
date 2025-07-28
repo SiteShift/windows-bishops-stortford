@@ -1,8 +1,8 @@
 /* empty css                                  */
-import { _ as __vite_glob_0_14, a as __vite_glob_0_13, b as __vite_glob_0_12, c as __vite_glob_0_11, d as __vite_glob_0_10, e as __vite_glob_0_9, f as __vite_glob_0_8, g as __vite_glob_0_7, h as __vite_glob_0_6, i as __vite_glob_0_5, j as __vite_glob_0_4, k as __vite_glob_0_3, l as __vite_glob_0_2, m as __vite_glob_0_1, n as __vite_glob_0_0 } from '../chunks/zero-deposit-finance-whats-the-catch-bishops-stortford_B_MWAxXg.mjs';
-import { e as createAstro, c as createComponent, m as maybeRenderHead, f as addAttribute, a as renderTemplate, b as renderComponent, F as Fragment, r as renderScript } from '../chunks/astro/server_C8sX5OP2.mjs';
+import { _ as __vite_glob_0_14, a as __vite_glob_0_13, b as __vite_glob_0_12, c as __vite_glob_0_11, d as __vite_glob_0_10, e as __vite_glob_0_9, f as __vite_glob_0_8, g as __vite_glob_0_7, h as __vite_glob_0_6, i as __vite_glob_0_5, j as __vite_glob_0_4, k as __vite_glob_0_3, l as __vite_glob_0_2, m as __vite_glob_0_1, n as __vite_glob_0_0 } from '../chunks/zero-deposit-finance-whats-the-catch-bishops-stortford_Bbaivwos.mjs';
+import { e as createAstro, c as createComponent, m as maybeRenderHead, f as addAttribute, a as renderTemplate, b as renderComponent, F as Fragment, r as renderScript } from '../chunks/astro/server_Ba8b9P2x.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_Ds5uocrA.mjs';
+import { $ as $$Layout } from '../chunks/Layout_BbRBOC0R.mjs';
 import { s as siteData } from '../chunks/siteData_gIBrbVss.mjs';
 export { renderers } from '../renderers.mjs';
 

@@ -1,13 +1,13 @@
 /* empty css                                  */
-import { A as AstroError, U as UnknownContentCollectionError, c as createComponent, k as RenderUndefinedEntryError, u as unescapeHTML, a as renderTemplate, l as renderUniqueStylesheet, n as renderScriptElement, o as createHeadAndContent, b as renderComponent, m as maybeRenderHead, f as addAttribute } from '../chunks/astro/server_C8sX5OP2.mjs';
+import { A as AstroError, U as UnknownContentCollectionError, c as createComponent, k as RenderUndefinedEntryError, u as unescapeHTML, a as renderTemplate, l as renderUniqueStylesheet, n as renderScriptElement, o as createHeadAndContent, b as renderComponent, m as maybeRenderHead, f as addAttribute } from '../chunks/astro/server_Ba8b9P2x.mjs';
 import 'kleur/colors';
-import { $ as $$Layout, a as $$Header, b as $$Footer } from '../chunks/Layout_Ds5uocrA.mjs';
+import { $ as $$Layout, a as $$Header, b as $$Footer } from '../chunks/Layout_BbRBOC0R.mjs';
 import { escape } from 'html-escaper';
 import { Traverse } from 'neotraverse/modern';
 import pLimit from 'p-limit';
 import { z } from 'zod';
 import { r as removeBase, i as isRemotePath, p as prependForwardSlash } from '../chunks/path_bxFO2Kst.mjs';
-import { V as VALID_INPUT_FORMATS } from '../chunks/consts_BmVDRGlB.mjs';
+import { V as VALID_INPUT_FORMATS } from '../chunks/consts_Du7EM0Nf.mjs';
 import * as devalue from 'devalue';
 export { renderers } from '../renderers.mjs';
 
@@ -69,7 +69,7 @@ class ImmutableDataStore {
    */
   static async fromModule() {
     try {
-      const data = await import('../chunks/_astro_data-layer-content_D_KTK9Ou.mjs');
+      const data = await import('../chunks/_astro_data-layer-content_BfmEBUSj.mjs');
       if (data.default instanceof Map) {
         return ImmutableDataStore.fromMap(data.default);
       }
@@ -228,7 +228,7 @@ const CONTENT_LAYER_IMAGE_REGEX = /__ASTRO_IMAGE_="([^"]+)"/g;
 async function updateImageReferencesInBody(html, fileName) {
   const { default: imageAssetMap } = await import('../chunks/content-assets_DleWbedO.mjs');
   const imageObjects = /* @__PURE__ */ new Map();
-  const { getImage } = await import('../chunks/_astro_assets_DwkiBizk.mjs').then(n => n._);
+  const { getImage } = await import('../chunks/_astro_assets_TAQO6r7L.mjs').then(n => n._);
   for (const [_full, imagePath] of html.matchAll(CONTENT_LAYER_IMAGE_REGEX)) {
     try {
       const decodedImagePath = JSON.parse(imagePath.replaceAll("&#x22;", '"'));

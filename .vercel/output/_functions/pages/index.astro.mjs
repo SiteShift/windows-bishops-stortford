@@ -1,9 +1,9 @@
 /* empty css                                  */
-import { e as createAstro, c as createComponent, m as maybeRenderHead, f as addAttribute, r as renderScript, a as renderTemplate, u as unescapeHTML, b as renderComponent } from '../chunks/astro/server_C8sX5OP2.mjs';
+import { e as createAstro, c as createComponent, m as maybeRenderHead, f as addAttribute, r as renderScript, a as renderTemplate, u as unescapeHTML, b as renderComponent } from '../chunks/astro/server_Ba8b9P2x.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_Ds5uocrA.mjs';
+import { $ as $$Layout } from '../chunks/Layout_BbRBOC0R.mjs';
 import 'clsx';
-import { $ as $$ContactForm } from '../chunks/ContactForm_Br-a9Gyy.mjs';
+import { $ as $$ContactForm } from '../chunks/ContactForm_t49YfbFk.mjs';
 /* empty css                                 */
 import { s as siteData } from '../chunks/siteData_gIBrbVss.mjs';
 export { renderers } from '../renderers.mjs';
@@ -164,9 +164,9 @@ const businesses = [
 		google_url: "https://maps.google.com/?cid=15059519774935649606",
 		domain: "markwell-ltd.com",
 		types: [
+			"establishment",
 			"general_contractor",
-			"point_of_interest",
-			"establishment"
+			"point_of_interest"
 		],
 		price_level: null
 	},
@@ -181,25 +181,9 @@ const businesses = [
 		google_url: "https://maps.google.com/?cid=11579436953705459390",
 		domain: "glazingmasters.co.uk",
 		types: [
-			"establishment",
-			"general_contractor",
-			"point_of_interest"
-		],
-		price_level: null
-	},
-	{
-		place_id: "ChIJUZf1sIuD2EcRcs6IZlHs4L0",
-		name: "Hadham Group",
-		rating: 5,
-		user_ratings_total: 26,
-		vicinity: "Farm Industrial Estate, Unit 3 Church End, Little Hadham, Ware",
-		website: "https://hadhamgroup.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp",
-		phone: "01920 823390",
-		google_url: "https://maps.google.com/?cid=13682195502308314738",
-		domain: "hadhamgroup.com",
-		types: [
 			"point_of_interest",
-			"establishment"
+			"establishment",
+			"general_contractor"
 		],
 		price_level: null
 	},
@@ -214,8 +198,8 @@ const businesses = [
 		google_url: "https://maps.google.com/?cid=735624541971667881",
 		domain: "hertsandessexwindowdoctor.co.uk",
 		types: [
-			"point_of_interest",
-			"establishment"
+			"establishment",
+			"point_of_interest"
 		],
 		price_level: null
 	},
@@ -236,25 +220,6 @@ const businesses = [
 		price_level: null
 	},
 	{
-		place_id: "ChIJ871DyeeP2EcRartb4jSVljc",
-		name: "DOORS AND WORKTOPS LTD",
-		rating: 4.8,
-		user_ratings_total: 17,
-		vicinity: "Spellbrook, Bishop's Stortford",
-		website: "https://www.doorsandworktops.co.uk/",
-		phone: "01279 494904",
-		google_url: "https://maps.google.com/?cid=4005552972961135466",
-		domain: "doorsandworktops.co.uk",
-		types: [
-			"point_of_interest",
-			"store",
-			"home_goods_store",
-			"furniture_store",
-			"establishment"
-		],
-		price_level: null
-	},
-	{
 		place_id: "ChIJ36Y4n3-F2EcRT5Lc5v3scbM",
 		name: "N L Glass & Glazing Ltd",
 		rating: 5,
@@ -265,8 +230,8 @@ const businesses = [
 		google_url: "https://maps.google.com/?cid=12930376580401500751",
 		domain: null,
 		types: [
-			"establishment",
-			"point_of_interest"
+			"point_of_interest",
+			"establishment"
 		],
 		price_level: null
 	},
@@ -288,55 +253,6 @@ const businesses = [
 		price_level: null
 	},
 	{
-		place_id: "ChIJS8dbuaOF2EcRkt-YQhefFkg",
-		name: "Infinite glass ltd",
-		rating: 5,
-		user_ratings_total: 3,
-		vicinity: "2, The Links, Raynham Rd, Bishop's Stortford",
-		website: "http://www.infiniteglass.co.uk/",
-		phone: "01992 842132",
-		google_url: "https://maps.google.com/?cid=5194514142468824978",
-		domain: "infiniteglass.co.uk",
-		types: [
-			"point_of_interest",
-			"general_contractor",
-			"establishment"
-		],
-		price_level: null
-	},
-	{
-		place_id: "ChIJZxBQ11SE2EcRroTbHOfAGmU",
-		name: "Stansted Glass & Glazing",
-		rating: 3,
-		user_ratings_total: 2,
-		vicinity: "34, Level's Green, Farnham, Bishop's Stortford",
-		website: null,
-		phone: "0800 118 5190",
-		google_url: "https://maps.google.com/?cid=7285347446079325358",
-		domain: null,
-		types: [
-			"point_of_interest",
-			"establishment"
-		],
-		price_level: null
-	},
-	{
-		place_id: "ChIJ74xbQeGa2EcRRguEx8k9AMw",
-		name: "Aspects",
-		rating: 1,
-		user_ratings_total: 1,
-		vicinity: "Parsonage La, Sawbridgeworth",
-		website: null,
-		phone: "01279 600259",
-		google_url: "https://maps.google.com/?cid=14699817120582339398",
-		domain: null,
-		types: [
-			"establishment",
-			"point_of_interest"
-		],
-		price_level: null
-	},
-	{
 		place_id: "ChIJO_LwSKyb2EcRtJvLcTCxxpY",
 		name: "Cuffley Conservatories PVC Window & Door Repair",
 		rating: 0,
@@ -347,39 +263,7 @@ const businesses = [
 		google_url: "https://maps.google.com/?cid=10864565972703615924",
 		domain: "cuffleyconservatories.co.uk",
 		types: [
-			"point_of_interest",
 			"locksmith",
-			"establishment"
-		],
-		price_level: null
-	},
-	{
-		place_id: "ChIJP6Ha9hWP2EcRrne5djVOyH4",
-		name: "Shop 4 Windows",
-		rating: 0,
-		user_ratings_total: 0,
-		vicinity: "3, Oaks, The Campions, Stansted Mountfitchet, Stansted",
-		website: null,
-		phone: null,
-		google_url: "https://maps.google.com/?cid=9135637835653150638",
-		domain: null,
-		types: [
-			"point_of_interest",
-			"establishment"
-		],
-		price_level: null
-	},
-	{
-		place_id: "ChIJ7zP2i3iP2EcRO9V_aggbfos",
-		name: "LGS Windows",
-		rating: 0,
-		user_ratings_total: 0,
-		vicinity: "7 Clarke Cl, Stansted Mountfitchet, Stansted",
-		website: "http://lgswindows.co.uk/",
-		phone: "07725 996987",
-		google_url: "https://maps.google.com/?cid=10051501141297976635",
-		domain: "lgswindows.co.uk",
-		types: [
 			"point_of_interest",
 			"establishment"
 		],
