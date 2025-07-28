@@ -253,10 +253,10 @@ function generateStars(rating: number): string {
         const businessCard = button.closest('.business-card');
         if (businessCard) {
           const contactDetails = businessCard.querySelector('.contact-details');
-          if (contactDetails) {
-            contactDetails.classList.remove('hidden');
+        if (contactDetails) {
+          contactDetails.classList.remove('hidden');
             if ('style' in button) {
-              button.style.display = 'none';
+          button.style.display = 'none';
             }
           }
         }

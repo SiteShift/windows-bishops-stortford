@@ -265,3 +265,74 @@
     background: var(--green-500) !important;
   }
 }
+
+/* Global blog link styles - highest priority to override Astro scoping */
+.article-content a,
+.prose a {
+  color: #2d6651 !important;
+  text-decoration: underline !important;
+  text-decoration-color: #2d6651 !important;
+  text-underline-offset: 2px !important;
+  font-weight: 500 !important;
+  transition: all 0.15s ease !important;
+}
+
+.article-content a:hover,
+.prose a:hover {
+  color: #255043 !important;
+  text-decoration-color: #255043 !important;
+}
+
+/* Global blog heading styles - override Astro scoping issues */
+.article-content h2 {
+  margin-top: 5.25rem !important;
+  margin-bottom: 1.625rem !important;
+  padding-top: 1.125rem !important;
+  padding-bottom: 0.5rem !important;
+  font-size: 1.75rem !important;
+  line-height: 2.25rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+  color: #1e3f36 !important;
+}
+
+.article-content h3 {
+  margin-top: 3.25rem !important;
+  margin-bottom: 1.125rem !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.5rem !important;
+  font-size: 1.625rem !important;
+  line-height: 2.25rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+  color: #1e3f36 !important;
+}
+
+.article-content h4 {
+  margin-top: 2.5rem !important;
+  margin-bottom: 0.75rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.25rem !important;
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+  color: #1e3f36 !important;
+}
+
+@media (min-width: 1024px) {
+  .article-content h2 {
+    font-size: 2rem !important;
+    line-height: 2.5rem !important;
+  }
+  
+  .article-content h3 {
+    font-size: 1.75rem !important;
+    line-height: 2.25rem !important;
+  }
+  
+  .article-content h4 {
+    font-size: 1.625rem !important;
+    line-height: 2.125rem !important;
+  }
+}

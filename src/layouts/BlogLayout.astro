@@ -217,7 +217,7 @@ const seoDescription = frontmatter.description;
         </nav>
 
         <!-- Article Content -->
-        <div class="prose prose-lg max-w-none">
+        <div class="max-w-none">
           <div class="text-xl text-gray-600 font-medium leading-relaxed mb-12 pb-8 border-b border-gray-200">
             {frontmatter.description}
           </div>
@@ -322,19 +322,19 @@ const seoDescription = frontmatter.description;
   }
 
   .article-content h2 {
-    @apply text-xl lg:text-2xl font-bold text-green-800 mt-20 mb-8 tracking-tight;
+    @apply text-xl lg:text-2xl font-bold text-green-800 mt-24 mb-8 pt-6 pb-2 tracking-tight;
   }
 
   .article-content h3 {
-    @apply text-lg lg:text-xl font-bold text-green-800 mt-16 mb-6 tracking-tight;
+    @apply text-lg lg:text-xl font-bold text-green-800 mt-16 mb-6 pt-4 pb-2 tracking-tight;
   }
 
   .article-content h4 {
-    @apply text-base lg:text-lg font-bold text-green-800 mt-12 mb-4 tracking-tight;
+    @apply text-base lg:text-lg font-bold text-green-800 mt-12 mb-4 pt-3 pb-1 tracking-tight;
   }
 
   .article-content p {
-    @apply mb-8 leading-relaxed;
+    @apply mb-6 leading-relaxed;
   }
 
   .article-content h2 + p,
@@ -344,7 +344,7 @@ const seoDescription = frontmatter.description;
   }
 
   .article-content ul, .article-content ol {
-    @apply mb-10 pl-6 space-y-3;
+    @apply mb-8 pl-6 space-y-3;
   }
 
   .article-content li {
@@ -366,13 +366,13 @@ const seoDescription = frontmatter.description;
 
   /* Add more space between different content blocks */
   .article-content > * + * {
-    @apply mt-8;
+    @apply mt-6;
   }
 
   .article-content h2 + *,
   .article-content h3 + *,
   .article-content h4 + * {
-    @apply mt-6;
+    @apply mt-4;
   }
 
   .article-content ul li {
@@ -408,6 +408,23 @@ const seoDescription = frontmatter.description;
     @apply text-green-600 hover:text-green-700 underline decoration-green-600 hover:decoration-green-700 underline-offset-2 transition-colors font-medium;
   }
 
+  /* Global styles for markdown content links - higher specificity */
+  .article-content a,
+  .prose a {
+    color: #2d6651 !important;
+    text-decoration: underline !important;
+    text-decoration-color: #2d6651 !important;
+    text-underline-offset: 2px !important;
+    font-weight: 500 !important;
+    transition: all 0.15s ease !important;
+  }
+
+  .article-content a:hover,
+  .prose a:hover {
+    color: #255043 !important;
+    text-decoration-color: #255043 !important;
+  }
+
   .article-content img {
     @apply rounded-2xl shadow-lg my-12 w-full;
   }
@@ -427,19 +444,19 @@ const seoDescription = frontmatter.description;
   /* Responsive text sizing */
   @media (max-width: 640px) {
     .article-content h2 {
-      @apply text-lg mt-16 mb-6;
+      @apply text-lg mt-16 mb-6 pt-4 pb-2;
     }
     
     .article-content h3 {
-      @apply text-base mt-12 mb-4;
+      @apply text-base mt-12 mb-4 pt-3 pb-1;
     }
     
     .article-content h4 {
-      @apply text-sm mt-10 mb-3;
+      @apply text-sm mt-10 mb-3 pt-2 pb-1;
     }
     
     .article-content p {
-      @apply text-sm mb-6;
+      @apply text-sm mb-4;
     }
     
     .article-content li {
@@ -447,7 +464,7 @@ const seoDescription = frontmatter.description;
     }
     
     .article-content ul, .article-content ol {
-      @apply mb-8 space-y-2;
+      @apply mb-6 space-y-2;
     }
     
     .article-content th, .article-content td {
