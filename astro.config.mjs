@@ -8,7 +8,12 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: 'https://windowsbishopsstortford.com',
   output: 'server', // ← enables API routes
-  adapter: vercel({}),
+  adapter: vercel({
+    imageService: true,
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   integrations: [tailwind(), sitemap()],
   build: {
     format: 'directory'
