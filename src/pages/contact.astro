@@ -118,7 +118,7 @@ const testimonials = [
         <!-- Contact Form -->
         <form 
           id="contact-form"
-          action={siteData.contact.formEndpoint}
+          action="/api/submit-form"
           method="POST"
           class="space-y-4"
         >
@@ -327,11 +327,11 @@ const testimonials = [
     // Form handling
     const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
+    const btnText = submitBtn?.querySelector('.btn-text');
+    const btnLoading = submitBtn?.querySelector('.btn-loading');
     const formMessages = document.getElementById('form-messages');
-    const successMessage = formMessages.querySelector('.success-message');
-    const errorMessage = formMessages.querySelector('.error-message');
+    const successMessage = formMessages?.querySelector('.success-message');
+    const errorMessage = formMessages?.querySelector('.error-message');
 
     // Testimonial carousel
     let currentTestimonial = 2; // Start with Sarah Williams testimonial
@@ -370,7 +370,7 @@ const testimonials = [
 
     // Form validation
     function validateField(field) {
-      const errorSpan = field.parentNode.querySelector('.error-message');
+      const errorSpan = field.parentNode?.querySelector('.error-message');
       let isValid = true;
       let message = '';
 
@@ -411,8 +411,8 @@ const testimonials = [
     }
 
     // Add real-time validation
-    const fields = form.querySelectorAll('input[required], select[required], input[type="checkbox"][required]');
-    fields.forEach(field => {
+    const fields = form?.querySelectorAll('input[required], select[required], input[type="checkbox"][required]');
+    fields?.forEach(field => {
       field.addEventListener('blur', () => validateField(field));
       field.addEventListener('input', () => {
         if (field.classList.contains('border-red-500')) {
@@ -422,17 +422,17 @@ const testimonials = [
     });
 
     // Form submission with custom event tracking
-    form.addEventListener('submit', async function(e) {
+    form?.addEventListener('submit', async function(e) {
       e.preventDefault();
 
       // Hide previous messages
-      formMessages.classList.add('hidden');
-      successMessage.classList.add('hidden');
-      errorMessage.classList.add('hidden');
+      formMessages?.classList.add('hidden');
+      successMessage?.classList.add('hidden');
+      errorMessage?.classList.add('hidden');
 
       // Validate all fields
       let isFormValid = true;
-      fields.forEach(field => {
+      fields?.forEach(field => {
         if (!validateField(field)) {
           isFormValid = false;
         }
@@ -448,9 +448,11 @@ const testimonials = [
       }
 
       // Show loading state
-      submitBtn.disabled = true;
-      btnText.classList.add('hidden');
-      btnLoading.classList.remove('hidden');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        btnText?.classList.add('hidden');
+        btnLoading?.classList.remove('hidden');
+      }
 
       try {
         const formData = new FormData(form);
@@ -461,12 +463,13 @@ const testimonials = [
         delete data.firstName;
         delete data.lastName;
         
-        // Add timestamp and source
+        // Add form metadata
         data.timestamp = new Date().toISOString();
-        data.source = 'website';
+        data.source = 'website-contact';
         data.page = window.location.pathname;
+        data.formType = 'contact';
 
-        // Track custom event with Vercel Analytics (if available)
+        // Track form submission with Vercel Analytics
         if (typeof window.va !== 'undefined') {
           window.va('track', 'Contact Form Submission', {
             name: data.name,
@@ -488,48 +491,45 @@ const testimonials = [
           body: JSON.stringify(data)
         });
 
-        if (response.ok) {
-          // Show success message
-          formMessages.classList.remove('hidden');
-          successMessage.classList.remove('hidden');
-          
-          // Reset form
-          form.reset();
-          
-          // Remove validation classes
-          fields.forEach(field => {
-            field.classList.remove('border-green-500', 'border-red-500');
-          });
+        const result = await response.json();
 
+        if (response.ok && result.success) {
           // Track successful submission
           if (typeof window.va !== 'undefined') {
             window.va('track', 'Contact Form Success', {
               name: data.name,
               email: data.email,
-              service: data.service
+              service: data.service,
+              timestamp: result.timestamp
             });
           }
+          
+          // Redirect to thank you page
+          window.location.href = '/thank-you/';
         } else {
-          throw new Error('Network response was not ok');
+          throw new Error(result.message || 'Network response was not ok');
         }
       } catch (error) {
         console.error('Form submission error:', error);
         
         // Show error message
-        formMessages.classList.remove('hidden');
-        errorMessage.classList.remove('hidden');
+        formMessages?.classList.remove('hidden');
+        errorMessage?.classList.remove('hidden');
 
         // Track form error
         if (typeof window.va !== 'undefined') {
           window.va('track', 'Contact Form Error', {
-            error: error.message
+            error: error.message,
+            page: window.location.pathname
           });
         }
       } finally {
         // Reset button state
-        submitBtn.disabled = false;
-        btnText.classList.remove('hidden');
-        btnLoading.classList.add('hidden');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          btnText?.classList.remove('hidden');
+          btnLoading?.classList.add('hidden');
+        }
       }
     });
   });

@@ -6,56 +6,77 @@ export interface Props {
 const { action } = Astro.props;
 ---
 
-  <form 
-    id="contact-form"
-    action={action}
-    method="POST"
-    class="card p-10 text-gray-800 max-w-2xl mx-auto"
-  >
+<form 
+  id="contact-form"
+  action="/api/submit-form"
+  method="POST"
+  class="card p-10 text-gray-800 max-w-2xl mx-auto"
+>
+  <!-- Name Fields Row -->
   <div class="grid md:grid-cols-2 gap-6 mb-6">
     <div>
-              <label for="name" class="form-label">Full Name *</label>
-        <input 
-          type="text" 
-          id="name" 
-          name="name" 
-          required 
-          minlength="2"
-          class="form-input"
-          placeholder="Your full name"
-        />
+      <label for="first-name" class="form-label">First name *</label>
+      <input 
+        type="text" 
+        id="first-name" 
+        name="firstName" 
+        required 
+        minlength="2"
+        class="form-input"
+        placeholder="First name"
+      />
       <span class="error-message text-red-500 text-sm hidden"></span>
     </div>
     <div>
-              <label for="phone" class="form-label">Phone Number *</label>
-        <input 
-          type="tel" 
-          id="phone" 
-          name="phone" 
-          required 
-          pattern="[0-9\s\-\(\)\+]{10,15}"
-          class="form-input"
-          placeholder="07476 382827"
-        />
+      <label for="last-name" class="form-label">Last name *</label>
+      <input 
+        type="text" 
+        id="last-name" 
+        name="lastName" 
+        required 
+        minlength="2"
+        class="form-input"
+        placeholder="Last name"
+      />
       <span class="error-message text-red-500 text-sm hidden"></span>
     </div>
   </div>
   
   <div class="mb-6">
-    <label for="email" class="form-label">Email Address *</label>
+    <label for="email" class="form-label">Email *</label>
     <input 
       type="email" 
       id="email" 
       name="email" 
       required 
       class="form-input"
-      placeholder="your.email@example.com"
+      placeholder="you@company.com"
     />
+    <span class="error-message text-red-500 text-sm hidden"></span>
+  </div>
+
+  <div class="mb-6">
+    <label for="phone" class="form-label">Phone number *</label>
+    <div class="flex">
+      <select class="px-3 py-2 border border-gray-300 rounded-l-lg bg-white text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        <option value="GB">GB</option>
+        <option value="US">US</option>
+      </select>
+      <input 
+        type="tel" 
+        id="phone" 
+        name="phone" 
+        required 
+        pattern="[0-9\s\-\(\)\+]{10,15}"
+        class="flex-1 px-3 py-2 border border-l-0 border-gray-300 rounded-r-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white form-input-no-border"
+        placeholder="+1 (555) 000-0000"
+      />
+    </div>
     <span class="error-message text-red-500 text-sm hidden"></span>
   </div>
   
   <div class="mb-6">
-    <label for="service" class="form-label">Service Needed *</label>
+    <label for="service" class="form-label">Service needed *</label>
     <select 
       id="service" 
       name="service" 
@@ -69,6 +90,32 @@ const { action } = Astro.props;
       <option value="consultation">Free Consultation</option>
     </select>
     <span class="error-message text-red-500 text-sm hidden"></span>
+  </div>
+
+  <div class="mb-6">
+    <label for="message" class="form-label">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="4"
+      class="form-input resize-none"
+      placeholder="Tell us about your window project, property type, number of windows, or any specific requirements..."
+    ></textarea>
+    <span class="error-message text-red-500 text-sm hidden"></span>
+  </div>
+
+  <!-- Privacy Policy Checkbox -->
+  <div class="flex items-start space-x-3 mb-6">
+    <input
+      type="checkbox"
+      id="privacy"
+      name="privacy"
+      required
+      class="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 focus:ring-2 mt-1"
+    />
+    <label for="privacy" class="text-sm text-gray-600 leading-relaxed">
+      You agree to our friendly <a href="/privacy" class="text-blue-600 underline hover:text-blue-700">privacy policy</a>.
+    </label>
   </div>
   
   <!-- Honeypot field for spam protection -->
@@ -107,15 +154,15 @@ const { action } = Astro.props;
   document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
+    const btnText = submitBtn?.querySelector('.btn-text');
+    const btnLoading = submitBtn?.querySelector('.btn-loading');
     const formMessages = document.getElementById('form-messages');
-    const successMessage = formMessages.querySelector('.success-message');
-    const errorMessage = formMessages.querySelector('.error-message');
+    const successMessage = formMessages?.querySelector('.success-message');
+    const errorMessage = formMessages?.querySelector('.error-message');
 
     // Form validation
     function validateField(field) {
-      const errorSpan = field.parentNode.querySelector('.error-message');
+      const errorSpan = field.parentNode?.querySelector('.error-message') || field.closest('div')?.querySelector('.error-message');
       let isValid = true;
       let message = '';
 
@@ -139,21 +186,25 @@ const { action } = Astro.props;
       if (isValid) {
         field.classList.remove('border-red-500');
         field.classList.add('border-green-500');
-        errorSpan.textContent = '';
-        errorSpan.classList.add('hidden');
+        if (errorSpan) {
+          errorSpan.textContent = '';
+          errorSpan.classList.add('hidden');
+        }
       } else {
         field.classList.remove('border-green-500');
         field.classList.add('border-red-500');
-        errorSpan.textContent = message;
-        errorSpan.classList.remove('hidden');
+        if (errorSpan) {
+          errorSpan.textContent = message;
+          errorSpan.classList.remove('hidden');
+        }
       }
 
       return isValid;
     }
 
     // Add real-time validation
-    const fields = form.querySelectorAll('input[required], select[required]');
-    fields.forEach(field => {
+    const fields = form?.querySelectorAll('input[required], select[required], input[type="checkbox"][required], textarea');
+    fields?.forEach(field => {
       field.addEventListener('blur', () => validateField(field));
       field.addEventListener('input', () => {
         if (field.classList.contains('border-red-500')) {
@@ -162,18 +213,18 @@ const { action } = Astro.props;
       });
     });
 
-    // Form submission
-    form.addEventListener('submit', async function(e) {
+    // Form submission with Vercel Analytics tracking
+    form?.addEventListener('submit', async function(e) {
       e.preventDefault();
 
       // Hide previous messages
-      formMessages.classList.add('hidden');
-      successMessage.classList.add('hidden');
-      errorMessage.classList.add('hidden');
+      formMessages?.classList.add('hidden');
+      successMessage?.classList.add('hidden');
+      errorMessage?.classList.add('hidden');
 
       // Validate all fields
       let isFormValid = true;
-      fields.forEach(field => {
+      fields?.forEach(field => {
         if (!validateField(field)) {
           isFormValid = false;
         }
@@ -189,18 +240,40 @@ const { action } = Astro.props;
       }
 
       // Show loading state
-      submitBtn.disabled = true;
-      btnText.classList.add('hidden');
-      btnLoading.classList.remove('hidden');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        btnText?.classList.add('hidden');
+        btnLoading?.classList.remove('hidden');
+      }
 
       try {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         
-        // Add timestamp and source
+        // Combine first and last name
+        data.name = `${data.firstName} ${data.lastName}`;
+        delete data.firstName;
+        delete data.lastName;
+        
+        // Add form metadata
         data.timestamp = new Date().toISOString();
-        data.source = 'website';
+        data.source = 'website-homepage';
         data.page = window.location.pathname;
+        data.formType = 'homepage';
+
+        // Track form submission with Vercel Analytics
+        if (typeof window.va !== 'undefined') {
+          window.va('track', 'Homepage Form Submission', {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            service: data.service,
+            message: data.message ? 'Yes' : 'No',
+            source: data.source,
+            page: data.page,
+            timestamp: data.timestamp
+          });
+        }
 
         const response = await fetch(form.action, {
           method: 'POST',
@@ -210,58 +283,52 @@ const { action } = Astro.props;
           body: JSON.stringify(data)
         });
 
-        if (response.ok) {
-          // Check if this was a business contact request
-          const selectedBusinessPlaceId = data.selected_business_place_id;
-          
-          if (selectedBusinessPlaceId && typeof window.showBusinessContact === 'function') {
-            // Show the business contact details instead of redirecting
-            window.showBusinessContact(selectedBusinessPlaceId);
-            
-            // Show success message
-            formMessages.classList.remove('hidden');
-            successMessage.classList.remove('hidden');
-            successMessage.textContent = 'Contact details revealed below!';
-            
-            // Track successful business contact reveal
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'business_contact_revealed', {
-                'business_name': data.selected_business_name,
-                'place_id': selectedBusinessPlaceId
-              });
-            }
-          } else {
-            // Normal form submission - redirect to thank you page
-            window.location.href = '/thank-you/';
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          // Track successful submission
+          if (typeof window.va !== 'undefined') {
+            window.va('track', 'Homepage Form Success', {
+              name: data.name,
+              email: data.email,
+              service: data.service,
+              timestamp: result.timestamp
+            });
           }
+          
+          // Redirect to thank you page
+          window.location.href = '/thank-you/';
         } else {
-          throw new Error('Network response was not ok');
+          throw new Error(result.message || 'Network response was not ok');
         }
       } catch (error) {
         console.error('Form submission error:', error);
         
         // Show error message
-        formMessages.classList.remove('hidden');
-        errorMessage.classList.remove('hidden');
+        formMessages?.classList.remove('hidden');
+        errorMessage?.classList.remove('hidden');
         
-        // Track form submission error (for analytics)
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'form_error', {
-            'error_message': error.message
+        // Track form error
+        if (typeof window.va !== 'undefined') {
+          window.va('track', 'Homepage Form Error', {
+            error: error.message,
+            page: window.location.pathname
           });
         }
       } finally {
         // Reset button state
-        submitBtn.disabled = false;
-        btnText.classList.remove('hidden');
-        btnLoading.classList.add('hidden');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          btnText?.classList.remove('hidden');
+          btnLoading?.classList.add('hidden');
+        }
       }
     });
 
     // Track form interactions (for analytics)
-    form.addEventListener('focus', function(e) {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'form_start');
+    form?.addEventListener('focus', function(e) {
+      if (typeof window.va !== 'undefined') {
+        window.va('track', 'Homepage Form Start');
       }
     }, true);
   });

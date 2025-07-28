@@ -74,7 +74,7 @@ const schema = [blogSchema, breadcrumbSchema];
   schema={schema}
 >
   <!-- Blog Hero Section -->
-  <section class="relative text-white overflow-hidden h-[60vh] md:h-[70vh] flex items-center" style="background-image: url('/images/bishopsstortfordwindows-heroimage.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <section class="relative text-white overflow-hidden h-[60vh] md:h-[70vh] flex items-center" style="background-image: url('/images/windowsbishopsstortford-blogimages/Cream-aluminium-bay-windows_compressed-geotagged.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <!-- Dark overlay -->
     <div class="absolute inset-0 bg-black bg-opacity-70"></div>
     <div class="relative container-custom section-padding">
@@ -91,7 +91,7 @@ const schema = [blogSchema, breadcrumbSchema];
         </nav>
 
         <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tighter text-white">
-          Window Expert Blog
+          Bishops Stortford Window Blog
         </h1>
         <p class="text-xl lg:text-2xl mb-8 text-green-50 font-medium leading-relaxed max-w-3xl">
           Professional insights, installation guides, and expert advice from Bishop's Stortford's window specialists
@@ -100,7 +100,7 @@ const schema = [blogSchema, breadcrumbSchema];
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
           </svg>
-          <span class="font-medium">{totalPosts} Expert Articles</span>
+          <span class="font-medium">{totalPosts} Articles</span>
         </div>
       </div>
     </div>
@@ -229,18 +229,30 @@ const schema = [blogSchema, breadcrumbSchema];
           Get expert window advice, maintenance tips, and exclusive offers delivered to your inbox.
         </p>
         
-        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <form id="newsletter-form" action="/api/submit-form" method="POST" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
           <input 
             type="email" 
+            name="email"
             placeholder="Enter your email address"
             class="flex-1 px-6 py-4 rounded-2xl border-0 focus:ring-2 focus:ring-green-300 text-gray-800"
             required
           />
+          <input type="hidden" name="formType" value="newsletter" />
+          <input type="hidden" name="source" value="blog-newsletter" />
+          <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off" />
           <button 
             type="submit"
+            id="newsletter-submit"
             class="btn-primary bg-white text-green-600 hover:bg-gray-100 px-8 py-4 font-semibold"
           >
-            Subscribe
+            <span class="btn-text">Subscribe</span>
+            <span class="btn-loading hidden">
+              <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-green-600 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Subscribing...
+            </span>
           </button>
         </form>
         
@@ -254,4 +266,94 @@ const schema = [blogSchema, breadcrumbSchema];
     <div class="absolute -top-24 -right-24 w-96 h-96 bg-green-400 rounded-full opacity-10 blur-3xl"></div>
     <div class="absolute -bottom-32 -left-32 w-128 h-128 bg-green-300 rounded-full opacity-10 blur-3xl"></div>
   </section>
-</Layout> 
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.getElementById('newsletter-form');
+    const submitBtn = document.getElementById('newsletter-submit');
+    const btnText = submitBtn?.querySelector('.btn-text');
+    const btnLoading = submitBtn?.querySelector('.btn-loading');
+
+    newsletterForm?.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Check honeypot
+      if (newsletterForm.website.value) {
+        return; // Likely spam
+      }
+
+      // Show loading state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        btnText?.classList.add('hidden');
+        btnLoading?.classList.remove('hidden');
+      }
+
+      try {
+        const formData = new FormData(newsletterForm);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Add form metadata
+        data.timestamp = new Date().toISOString();
+        data.page = window.location.pathname;
+        data.name = 'Newsletter Subscriber';
+
+        // Track newsletter signup with Vercel Analytics
+        if (typeof window.va !== 'undefined') {
+          window.va('track', 'Newsletter Signup', {
+            email: data.email,
+            source: data.source,
+            page: data.page,
+            timestamp: data.timestamp
+          });
+        }
+
+        const response = await fetch(newsletterForm.action, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          // Track successful signup
+          if (typeof window.va !== 'undefined') {
+            window.va('track', 'Newsletter Signup Success', {
+              email: data.email,
+              timestamp: result.timestamp
+            });
+          }
+          
+          // Show success message and reset form
+          alert('Thank you for subscribing! You\'ll receive expert window tips and exclusive offers.');
+          newsletterForm.reset();
+        } else {
+          throw new Error(result.message || 'Network response was not ok');
+        }
+      } catch (error) {
+        console.error('Newsletter signup error:', error);
+        
+        // Track signup error
+        if (typeof window.va !== 'undefined') {
+          window.va('track', 'Newsletter Signup Error', {
+            error: error.message,
+            page: window.location.pathname
+          });
+        }
+        
+        alert('Sorry, there was an error signing you up. Please try again.');
+      } finally {
+        // Reset button state
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          btnText?.classList.remove('hidden');
+          btnLoading?.classList.add('hidden');
+        }
+      }
+    });
+  });
+</script> 

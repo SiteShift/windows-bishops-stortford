@@ -10,9 +10,9 @@
     "google_url": "https://maps.google.com/?cid=15059519774935649606",
     "domain": "markwell-ltd.com",
     "types": [
+      "establishment",
       "general_contractor",
-      "point_of_interest",
-      "establishment"
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -28,8 +28,24 @@
     "domain": "glazingmasters.co.uk",
     "types": [
       "point_of_interest",
-      "general_contractor",
-      "establishment"
+      "establishment",
+      "general_contractor"
+    ],
+    "price_level": null
+  },
+  {
+    "place_id": "ChIJUZf1sIuD2EcRcs6IZlHs4L0",
+    "name": "Hadham Group",
+    "rating": 5,
+    "user_ratings_total": 26,
+    "vicinity": "Farm Industrial Estate, Unit 3 Church End, Little Hadham, Ware",
+    "website": "https://hadhamgroup.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp",
+    "phone": "01920 823390",
+    "google_url": "https://maps.google.com/?cid=13682195502308314738",
+    "domain": "hadhamgroup.com",
+    "types": [
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -44,8 +60,8 @@
     "google_url": "https://maps.google.com/?cid=735624541971667881",
     "domain": "hertsandessexwindowdoctor.co.uk",
     "types": [
-      "point_of_interest",
-      "establishment"
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -66,6 +82,22 @@
     "price_level": null
   },
   {
+    "place_id": "ChIJ36Y4n3-F2EcRT5Lc5v3scbM",
+    "name": "N L Glass & Glazing Ltd",
+    "rating": 5,
+    "user_ratings_total": 12,
+    "vicinity": "Unit 4c Hadham Industrial Estate, Church End",
+    "website": null,
+    "phone": "01279 771472",
+    "google_url": "https://maps.google.com/?cid=12930376580401500751",
+    "domain": null,
+    "types": [
+      "establishment",
+      "point_of_interest"
+    ],
+    "price_level": null
+  },
+  {
     "place_id": "ChIJMdTZePiF2EcR9ny-Pg_RxGQ",
     "name": "Hertfordshire Windows and Doors",
     "rating": 5,
@@ -77,23 +109,24 @@
     "domain": "hertswd.com",
     "types": [
       "general_contractor",
-      "establishment",
-      "point_of_interest"
+      "point_of_interest",
+      "establishment"
     ],
     "price_level": null
   },
   {
-    "place_id": "ChIJ36Y4n3-F2EcRT5Lc5v3scbM",
-    "name": "N L Glass & Glazing Ltd",
+    "place_id": "ChIJS8dbuaOF2EcRkt-YQhefFkg",
+    "name": "Infinite glass ltd",
     "rating": 5,
-    "user_ratings_total": 12,
-    "vicinity": "Unit 4c Hadham Industrial Estate, Church End",
-    "website": null,
-    "phone": "01279 771472",
-    "google_url": "https://maps.google.com/?cid=12930376580401500751",
-    "domain": null,
+    "user_ratings_total": 3,
+    "vicinity": "2, The Links, Raynham Rd, Bishop's Stortford",
+    "website": "http://www.infiniteglass.co.uk/",
+    "phone": "01992 842132",
+    "google_url": "https://maps.google.com/?cid=5194514142468824978",
+    "domain": "infiniteglass.co.uk",
     "types": [
       "point_of_interest",
+      "general_contractor",
       "establishment"
     ],
     "price_level": null
@@ -107,6 +140,22 @@
     "website": null,
     "phone": "0800 118 5190",
     "google_url": "https://maps.google.com/?cid=7285347446079325358",
+    "domain": null,
+    "types": [
+      "establishment",
+      "point_of_interest"
+    ],
+    "price_level": null
+  },
+  {
+    "place_id": "ChIJ74xbQeGa2EcRRguEx8k9AMw",
+    "name": "Aspects",
+    "rating": 1,
+    "user_ratings_total": 1,
+    "vicinity": "Parsonage La, Sawbridgeworth",
+    "website": null,
+    "phone": "01279 600259",
+    "google_url": "https://maps.google.com/?cid=14699817120582339398",
     "domain": null,
     "types": [
       "point_of_interest",
@@ -125,8 +174,8 @@
     "google_url": "https://maps.google.com/?cid=10864565972703615924",
     "domain": "cuffleyconservatories.co.uk",
     "types": [
-      "locksmith",
       "point_of_interest",
+      "locksmith",
       "establishment"
     ],
     "price_level": null
@@ -141,6 +190,22 @@
     "phone": null,
     "google_url": "https://maps.google.com/?cid=9135637835653150638",
     "domain": null,
+    "types": [
+      "establishment",
+      "point_of_interest"
+    ],
+    "price_level": null
+  },
+  {
+    "place_id": "ChIJ7zP2i3iP2EcRO9V_aggbfos",
+    "name": "LGS Windows",
+    "rating": 0,
+    "user_ratings_total": 0,
+    "vicinity": "7 Clarke Cl, Stansted Mountfitchet, Stansted",
+    "website": "http://lgswindows.co.uk/",
+    "phone": "07725 996987",
+    "google_url": "https://maps.google.com/?cid=10051501141297976635",
+    "domain": "lgswindows.co.uk",
     "types": [
       "point_of_interest",
       "establishment"
