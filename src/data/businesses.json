@@ -27,8 +27,8 @@
     "google_url": "https://maps.google.com/?cid=11579436953705459390",
     "domain": "glazingmasters.co.uk",
     "types": [
-      "establishment",
       "point_of_interest",
+      "establishment",
       "general_contractor"
     ],
     "price_level": null
@@ -92,9 +92,9 @@
     "google_url": "https://maps.google.com/?cid=7261158362635468022",
     "domain": "hertswd.com",
     "types": [
+      "establishment",
       "point_of_interest",
-      "general_contractor",
-      "establishment"
+      "general_contractor"
     ],
     "price_level": null
   },

@@ -12,9 +12,9 @@
     "astro": "astro",
     "fetch-businesses": "node scripts/fetch-businesses.js",
     "audit": "node scripts/audit-website.cjs",
-    "audit:links": "npm run build && node scripts/check-links.cjs",
+    "audit:links": "echo 'Link checking temporarily disabled - broken-link-checker removed due to security vulnerabilities'",
     "audit:lighthouse": "npm run build && npm run preview & sleep 3 && npx lighthouse http://localhost:4321 --output=html --output-path=./lighthouse-report.html && pkill -f 'astro preview'",
-    "audit:quick": "npm run build && echo '✅ Build successful' && node scripts/check-links.cjs",
+    "audit:quick": "npm run build && echo '✅ Build successful'",
     "audit:html": "npm run build && npx htmlhint dist/**/*.html --config .htmlhintrc"
   },
   "dependencies": {
@@ -31,7 +31,6 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "broken-link-checker": "^0.7.8",
     "htmlhint": "^1.6.3",
     "lighthouse": "^12.8.0"
   }

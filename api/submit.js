@@ -64,7 +64,6 @@ export default async function handler(req, res) {
     const cleanService = sanitizeInput(service, 100);
     const cleanMessage = sanitizeInput(message, 1000);
     const cleanFormType = sanitizeInput(formType, 20);
-    const cleanSource = sanitizeInput(source, 50);
 
     // Validation
     const errors = [];
@@ -149,7 +148,7 @@ export default async function handler(req, res) {
     // Insert data into Google Sheet
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:H', // Assumes columns A-H for: Timestamp, Name, Email, Phone, Service, Message, Source, Page
+      range: 'Sheet1!A2:H', // Assumes columns A-H for: Timestamp, Name, Email, Phone, Service, Message, Source, Page
       valueInputOption: 'RAW',
       requestBody: {
         values: [rowData],
