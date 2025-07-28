@@ -1,11 +1,7 @@
 import { google } from 'googleapis';
-import type { APIRoute } from 'astro';
-
-// Prerender disabled to ensure this runs as a serverless function
-export const prerender = false;
 
 // Helper function to sanitize input and prevent injection
-function sanitizeInput(input: string, maxLength: number = 200): string {
+function sanitizeInput(input, maxLength = 200) {
   if (!input) return '';
   return input
     .toString()
@@ -15,39 +11,45 @@ function sanitizeInput(input: string, maxLength: number = 200): string {
 }
 
 // Helper function to validate email
-function isValidEmail(email: string): boolean {
+function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
 // Helper function to validate phone (UK format)
-function isValidPhone(phone: string): boolean {
+function isValidPhone(phone) {
   const phoneRegex = /^[0-9\s\-\(\)\+]{10,15}$/;
   return phoneRegex.test(phone);
 }
 
-export const POST: APIRoute = async ({ request }) => {
+export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  // Only allow POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({
+      success: false,
+      error: 'Method not allowed'
+    });
+  }
+
   try {
-    // Parse request body - handle both FormData and JSON
-    let formData: Record<string, any> = {};
+    // Parse request body
+    let formData = {};
     
-    const contentType = request.headers.get('content-type') || '';
-    
-    if (contentType.includes('application/json')) {
-      formData = await request.json();
-    } else if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
-      const data = await request.formData();
-      for (const [key, value] of data.entries()) {
-        formData[key] = value;
-      }
+    if (req.headers['content-type']?.includes('application/json')) {
+      formData = req.body;
     } else {
-      return new Response(JSON.stringify({ 
-        success: false, 
-        error: 'Unsupported content type' 
-      }), { 
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      });
+      // Handle form data
+      formData = req.body;
     }
 
     // Extract and validate required fields
@@ -61,7 +63,7 @@ export const POST: APIRoute = async ({ request }) => {
     const source = sanitizeInput(formData.source || 'website', 50);
 
     // Validation
-    const errors: string[] = [];
+    const errors = [];
     
     if (formType === 'newsletter') {
       // Newsletter only needs email
@@ -79,12 +81,9 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     if (errors.length > 0) {
-      return new Response(JSON.stringify({ 
-        success: false, 
-        error: errors.join(', ') 
-      }), { 
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
+      return res.status(400).json({
+        success: false,
+        error: errors.join(', ')
       });
     }
 
@@ -94,12 +93,9 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!serviceAccountJson || !spreadsheetId) {
       console.error('Missing required environment variables');
-      return new Response(JSON.stringify({ 
-        success: false, 
-        error: 'Server configuration error' 
-      }), { 
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
+      return res.status(500).json({
+        success: false,
+        error: 'Server configuration error'
       });
     }
 
@@ -117,10 +113,10 @@ export const POST: APIRoute = async ({ request }) => {
     // Prepare data for sheet insertion
     const timestamp = new Date().toISOString();
     const name = formType === 'newsletter' ? 'Newsletter Subscriber' : `${firstName} ${lastName}`;
-    const pageUrl = request.headers.get('referer') || 'Direct';
+    const pageUrl = req.headers.referer || 'Direct';
 
     // Build row data based on form type
-    let rowData: (string | number)[];
+    let rowData;
     
     if (formType === 'newsletter') {
       rowData = [
@@ -157,25 +153,19 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     // Return success response
-    return new Response(JSON.stringify({ 
+    return res.status(200).json({
       success: true,
       message: 'Form submitted successfully',
-      timestamp 
-    }), { 
-      status: 200,
-      headers: { 'Content-Type': 'application/json' }
+      timestamp
     });
 
   } catch (error) {
     console.error('API Error:', error);
-    
+
     // Don't expose internal error details to client
-    return new Response(JSON.stringify({ 
-      success: false, 
-      error: 'An error occurred while processing your request. Please try again.' 
-    }), { 
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
+    return res.status(500).json({
+      success: false,
+      error: 'An error occurred while processing your request. Please try again.'
     });
   }
-}; 
+} 
