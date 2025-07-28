@@ -42,54 +42,46 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Parse request body - handle both FormData and JSON
-    let formData = {};
-    
-    const contentType = req.headers['content-type'] || '';
-    console.log('Content-Type:', contentType);
-    console.log('Request body:', req.body);
-    
-    if (contentType.includes('application/json')) {
-      formData = req.body;
-    } else if (contentType.includes('multipart/form-data') || contentType.includes('application/x-www-form-urlencoded')) {
-      // Handle FormData from frontend
-      formData = {};
-      if (req.body) {
-        // For Vercel functions, FormData is already parsed into req.body
-        formData = req.body;
-      }
-    } else {
-      formData = req.body || {};
-    }
-    
-    console.log('Parsed formData:', formData);
+    // req.body is already parsed JSON because Content-Type is application/json
+    const {
+      firstName = '',
+      lastName = '',
+      email = '',
+      phone = '',
+      service = '',
+      message = '',
+      formType = 'contact',
+      source = 'website'
+    } = req.body || {};
 
-    // Extract and validate required fields with fallbacks
-    const firstName = sanitizeInput(formData.firstName || '', 50);
-    const lastName = sanitizeInput(formData.lastName || '', 50);
-    const email = sanitizeInput(formData.email || '', 100);
-    const phone = sanitizeInput(formData.phone || '', 20);
-    const service = sanitizeInput(formData.service || '', 100);
-    const message = sanitizeInput(formData.message || '', 1000);
-    const formType = sanitizeInput(formData.formType || 'contact', 20);
-    const source = sanitizeInput(formData.source || 'website', 50);
+    console.log('Received data:', { firstName, lastName, email, phone, service, message, formType, source });
+
+    // Sanitize inputs
+    const cleanFirstName = sanitizeInput(firstName, 50);
+    const cleanLastName = sanitizeInput(lastName, 50);
+    const cleanEmail = sanitizeInput(email, 100);
+    const cleanPhone = sanitizeInput(phone, 20);
+    const cleanService = sanitizeInput(service, 100);
+    const cleanMessage = sanitizeInput(message, 1000);
+    const cleanFormType = sanitizeInput(formType, 20);
+    const cleanSource = sanitizeInput(source, 50);
 
     // Validation
     const errors = [];
     
-    if (formType === 'newsletter') {
+    if (cleanFormType === 'newsletter') {
       // Newsletter only needs email
-      if (!email) errors.push('Email is required');
-      else if (!isValidEmail(email)) errors.push('Please enter a valid email address');
+      if (!cleanEmail) errors.push('Email is required');
+      else if (!isValidEmail(cleanEmail)) errors.push('Please enter a valid email address');
     } else {
       // Contact forms need more fields
-      if (!firstName) errors.push('First name is required');
-      if (!lastName) errors.push('Last name is required');
-      if (!email) errors.push('Email is required');
-      else if (!isValidEmail(email)) errors.push('Please enter a valid email address');
-      if (!phone) errors.push('Phone number is required');
-      else if (!isValidPhone(phone)) errors.push('Please enter a valid phone number');
-      if (!service) errors.push('Service selection is required');
+      if (!cleanFirstName) errors.push('First name is required');
+      if (!cleanLastName) errors.push('Last name is required');
+      if (!cleanEmail) errors.push('Email is required');
+      else if (!isValidEmail(cleanEmail)) errors.push('Please enter a valid email address');
+      if (!cleanPhone) errors.push('Phone number is required');
+      else if (!isValidPhone(cleanPhone)) errors.push('Please enter a valid phone number');
+      if (!cleanService) errors.push('Service selection is required');
     }
 
     if (errors.length > 0) {
@@ -124,32 +116,32 @@ export default async function handler(req, res) {
 
     // Prepare data for sheet insertion
     const timestamp = new Date().toISOString();
-    const name = formType === 'newsletter' ? 'Newsletter Subscriber' : `${firstName} ${lastName}`;
+    const name = cleanFormType === 'newsletter' ? 'Newsletter Subscriber' : `${cleanFirstName} ${cleanLastName}`;
     const pageUrl = req.headers.referer || 'Direct';
 
     // Build row data based on form type
     let rowData;
     
-    if (formType === 'newsletter') {
+    if (cleanFormType === 'newsletter') {
       rowData = [
         timestamp,
         name,
-        email,
+        cleanEmail,
         '', // phone
         'Newsletter Signup', // service
         '', // message
-        formType,
+        cleanFormType,
         pageUrl
       ];
     } else {
       rowData = [
         timestamp,
         name,
-        email,
-        phone,
-        service,
-        message,
-        formType,
+        cleanEmail,
+        cleanPhone,
+        cleanService,
+        cleanMessage,
+        cleanFormType,
         pageUrl
       ];
     }

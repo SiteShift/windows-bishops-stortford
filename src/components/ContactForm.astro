@@ -235,19 +235,21 @@
       }
 
       try {
+        // Convert form data to JSON object
         const formData = new FormData(form);
+        const body = Object.fromEntries(formData.entries());
         
         // Add form metadata
-        formData.append('formType', 'homepage');
-        formData.append('source', 'website-homepage');
+        body.formType = 'homepage';
+        body.source = 'website-homepage';
 
         // Track form submission with Vercel Analytics
         if (typeof window.va !== 'undefined') {
           window.va('track', 'Homepage Form Submission', {
-            name: `${formData.get('firstName')} ${formData.get('lastName')}`,
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            service: formData.get('service'),
+            name: `${body.firstName} ${body.lastName}`,
+            email: body.email,
+            phone: body.phone,
+            service: body.service,
             source: 'website-homepage',
             page: window.location.pathname
           });
@@ -255,7 +257,8 @@
 
         const response = await fetch('/api/submit', {
           method: 'POST',
-          body: formData
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
         });
 
         const result = await response.json();
@@ -264,9 +267,9 @@
           // Track successful submission
           if (typeof window.va !== 'undefined') {
             window.va('track', 'Homepage Form Success', {
-              name: `${formData.get('firstName')} ${formData.get('lastName')}`,
-              email: formData.get('email'),
-              service: formData.get('service')
+              name: `${body.firstName} ${body.lastName}`,
+              email: body.email,
+              service: body.service
             });
           }
           
