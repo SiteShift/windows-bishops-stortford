@@ -57,20 +57,14 @@ const { action } = Astro.props;
 
   <div class="mb-6">
     <label for="phone" class="form-label">Phone number *</label>
-    <div class="flex">
-      <select class="px-3 py-2 border border-gray-300 rounded-l-lg bg-white text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <option value="GB">GB</option>
-        <option value="US">US</option>
-      </select>
-              <input 
-          type="tel" 
-          id="phone" 
-          name="phone" 
-          required 
-          class="flex-1 px-3 py-2 border border-l-0 border-gray-300 rounded-r-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white form-input-no-border"
-          placeholder="+1 (555) 000-0000"
-        />
-    </div>
+    <input 
+      type="tel" 
+      id="phone" 
+      name="phone" 
+      required 
+      class="form-input"
+      placeholder="07476 382827"
+    />
     <span class="error-message text-red-500 text-sm hidden"></span>
   </div>
   
