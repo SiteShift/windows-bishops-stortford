@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+// Get all blog posts for the sitemap
+const blogPosts = await getCollection('blog');
+---
+
+<Layout 
+  title="Sitemap | Windows Bishop's Stortford"
+  description="Complete sitemap for Windows Bishop's Stortford. Find all our pages including window services, blog posts, and helpful resources."
+>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="relative container-custom section-padding">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Breadcrumb -->
+        <nav class="flex justify-center mb-8" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Sitemap</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
+          Sitemap
+        </h1>
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed">
+          Complete guide to all pages on our website
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sitemap Content -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Main Pages -->
+        <div class="mb-12">
+          <h2 class="text-3xl font-bold text-green-800 mb-6">Main Pages</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <h3 class="text-xl font-semibold text-green-700 mb-3">Core Pages</h3>
+              <ul class="space-y-2">
+                <li><a href="/" class="text-blue-600 hover:text-blue-800 transition-colors">Home</a></li>
+                <li><a href="/contact" class="text-blue-600 hover:text-blue-800 transition-colors">Contact Us</a></li>
+                <li><a href="/blog" class="text-blue-600 hover:text-blue-800 transition-colors">Blog</a></li>
+                <li><a href="/thank-you" class="text-blue-600 hover:text-blue-800 transition-colors">Thank You</a></li>
+              </ul>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <h3 class="text-xl font-semibold text-green-700 mb-3">Legal Pages</h3>
+              <ul class="space-y-2">
+                <li><a href="/privacy" class="text-blue-600 hover:text-blue-800 transition-colors">Privacy Policy</a></li>
+                <li><a href="/terms" class="text-blue-600 hover:text-blue-800 transition-colors">Terms of Service</a></li>
+                <li><a href="/sitemap" class="text-blue-600 hover:text-blue-800 transition-colors">Sitemap</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Hub Pages -->
+        <div class="mb-12">
+          <h2 class="text-3xl font-bold text-green-800 mb-6">Window Services</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h3 class="text-lg font-semibold text-green-700 mb-3">Installation</h3>
+              <a href="/window-installation-bishops-stortford" class="text-blue-600 hover:text-blue-800 transition-colors">
+                Window Installation Bishop's Stortford
+              </a>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h3 class="text-lg font-semibold text-green-700 mb-3">Types & Materials</h3>
+              <a href="/window-types" class="text-blue-600 hover:text-blue-800 transition-colors">
+                Window Types & Materials Guide
+              </a>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h3 class="text-lg font-semibold text-green-700 mb-3">Energy Efficiency</h3>
+              <a href="/energy-efficient-windows" class="text-blue-600 hover:text-blue-800 transition-colors">
+                Energy Efficient Windows
+              </a>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h3 class="text-lg font-semibold text-green-700 mb-3">Repairs</h3>
+              <a href="/window-repair-bishops-stortford" class="text-blue-600 hover:text-blue-800 transition-colors">
+                Window Repair Bishop's Stortford
+              </a>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h3 class="text-lg font-semibold text-green-700 mb-3">Costs & Finance</h3>
+              <a href="/window-costs-finance" class="text-blue-600 hover:text-blue-800 transition-colors">
+                Window Costs & Finance Options
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Posts -->
+        <div class="mb-12">
+          <h2 class="text-3xl font-bold text-green-800 mb-6">Blog Posts</h2>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <p class="text-gray-600 mb-4">Expert guides and advice from 38 years of window industry experience:</p>
+            <div class="grid md:grid-cols-2 gap-3">
+              {blogPosts.map((post) => (
+                <div class="py-2">
+                  <a 
+                    href={`/blog/${post.id}`} 
+                    class="text-blue-600 hover:text-blue-800 transition-colors block"
+                  >
+                    {post.data.title}
+                  </a>
+                  <p class="text-sm text-gray-500 mt-1">
+                    {new Date(post.data.publishDate).toLocaleDateString('en-GB', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="bg-green-800 text-white p-8 rounded-xl">
+          <h2 class="text-2xl font-bold mb-4">Quick Navigation</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div>
+              <h3 class="text-lg font-semibold mb-3">Get Started</h3>
+              <ul class="space-y-2 text-green-100">
+                <li><a href="/contact" class="hover:text-white transition-colors">Get Free Quote</a></li>
+                <li><a href="/#businesses" class="hover:text-white transition-colors">Find Local Installers</a></li>
+                <li><a href="/window-types" class="hover:text-white transition-colors">Choose Window Type</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-3">Learn More</h3>
+              <ul class="space-y-2 text-green-100">
+                <li><a href="/energy-efficient-windows" class="hover:text-white transition-colors">Energy Savings</a></li>
+                <li><a href="/window-costs-finance" class="hover:text-white transition-colors">Pricing & Finance</a></li>
+                <li><a href="/blog" class="hover:text-white transition-colors">Expert Guides</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-3">Need Help?</h3>
+              <ul class="space-y-2 text-green-100">
+                <li><a href="/window-repair-bishops-stortford" class="hover:text-white transition-colors">Window Repairs</a></li>
+                <li><a href="/contact" class="hover:text-white transition-colors">Contact Support</a></li>
+                <li><a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout> 
