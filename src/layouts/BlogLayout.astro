@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import siteData from '../data/siteData.json';
+import { getCollection } from 'astro:content';
 
 interface Props {
   frontmatter: {
@@ -16,6 +17,9 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props;
+
+// Get all blog posts for related articles
+const allPosts = await getCollection('blog');
 
 // Format date
 const publishDate = new Date(frontmatter.publishDate);
@@ -39,6 +43,20 @@ try {
 
 // Generate slug
 const slug = frontmatter.slug || Astro.url.pathname.split('/').pop();
+
+// Find related articles based on shared tags
+const relatedPosts = allPosts
+  .filter(post => {
+    // Exclude current post
+    if (post.slug === slug) return false;
+    
+    // Check if posts share any tags
+    const currentTags = frontmatter.tags || [];
+    const postTags = post.data.tags || [];
+    
+    return currentTags.some(tag => postTags.includes(tag));
+  })
+  .slice(0, 3); // Limit to 3 related posts
 
 // Schema markup for blog post
 const blogPostSchema = {
@@ -113,8 +131,8 @@ const breadcrumbSchema = {
 
 const schema = [blogPostSchema, breadcrumbSchema];
 
-// SEO title and description
-const seoTitle = `${frontmatter.title} | Windows Bishop's Stortford Blog`;
+// SEO title and description - keep under 60 characters
+const seoTitle = frontmatter.title.length > 50 ? frontmatter.title : `${frontmatter.title} | Windows BS`;
 const seoDescription = frontmatter.description;
 ---
 
@@ -152,37 +170,26 @@ const seoDescription = frontmatter.description;
               </h1>
 
               <!-- Meta Information -->
-              <div class="flex flex-col sm:flex-row sm:items-center text-green-100">
-                <!-- Author -->
-                <div class="flex items-center mb-4 sm:mb-0 sm:mr-8">
-                  <div class="w-10 h-10 rounded-full mr-3 overflow-hidden ring-2 ring-white ring-opacity-50">
-                    <img 
-                      src="/images/oliver-greene-profilepic_compressed_compressed.webp"
-                      alt="Oliver Greene - Window Expert"
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="leading-none -space-y-2">
-                    <p class="font-semibold text-white leading-none">{frontmatter.author || "Oliver Greene"}</p>
-                    <p class="text-xs text-green-200 leading-none">Window Expert</p>
+              <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-green-100">
+                <div class="flex items-center gap-2">
+                  <img 
+                    src="/images/oliver-greene-profilepic_compressed_compressed.webp" 
+                    alt="Oliver Greene - Window Expert"
+                    class="w-8 h-8 sm:w-10 sm:h-10 rounded-full ring-2 ring-white ring-opacity-30"
+                    loading="lazy"
+                  />
+                  <div>
+                    <p class="text-sm font-medium text-white">{frontmatter.author || "Oliver Greene"}</p>
+                    <p class="text-xs text-green-200">Window Expert</p>
                   </div>
                 </div>
-
-                <!-- Date & Reading Time -->
-                <div class="flex items-center space-x-6 text-sm text-green-100">
-                  <div class="flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                    </svg>
-                    <time datetime={frontmatter.publishDate}>{formattedDate}</time>
-                  </div>
-                  <div class="flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <span>{readingTime} min read</span>
-                  </div>
+                
+                <div class="text-sm">
+                  <time datetime={frontmatter.publishDate}>{formattedDate}</time>
+                </div>
+                
+                <div class="text-sm">
+                  {readingTime} min read
                 </div>
               </div>
             </div>
@@ -224,21 +231,6 @@ const seoDescription = frontmatter.description;
           </div>
         </div>
         
-        <!-- Share buttons -->
-        <div class="flex items-center justify-center space-x-4 mt-12 pt-8 border-t border-gray-200">
-          <span class="text-sm text-gray-500 mr-2">Share this article:</span>
-          <button class="p-3 text-gray-400 hover:text-green-600 transition-colors bg-gray-50 hover:bg-green-50 rounded-full" aria-label="Share on Twitter">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"></path>
-            </svg>
-          </button>
-          <button class="p-3 text-gray-400 hover:text-green-600 transition-colors bg-gray-50 hover:bg-green-50 rounded-full" aria-label="Share on LinkedIn">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
-            </svg>
-          </button>
-        </div>
-
         <!-- Author Bio -->
         <section class="mt-16 p-8 bg-gray-50 rounded-3xl">
           <div class="flex flex-col md:flex-row items-start gap-6">
@@ -275,7 +267,7 @@ const seoDescription = frontmatter.description;
             Get connected with Bishop's Stortford's most trusted window specialists for your next project.
           </p>
           <a 
-            href="#contact" 
+            href="/contact" 
             class="btn-primary bg-white text-green-600 hover:bg-gray-100 inline-flex items-center group"
           >
             <span>Get Free Quotes</span>
@@ -288,7 +280,7 @@ const seoDescription = frontmatter.description;
     </div>
   </article>
 
-  <!-- Related Posts Section (Placeholder for future implementation) -->
+  <!-- Related Posts Section -->
   <section class="section-padding bg-gray-50">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
@@ -296,16 +288,71 @@ const seoDescription = frontmatter.description;
           Related Articles
         </h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Related posts will be populated here -->
-          <div class="card p-6 text-center">
-            <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
-              </svg>
+          {relatedPosts.length > 0 ? (
+            relatedPosts.map((post) => (
+              <article class="card card-hover overflow-hidden group">
+                <a href={`/blog/${post.slug}`} class="block">
+                  <!-- Hero Image -->
+                  <div class="relative overflow-hidden bg-gray-200 h-48">
+                    {post.data.heroImage ? (
+                      <img 
+                        src={post.data.heroImage}
+                        alt={post.data.title}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div class="w-full h-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <!-- Content -->
+                  <div class="p-6">
+                    <!-- Tags -->
+                    {post.data.tags && post.data.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-2 mb-3">
+                        {post.data.tags.slice(0, 2).map((tag) => (
+                          <span class="service-tag text-xs">
+                            {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    
+                    <!-- Title -->
+                    <h4 class="text-lg font-bold text-green-800 mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
+                      {post.data.title}
+                    </h4>
+                    
+                    <!-- Description -->
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                      {post.data.description}
+                    </p>
+                    
+                    <!-- Meta -->
+                                         <div class="flex items-center justify-between text-xs text-gray-500">
+                       <span>{new Date(post.data.publishDate).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                       <span>5 min read</span>
+                     </div>
+                  </div>
+                </a>
+              </article>
+            ))
+          ) : (
+            <div class="card p-6 text-center col-span-full">
+              <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+                </svg>
+              </div>
+              <h4 class="text-lg font-bold text-green-800 mb-2">More Articles Coming Soon</h4>
+              <p class="text-gray-600 text-sm">Check back for more expert window advice and guides.</p>
             </div>
-            <h4 class="text-lg font-bold text-green-800 mb-2">More Articles Coming Soon</h4>
-            <p class="text-gray-600 text-sm">Check back for more expert window advice and guides.</p>
-          </div>
+          )}
         </div>
       </div>
     </div>

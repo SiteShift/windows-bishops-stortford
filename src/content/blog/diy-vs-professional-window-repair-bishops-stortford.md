@@ -296,7 +296,7 @@ If you're dealing with condensation issues, read our guide on [why windows steam
 
 For timber windows, follow our [comprehensive maintenance checklist](/blog/timber-window-maintenance-checklist-bishops-stortford) to prevent major repairs.
 
-Consider [security upgrades](/blog/security-upgrades-locks-restrictors-bishops-stortford) while you're making repairs.
+Consider [security upgrades](/blog/window-security-upgrades-locks-restrictors-bishops-stortford) while you're making repairs.
 
 For all repair services and emergency callouts, visit our [window repair hub](/window-repair-bishops-stortford).
 

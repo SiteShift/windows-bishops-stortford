@@ -10,9 +10,9 @@
     "google_url": "https://maps.google.com/?cid=15059519774935649606",
     "domain": "markwell-ltd.com",
     "types": [
+      "establishment",
       "general_contractor",
-      "point_of_interest",
-      "establishment"
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -44,8 +44,8 @@
     "google_url": "https://maps.google.com/?cid=735624541971667881",
     "domain": "hertsandessexwindowdoctor.co.uk",
     "types": [
-      "establishment",
-      "point_of_interest"
+      "point_of_interest",
+      "establishment"
     ],
     "price_level": null
   },
@@ -59,22 +59,6 @@
     "phone": "07725 851270",
     "google_url": "https://maps.google.com/?cid=2780338047919075709",
     "domain": "facebook.com",
-    "types": [
-      "establishment",
-      "point_of_interest"
-    ],
-    "price_level": null
-  },
-  {
-    "place_id": "ChIJ36Y4n3-F2EcRT5Lc5v3scbM",
-    "name": "N L Glass & Glazing Ltd",
-    "rating": 5,
-    "user_ratings_total": 12,
-    "vicinity": "Unit 4c Hadham Industrial Estate, Church End",
-    "website": null,
-    "phone": "01279 771472",
-    "google_url": "https://maps.google.com/?cid=12930376580401500751",
-    "domain": null,
     "types": [
       "point_of_interest",
       "establishment"
@@ -92,9 +76,25 @@
     "google_url": "https://maps.google.com/?cid=7261158362635468022",
     "domain": "hertswd.com",
     "types": [
-      "establishment",
       "point_of_interest",
-      "general_contractor"
+      "general_contractor",
+      "establishment"
+    ],
+    "price_level": null
+  },
+  {
+    "place_id": "ChIJ36Y4n3-F2EcRT5Lc5v3scbM",
+    "name": "N L Glass & Glazing Ltd",
+    "rating": 5,
+    "user_ratings_total": 12,
+    "vicinity": "Unit 4c Hadham Industrial Estate, Church End",
+    "website": null,
+    "phone": "01279 771472",
+    "google_url": "https://maps.google.com/?cid=12930376580401500751",
+    "domain": null,
+    "types": [
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -109,9 +109,9 @@
     "google_url": "https://maps.google.com/?cid=5194514142468824978",
     "domain": "infiniteglass.co.uk",
     "types": [
+      "establishment",
       "general_contractor",
-      "point_of_interest",
-      "establishment"
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -126,9 +126,9 @@
     "google_url": "https://maps.google.com/?cid=10864565972703615924",
     "domain": "cuffleyconservatories.co.uk",
     "types": [
+      "point_of_interest",
       "locksmith",
-      "establishment",
-      "point_of_interest"
+      "establishment"
     ],
     "price_level": null
   }

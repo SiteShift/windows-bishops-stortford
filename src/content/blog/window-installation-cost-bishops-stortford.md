@@ -30,7 +30,7 @@ Thinking about replacing your windows in Bishop's Stortford but worried about th
 
 I'm Oliver Greene, and in my 38 years in the UK window industry, I've helped thousands of homeowners in Hertfordshire navigate window replacement costs. Today, I'll give you the complete breakdown of what you can expect to pay for new windows in Bishop's Stortford in 2025, plus the insider secrets that could save you thousands.
 
-For a complete breakdown of potential extra charges, see our guide on [hidden costs to watch out for](/blog/hidden-costs-window-installation-bishops-stortford).
+For a complete breakdown of potential extra charges, see our guide on [hidden costs to watch out for](/blog/hidden-window-installation-costs-bishops-stortford).
 
 Once you have quotes, our [comprehensive quote comparison guide](/blog/how-to-compare-window-installation-quotes-bishops-stortford) will help you make the right choice.
 

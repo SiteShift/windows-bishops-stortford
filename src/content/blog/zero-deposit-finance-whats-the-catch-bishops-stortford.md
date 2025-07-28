@@ -221,7 +221,7 @@ Before considering finance, make sure you understand the [full cost of window in
 
 When comparing finance quotes, use our [quote comparison guide](/blog/how-to-compare-window-installation-quotes-bishops-stortford) to ensure you're making fair comparisons.
 
-Be aware of [hidden costs](/blog/hidden-costs-window-installation-bishops-stortford) that might not be included in finance calculations.
+Be aware of [hidden costs](/blog/hidden-window-installation-costs-bishops-stortford) that might not be included in finance calculations.
 
 For comprehensive pricing information, visit our [window costs and finance hub](/window-costs-finance).
 

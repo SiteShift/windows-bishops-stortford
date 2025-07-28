@@ -266,7 +266,7 @@ But every property is different. Your savings could be higher or lower depending
 
 For comprehensive information on energy-efficient windows, visit our [energy efficiency hub](/energy-efficient-windows).
 
-Learn about [available grants and VAT relief](/blog/grant-schemes-2025-are-you-eligible-bishops-stortford) for energy-efficient upgrades.
+Learn about [available grants and VAT relief](/blog/grant-schemes-2025-eligibility-bishops-stortford) for energy-efficient upgrades.
 
 Ensure your installation meets [Part L building regulations](/blog/part-l-compliance-explained-homeowners-bishops-stortford).
 

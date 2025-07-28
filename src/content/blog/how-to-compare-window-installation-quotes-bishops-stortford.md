@@ -266,7 +266,7 @@ Your windows are a long-term investment in your home. Choose wisely, and they'll
 
 Before requesting quotes, understand the [typical costs for window installation](/blog/window-installation-cost-bishops-stortford) in Bishop's Stortford.
 
-Be aware of [potential hidden costs](/blog/hidden-costs-window-installation-bishops-stortford) that might not appear in initial quotes.
+Be aware of [potential hidden costs](/blog/hidden-window-installation-costs-bishops-stortford) that might not appear in initial quotes.
 
 If you're considering finance, read our guide on [zero-deposit finance](/blog/zero-deposit-finance-whats-the-catch-bishops-stortford) to understand the real costs.
 
