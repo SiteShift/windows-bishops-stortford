@@ -42,17 +42,29 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Parse request body
+    // Parse request body - handle both FormData and JSON
     let formData = {};
     
-    if (req.headers['content-type']?.includes('application/json')) {
+    const contentType = req.headers['content-type'] || '';
+    console.log('Content-Type:', contentType);
+    console.log('Request body:', req.body);
+    
+    if (contentType.includes('application/json')) {
       formData = req.body;
+    } else if (contentType.includes('multipart/form-data') || contentType.includes('application/x-www-form-urlencoded')) {
+      // Handle FormData from frontend
+      formData = {};
+      if (req.body) {
+        // For Vercel functions, FormData is already parsed into req.body
+        formData = req.body;
+      }
     } else {
-      // Handle form data
-      formData = req.body;
+      formData = req.body || {};
     }
+    
+    console.log('Parsed formData:', formData);
 
-    // Extract and validate required fields
+    // Extract and validate required fields with fallbacks
     const firstName = sanitizeInput(formData.firstName || '', 50);
     const lastName = sanitizeInput(formData.lastName || '', 50);
     const email = sanitizeInput(formData.email || '', 100);
