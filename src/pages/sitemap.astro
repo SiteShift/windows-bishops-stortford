@@ -113,7 +113,7 @@ const blogPosts = await getCollection('blog');
               {blogPosts.map((post) => (
                 <div class="py-2">
                   <a 
-                    href={`/blog/${post.id}`} 
+                    href={`/blog/${post.slug}`} 
                     class="text-blue-600 hover:text-blue-800 transition-colors block"
                   >
                     {post.data.title}
