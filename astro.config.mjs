@@ -7,15 +7,21 @@ import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://windowsbishopsstortford.com',
-  output: 'server', // ← enables API routes
+  output: 'server',
   adapter: vercel({
     imageService: true,
     webAnalytics: {
       enabled: true,
     },
+    includeFiles: [
+      './src/data/businesses.json',
+      './src/data/siteData.json'
+    ]
   }),
   integrations: [tailwind(), sitemap()],
-  build: {
-    format: 'directory'
+  vite: {
+    ssr: {
+      external: ['googleapis']
+    }
   }
 });
