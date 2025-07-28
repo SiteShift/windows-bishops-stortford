@@ -120,7 +120,7 @@
   </nav>
 </header>
 
-<script>
+<script is:inline>
   // Header scroll effect and mobile menu
   document.addEventListener('DOMContentLoaded', function() {
     const header = document.getElementById('main-header');
@@ -128,6 +128,11 @@
     const navLinks = document.querySelectorAll('.nav-link');
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+
+    // Return early if essential elements are not found
+    if (!header || !logo || !mobileMenuToggle || !mobileMenu) {
+      return;
+    }
 
     // Scroll effect for glassmorphism
     function updateHeaderOnScroll() {
@@ -143,7 +148,7 @@
         logo.classList.remove('brightness-0', 'invert');
         
         // Update text colors for scrolled state
-        navLinks.forEach(link => {
+        navLinks.forEach(function(link) {
           link.classList.remove('text-white', 'hover:text-green-300');
           link.classList.add('text-gray-800', 'hover:text-green-600');
         });
@@ -161,7 +166,7 @@
         logo.classList.add('brightness-0', 'invert');
         
         // Update text colors for transparent state
-        navLinks.forEach(link => {
+        navLinks.forEach(function(link) {
           link.classList.remove('text-gray-800', 'hover:text-green-600');
           link.classList.add('text-white', 'hover:text-green-300');
         });
@@ -178,7 +183,7 @@
     });
 
     // Close mobile menu when clicking on links
-    navLinks.forEach(link => {
+    navLinks.forEach(function(link) {
       link.addEventListener('click', function() {
         mobileMenu.classList.add('hidden');
       });
@@ -189,15 +194,18 @@
     window.addEventListener('scroll', updateHeaderOnScroll);
 
     // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+        const href = anchor.getAttribute('href');
+        if (href) {
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         }
       });
     });

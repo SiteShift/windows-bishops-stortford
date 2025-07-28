@@ -10,7 +10,12 @@
     "build:astro": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fetch-businesses": "node scripts/fetch-businesses.js"
+    "fetch-businesses": "node scripts/fetch-businesses.js",
+    "audit": "node scripts/audit-website.cjs",
+    "audit:links": "npm run build && node scripts/check-links.cjs",
+    "audit:lighthouse": "npm run build && npm run preview & sleep 3 && npx lighthouse http://localhost:4321 --output=html --output-path=./lighthouse-report.html && pkill -f 'astro preview'",
+    "audit:quick": "npm run build && echo '✅ Build successful' && node scripts/check-links.cjs",
+    "audit:html": "npm run build && npx htmlhint dist/**/*.html --config .htmlhintrc"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.1",
@@ -20,5 +25,10 @@
     "dotenv": "^17.2.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "broken-link-checker": "^0.7.8",
+    "htmlhint": "^1.6.3",
+    "lighthouse": "^12.8.0"
   }
 }
