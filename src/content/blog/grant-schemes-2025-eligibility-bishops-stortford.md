@@ -3,7 +3,7 @@ title: "Window Grant Schemes 2025: Are You Eligible? [Bishop's Stortford]"
 description: "Discover 2025 window and energy efficiency grant schemes for Bishop's Stortford homeowners. Eligibility, amounts, and application tips from Oliver Greene."
 publishDate: "2025-06-08"
 author: "Oliver Greene"
-heroImage: "/images/blog/window-grant-schemes-2025-bishops-stortford.webp"
+heroImage: "/images/windowsbishopsstortford-blogimages/front-cover_compressed-geotagged.webp"
 heroImageAlt: "Illustration of grant money and energy-efficient windows for Bishop's Stortford homes in 2025"
 tags: ["window grants", "energy grants", "bishops stortford", "2025 schemes", "funding"]
 category: "energy-efficiency"
@@ -24,7 +24,7 @@ faq:
     answer: "Yes, but eligibility differs. ECO4 allows landlords to apply if tenants meet income criteria. Local Authority Delivery schemes may also include rental properties meeting EPC requirements."
 ---
 
-# Window Grant Schemes 2025: Are You Eligible in Bishop's Stortford?
+## Window Grant Schemes 2025: Are You Eligible in Bishop's Stortford?
 
 Replacing inefficient windows is one of the best ways to cut energy bills, but it can be a significant investment. The good news? Several 2025 grant schemes can reduce your costs – if you know where to look.
 

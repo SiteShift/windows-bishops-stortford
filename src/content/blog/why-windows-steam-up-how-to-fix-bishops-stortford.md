@@ -1,11 +1,11 @@
 ---
-title: "Why Windows Steam Up & How to Fix It [Bishop's Stortford Guide]"
-description: "Tired of steamy windows? Oliver Greene explains why windows steam up in Bishop's Stortford homes and provides proven solutions to eliminate condensation for good."
+title: "Why Do Windows Steam Up? How to Fix Condensation in Bishop's Stortford Homes"
+description: "Expert guide to understanding window condensation in Bishop's Stortford homes. Learn why windows steam up, identify problem areas, and discover effective solutions from simple fixes to professional treatments."
 publishDate: "2025-06-13"
 author: "Oliver Greene"
-heroImage: "/images/blog/condensation-steamy-windows-bishops-stortford.webp"
-heroImageAlt: "Condensation droplets on a window in a Bishop's Stortford home, showing the common problem of steamy windows and moisture buildup."
-tags: ["condensation", "steamy windows", "bishops stortford", "window problems", "humidity"]
+heroImage: "/images/windowsbishopsstortford-blogimages/christmascottagewindowexternal_compressed-geotagged.webp"
+heroImageAlt: "Steamy condensation on a window pane in a Bishop's Stortford home showing typical moisture problems and solutions"
+tags: ["window condensation", "steamy windows", "bishops stortford", "moisture problems", "window maintenance"]
 category: "repairs"
 slug: "why-windows-steam-up-how-to-fix-bishops-stortford"
 featured: false
@@ -24,7 +24,7 @@ faq:
     answer: "Yes, persistent condensation can cause serious problems. It can lead to mould growth, timber rot in window frames, damaged paintwork, and unhealthy indoor air quality. In Bishop's Stortford's older properties, condensation can also damage period features and plasterwork."
 ---
 
-# Why Windows Steam Up & How to Fix It: A Bishop's Stortford Homeowner's Guide
+## Why Windows Steam Up & How to Fix It: A Bishop's Stortford Homeowner's Guide
 
 There's nothing more frustrating than waking up to windows so steamed up you can't see outside. If you're dealing with persistent condensation in your Bishop's Stortford home, you're not alone—it's one of the most common problems I encounter after 38 years in the window industry.
 

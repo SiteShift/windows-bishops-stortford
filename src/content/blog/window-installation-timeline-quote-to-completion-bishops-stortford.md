@@ -3,7 +3,7 @@ title: "Window Installation Timeline: Quote to Fit [Bishop's Stortford]"
 description: "How long does window installation take? Oliver Greene's complete timeline from initial quote to completion for Bishop's Stortford homeowners."
 publishDate: "2025-06-06"
 author: "Oliver Greene"
-heroImage: "/images/blog/window-installation-timeline-bishops-stortford.webp"
+heroImage: "/images/windowsbishopsstortford-blogimages/041_14-2-23_compressed-geotagged.webp"
 heroImageAlt: "Timeline graphic showing window installation process stages from quote to completion in Bishop's Stortford home"
 tags: ["window installation", "timeline", "bishops stortford", "installation process", "project management"]
 category: "window-installation"
@@ -24,7 +24,7 @@ faq:
     answer: "Most reputable installers in Bishop's Stortford require 2-4 weeks notice for standard installations. During busy periods (summer), you may need 6-8 weeks notice. Emergency replacements can sometimes be accommodated within 1-2 weeks depending on window availability."
 ---
 
-# Window Installation Timeline: Your Complete Journey from Quote to Completion
+## Window Installation Timeline: Your Complete Journey from Quote to Completion
 
 Planning window replacement but unsure how long the process takes? Worried about disruption to your daily routine? You're right to plan ahead – understanding the timeline helps you prepare properly and set realistic expectations for your Bishop's Stortford window project.
 

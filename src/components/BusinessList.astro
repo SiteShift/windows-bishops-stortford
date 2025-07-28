@@ -181,13 +181,13 @@ function generateStars(rating: number): string {
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 ))}
 
-<script>
+<script is:inline>
   document.addEventListener('DOMContentLoaded', function() {
     // Handle "Get Contact Details" button clicks
-    document.querySelectorAll('.get-contact-btn').forEach(button => {
+    document.querySelectorAll('.get-contact-btn').forEach(function(button) {
       button.addEventListener('click', function() {
-        const placeId = this.dataset.placeId;
-        const businessName = this.dataset.businessName;
+        const placeId = button.dataset.placeId;
+        const businessName = button.dataset.businessName;
         
         // Find the contact form and pre-fill with business info
         const contactForm = document.getElementById('contact-form');
@@ -197,7 +197,7 @@ function generateStars(rating: number): string {
           
           // Pre-fill the service field and add place_id
           const serviceField = contactForm.querySelector('#service');
-          if (serviceField) {
+          if (serviceField && 'value' in serviceField) {
             serviceField.value = 'consultation';
           }
           
@@ -209,7 +209,9 @@ function generateStars(rating: number): string {
             placeIdField.name = 'selected_business_place_id';
             contactForm.appendChild(placeIdField);
           }
-          placeIdField.value = placeId;
+          if ('value' in placeIdField) {
+            placeIdField.value = placeId || '';
+          }
           
           // Add hidden field for business name
           let businessNameField = contactForm.querySelector('input[name="selected_business_name"]');
@@ -219,21 +221,23 @@ function generateStars(rating: number): string {
             businessNameField.name = 'selected_business_name';
             contactForm.appendChild(businessNameField);
           }
-          businessNameField.value = businessName;
+          if ('value' in businessNameField) {
+            businessNameField.value = businessName || '';
+          }
           
           // Update form title or add notice
           const formContainer = contactForm.closest('section');
           if (formContainer) {
             const formTitle = formContainer.querySelector('h2');
             if (formTitle) {
-              formTitle.innerHTML = `Get Contact Details for ${businessName}`;
+              formTitle.innerHTML = 'Get Contact Details for ' + (businessName || 'Selected Business');
             }
           }
         }
         
         // Track interaction
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'business_contact_request', {
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'business_contact_request', {
             'business_name': businessName,
             'place_id': placeId
           });
@@ -244,12 +248,17 @@ function generateStars(rating: number): string {
     // Show contact details after successful form submission
     // This would typically be handled by the form submission success callback
     window.showBusinessContact = function(placeId) {
-      const button = document.querySelector(`[data-place-id="${placeId}"]`);
+      const button = document.querySelector('[data-place-id="' + placeId + '"]');
       if (button) {
-        const contactDetails = button.closest('.business-card').querySelector('.contact-details');
-        if (contactDetails) {
-          contactDetails.classList.remove('hidden');
-          button.style.display = 'none';
+        const businessCard = button.closest('.business-card');
+        if (businessCard) {
+          const contactDetails = businessCard.querySelector('.contact-details');
+          if (contactDetails) {
+            contactDetails.classList.remove('hidden');
+            if ('style' in button) {
+              button.style.display = 'none';
+            }
+          }
         }
       }
     };

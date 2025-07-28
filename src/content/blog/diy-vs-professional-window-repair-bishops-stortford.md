@@ -3,7 +3,7 @@ title: "DIY vs Professional Window Repair: Bishop's Stortford Guide"
 description: "Should you repair windows yourself or hire professionals? Oliver Greene's expert guide to window repair costs, safety, and when to call specialists."
 publishDate: "2025-06-04"
 author: "Oliver Greene"
-heroImage: "/images/blog/diy-vs-professional-window-repair-bishops-stortford.webp"
+heroImage: "/images/windowsbishopsstortford-blogimages/wood_windows_x-1_compressed-geotagged.webp"
 heroImageAlt: "Split image showing DIY window repair tools versus professional window repair service in Bishop's Stortford home"
 tags: ["window repair", "diy", "professional repair", "bishops stortford", "maintenance"]
 category: "repairs"
@@ -24,7 +24,7 @@ faq:
     answer: "Most window repairs don't require planning permission, but significant alterations in conservation areas might. If you're in a conservation area in Bishop's Stortford or have a listed building, check with East Hertfordshire District Council before making structural changes."
 ---
 
-# DIY vs Professional Window Repair: Your Complete Bishop's Stortford Guide
+## DIY vs Professional Window Repair: Your Complete Bishop's Stortford Guide
 
 Discovered a problem with your windows? Whether it's a broken handle, draughty frame, or misted double glazing, you're probably wondering: "Can I fix this myself, or do I need a professional?" It's a question I get asked almost daily.
 

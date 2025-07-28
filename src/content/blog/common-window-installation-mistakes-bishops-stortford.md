@@ -3,7 +3,7 @@ title: "Common Window Installation Mistakes & How We Avoid Them [Bishop's Stortf
 description: "Don't let a poor installation ruin your new windows. Oliver Greene reveals the 7 most common window installation mistakes in Bishop's Stortford and how to avoid them."
 publishDate: "2025-06-11"
 author: "Oliver Greene"
-heroImage: "/images/blog/window-installation-mistakes-bishops-stortford.webp"
+heroImage: "/images/windowsbishopsstortford-blogimages/dommoore_2018_mccarter_april_300dpi-3821-scaled_compressed-geotagged.webp"
 heroImageAlt: "A poorly installed window with visible gaps and sealant issues in a Bishop's Stortford home, highlighting common installation mistakes."
 tags: ["installation mistakes", "window installation", "bishops stortford", "poor installation", "FENSA"]
 category: "window-installation"
@@ -24,7 +24,7 @@ faq:
     answer: "A FENSA certificate guarantees that the installation complies with building regulations, is energy efficient, and is registered with the local council. FENSA installers are regularly assessed, which ensures a high standard of work and provides you with crucial homeowner protection."
 ---
 
-# 7 Common Window Installation Mistakes & How We Avoid Them in Bishop's Stortford
+## 7 Common Window Installation Mistakes & How We Avoid Them in Bishop's Stortford
 
 Investing in new windows is a significant decision for any homeowner. But here's a truth I've learned over 38 years in the industry: **the quality of the installation is just as important as the quality of the windows themselves.** A poor installation can turn top-of-the-range windows into a source of draughts, leaks, and frustration.
 

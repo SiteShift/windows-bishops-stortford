@@ -3,7 +3,7 @@ title: "Window Security Upgrades: Locks & Restrictors [Bishop's Stortford]"
 description: "Is your home secure? Oliver Greene explains the best window security upgrades for Bishop's Stortford homes, from high-security locks to child safety restrictors."
 publishDate: "2025-06-10"
 author: "Oliver Greene"
-heroImage: "/images/blog/window-security-upgrades-bishops-stortford.webp"
+heroImage: "/images/windowsbishopsstortford-blogimages/utah-black-doors-red-brick-home_compressed-geotagged.webp"
 heroImageAlt: "Close-up of a high-security multi-point window lock being installed in a Bishop's Stortford home, showcasing window security upgrades."
 tags: ["window security", "secure locks", "bishops stortford", "home security", "window restrictors"]
 category: "repairs"
@@ -24,7 +24,7 @@ faq:
     answer: "Yes, in most cases you can. Modern high-security locking mechanisms can often be retrofitted to older uPVC and timber frames, providing a significant security boost without needing a full window replacement. A professional assessment is needed to confirm compatibility."
 ---
 
-# Window Security Upgrades: A Bishop's Stortford Homeowner's Guide
+## Window Security Upgrades: A Bishop's Stortford Homeowner's Guide
 
 How secure are your windows? It's a question many of us don't think about until it's too late. With police statistics showing that around 30% of burglars gain entry through windows, ensuring they are properly secured is one of the most important things you can do for your family's safety.
 

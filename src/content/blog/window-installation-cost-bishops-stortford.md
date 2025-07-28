@@ -3,7 +3,7 @@ title: "Window Installation Cost Bishop's Stortford [2025 Guide]"
 description: "Get accurate 2025 window installation costs in Bishop's Stortford. Oliver Greene explains pricing for uPVC, aluminium & timber windows plus hidden costs."
 publishDate: "2025-06-01"
 author: "Oliver Greene"
-heroImage: "/images/blog/window-installation-cost-bishops-stortford.webp"
+heroImage: "/images/windowsbishopsstortford-blogimages/DSC01071-1920x1440-1_compressed-geotagged.webp"
 heroImageAlt: "Calculator and window cost breakdown for Bishop's Stortford homes showing different window types and pricing"
 tags: ["window costs", "installation", "bishops stortford", "pricing", "quotes"]
 category: "costs"
@@ -24,7 +24,7 @@ faq:
     answer: "Individual window costs vary significantly: uPVC windows £300-£800 each, aluminium £500-£1,200 each, timber £800-£1,500 each. These prices include supply and professional installation by FENSA-certified installers."
 ---
 
-# Window Installation Cost in Bishop's Stortford: Your Complete 2025 Guide
+## Window Installation Cost in Bishop's Stortford: Your Complete 2025 Guide
 
 Thinking about replacing your windows in Bishop's Stortford but worried about the cost? You're not alone. Window installation cost is one of the most searched topics by local homeowners, and for good reason – it's a significant investment that affects your home's value, energy bills, and comfort for decades.
 

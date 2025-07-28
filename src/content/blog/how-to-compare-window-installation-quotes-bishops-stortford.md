@@ -1,10 +1,10 @@
 ---
-title: "How to Compare Window Installation Quotes [Bishop's Stortford 2025]"
-description: "Don't get caught by misleading quotes. Oliver Greene's expert guide to comparing window installation quotes in Bishop's Stortford - avoid costly mistakes."
+title: "How to Compare Window Installation Quotes in Bishop's Stortford"
+description: "Expert guide to comparing window installation quotes in Bishop's Stortford. Learn what to look for, red flags to avoid, and how to ensure you're getting the best value for money."
 publishDate: "2025-06-15"
 author: "Oliver Greene"
-heroImage: "/images/blog/comparing-window-quotes-bishops-stortford.webp"
-heroImageAlt: "A homeowner comparing multiple window installation quotes on a table in Bishop's Stortford, showing the importance of thorough quote comparison."
+heroImage: "/images/windowsbishopsstortford-blogimages/604adc8da6fec868cd978d8f_types-of-windows_compressed-geotagged.webp"
+heroImageAlt: "Multiple window installation quotes laid out for comparison in a Bishop's Stortford home showing different pricing structures"
 tags: ["window quotes", "installation quotes", "bishops stortford", "comparing prices", "window costs"]
 category: "costs"
 slug: "how-to-compare-window-installation-quotes-bishops-stortford"
@@ -24,7 +24,7 @@ faq:
     answer: "Vague descriptions like 'supply and fit windows' without specifying brands, models, or installation methods. Professional quotes should detail everything: exact window specifications, installation procedures, what's included/excluded, and clear terms. If they can't be specific on paper, they won't be specific in practice."
 ---
 
-# How to Compare Window Installation Quotes: The Bishop's Stortford Homeowner's Complete Guide
+## How to Compare Window Installation Quotes: The Bishop's Stortford Homeowner's Complete Guide
 
 Getting quotes for new windows can feel overwhelming. One company quotes £4,000, another £7,500, and a third £12,000 for what seems like the same job. How do you make sense of these differences and choose the right installer without making a costly mistake?
 

@@ -3,7 +3,7 @@ title: "Double Glazing Energy Bills: Real Bishop's Stortford Case Study"
 description: "See how double glazing cut energy bills by £420/year in this Bishop's Stortford home. Oliver Greene shares real savings data and efficiency tips."
 publishDate: "2025-06-03"
 author: "Oliver Greene"
-heroImage: "/images/blog/double-glazing-energy-savings-bishops-stortford.webp"
+heroImage: "/images/windowsbishopsstortford-blogimages/double-hung-2_compressed-geotagged.webp"
 heroImageAlt: "Energy efficiency comparison showing before and after double glazing installation in a Bishop's Stortford Victorian terrace with thermal imaging"
 tags: ["double glazing", "energy efficiency", "bishops stortford", "energy bills", "case study"]
 category: "energy-efficiency"
@@ -24,7 +24,7 @@ faq:
     answer: "Triple glazing provides approximately 10-15% better thermal performance than quality double glazing. In Bishop's Stortford's climate, this translates to an extra £30-£60 annual savings for most homes. The cost premium often makes double glazing the better value choice unless you're in an extremely exposed location."
 ---
 
-# How Double Glazing Slashed Energy Bills by £420/Year: Real Bishop's Stortford Case Study
+## How Double Glazing Slashed Energy Bills by £420/Year: Real Bishop's Stortford Case Study
 
 Are you tired of seeing your energy bills climb every year while your draughty windows let precious heat escape? You're not alone. Many Bishop's Stortford homeowners are shocked when they discover just how much their old windows are costing them in wasted energy.
 

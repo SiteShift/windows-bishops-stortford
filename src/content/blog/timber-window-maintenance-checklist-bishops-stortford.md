@@ -3,7 +3,7 @@ title: "Timber Window Maintenance Checklist [Bishop's Stortford 2025]"
 description: "Keep your timber windows in perfect condition. Oliver Greene's complete maintenance checklist for Bishop's Stortford homeowners - from seasonal care to repairs."
 publishDate: "2025-06-12"
 author: "Oliver Greene"
-heroImage: "/images/blog/timber-window-maintenance-bishops-stortford.webp"
+heroImage: "/images/windowsbishopsstortford-blogimages/timber_compressed-geotagged.webp"
 heroImageAlt: "A homeowner carefully maintaining beautiful timber windows in a Bishop's Stortford period property, showing proper care techniques."
 tags: ["timber windows", "window maintenance", "bishops stortford", "wood windows", "period property"]
 category: "repairs"
@@ -24,7 +24,7 @@ faq:
     answer: "Call a professional if you discover soft or spongy wood (indicating rot), if sash cords have snapped, if windows won't close properly, or if you're uncomfortable working at height. These issues can worsen quickly and are best handled by experienced timber window specialists."
 ---
 
-# The Complete Timber Window Maintenance Checklist for Bishop's Stortford Homes
+## The Complete Timber Window Maintenance Checklist for Bishop's Stortford Homes
 
 Timber windows are the crown jewel of any period property. When properly maintained, they can last centuries while providing character, charm, and excellent performance. But here's the reality I've learned over 38 years: **timber windows are only as good as the care you give them.**
 

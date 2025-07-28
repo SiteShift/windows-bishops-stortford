@@ -3,7 +3,7 @@ title: "uPVC Windows for Period Homes: Pros & Cons [Bishop's Stortford]"
 description: "Should you install uPVC windows in your period home? Oliver Greene's expert guide to plastic windows in heritage properties around Bishop's Stortford."
 publishDate: "2025-06-02"
 author: "Oliver Greene"
-heroImage: "/images/blog/upvc-windows-period-homes-bishops-stortford.webp"
+heroImage: "/images/windowsbishopsstortford-blogimages/Legacy+PVCu+Sliding+Sash+Window+43_compressed-geotagged.webp"
 heroImageAlt: "Victorian terrace house in Bishop's Stortford with modern uPVC windows showing the contrast between period architecture and contemporary glazing"
 tags: ["upvc windows", "period homes", "bishops stortford", "heritage properties", "window types"]
 category: "window-types"
@@ -24,7 +24,7 @@ faq:
     answer: "Absolutely. Modern uPVC windows with double or triple glazing are dramatically more energy efficient than original single-glazed timber windows. You can expect energy bill savings of 20-30% compared to poorly maintained original windows, while still maintaining the character of your period home."
 ---
 
-# uPVC Windows for Period Homes: The Complete Guide for Bishop's Stortford Homeowners
+## uPVC Windows for Period Homes: The Complete Guide for Bishop's Stortford Homeowners
 
 Living in a beautiful period property in Bishop's Stortford brings unique joys – and unique challenges. One of the biggest decisions you'll face is whether to install modern uPVC windows in your heritage home. Will they ruin the character? Are they even allowed? What are the real benefits and drawbacks?
 

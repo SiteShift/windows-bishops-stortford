@@ -3,7 +3,7 @@ title: "Hidden Window Installation Costs: What to Watch For in Bishop's Stortfor
 description: "Avoid nasty surprises. Oliver Greene reveals hidden costs in window quotes and how to keep your Bishop's Stortford project on budget."
 publishDate: "2025-06-09"
 author: "Oliver Greene"
-heroImage: "/images/blog/hidden-window-costs-bishops-stortford.webp"
+heroImage: "/images/windowsbishopsstortford-blogimages/should-all-the-windows-in-your-home-be-the-same-style-01_compressed-geotagged.webp"
 heroImageAlt: "Magnifying glass over window invoice highlighting hidden costs for Bishop's Stortford homeowners"
 tags: ["hidden costs", "window installation", "bishops stortford", "budget", "quotes"]
 category: "costs"
@@ -24,7 +24,7 @@ faq:
     answer: "If you use FENSA-certified installers, certification is included. If you use building control routes, expect £300-£500 in fees."  
 ---
 
-# Hidden Window Installation Costs: What Bishop's Stortford Homeowners Must Watch For
+## Hidden Window Installation Costs: What Bishop's Stortford Homeowners Must Watch For
 
 Received a "too good to be true" window quote? It probably is. Hidden costs can turn a bargain into a budget-buster.
 
