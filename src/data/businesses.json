@@ -10,9 +10,9 @@
     "google_url": "https://maps.google.com/?cid=15059519774935649606",
     "domain": "markwell-ltd.com",
     "types": [
-      "establishment",
+      "general_contractor",
       "point_of_interest",
-      "general_contractor"
+      "establishment"
     ],
     "price_level": null
   },
@@ -27,9 +27,9 @@
     "google_url": "https://maps.google.com/?cid=11579436953705459390",
     "domain": "glazingmasters.co.uk",
     "types": [
-      "point_of_interest",
       "establishment",
-      "general_contractor"
+      "general_contractor",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -44,8 +44,8 @@
     "google_url": "https://maps.google.com/?cid=735624541971667881",
     "domain": "hertsandessexwindowdoctor.co.uk",
     "types": [
-      "point_of_interest",
-      "establishment"
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -66,23 +66,6 @@
     "price_level": null
   },
   {
-    "place_id": "ChIJMdTZePiF2EcR9ny-Pg_RxGQ",
-    "name": "Hertfordshire Windows and Doors",
-    "rating": 5,
-    "user_ratings_total": 12,
-    "vicinity": "Three Acres, Three Acrs, Motts Green, Little Hallingbury, Bishop's Stortford",
-    "website": "https://hertswd.com/",
-    "phone": "01279 260960",
-    "google_url": "https://maps.google.com/?cid=7261158362635468022",
-    "domain": "hertswd.com",
-    "types": [
-      "establishment",
-      "general_contractor",
-      "point_of_interest"
-    ],
-    "price_level": null
-  },
-  {
     "place_id": "ChIJ36Y4n3-F2EcRT5Lc5v3scbM",
     "name": "N L Glass & Glazing Ltd",
     "rating": 5,
@@ -93,39 +76,24 @@
     "google_url": "https://maps.google.com/?cid=12930376580401500751",
     "domain": null,
     "types": [
-      "establishment",
-      "point_of_interest"
+      "point_of_interest",
+      "establishment"
     ],
     "price_level": null
   },
   {
-    "place_id": "ChIJZxBQ11SE2EcRroTbHOfAGmU",
-    "name": "Stansted Glass & Glazing",
-    "rating": 3,
-    "user_ratings_total": 2,
-    "vicinity": "34, Level's Green, Farnham, Bishop's Stortford",
-    "website": null,
-    "phone": "0800 118 5190",
-    "google_url": "https://maps.google.com/?cid=7285347446079325358",
-    "domain": null,
-    "types": [
-      "establishment",
-      "point_of_interest"
-    ],
-    "price_level": null
-  },
-  {
-    "place_id": "ChIJ74xbQeGa2EcRRguEx8k9AMw",
-    "name": "Aspects",
-    "rating": 1,
-    "user_ratings_total": 1,
-    "vicinity": "Parsonage La, Sawbridgeworth",
-    "website": null,
-    "phone": "01279 600259",
-    "google_url": "https://maps.google.com/?cid=14699817120582339398",
-    "domain": null,
+    "place_id": "ChIJMdTZePiF2EcR9ny-Pg_RxGQ",
+    "name": "Hertfordshire Windows and Doors",
+    "rating": 5,
+    "user_ratings_total": 12,
+    "vicinity": "Three Acres, Three Acrs, Motts Green, Little Hallingbury, Bishop's Stortford",
+    "website": "https://hertswd.com/",
+    "phone": "01279 260960",
+    "google_url": "https://maps.google.com/?cid=7261158362635468022",
+    "domain": "hertswd.com",
     "types": [
       "point_of_interest",
+      "general_contractor",
       "establishment"
     ],
     "price_level": null
@@ -142,24 +110,8 @@
     "domain": "cuffleyconservatories.co.uk",
     "types": [
       "establishment",
-      "point_of_interest",
-      "locksmith"
-    ],
-    "price_level": null
-  },
-  {
-    "place_id": "ChIJP6Ha9hWP2EcRrne5djVOyH4",
-    "name": "Shop 4 Windows",
-    "rating": 0,
-    "user_ratings_total": 0,
-    "vicinity": "3, Oaks, The Campions, Stansted Mountfitchet, Stansted",
-    "website": null,
-    "phone": null,
-    "google_url": "https://maps.google.com/?cid=9135637835653150638",
-    "domain": null,
-    "types": [
-      "point_of_interest",
-      "establishment"
+      "locksmith",
+      "point_of_interest"
     ],
     "price_level": null
   }
