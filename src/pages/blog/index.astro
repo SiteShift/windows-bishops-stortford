@@ -229,7 +229,7 @@ const schema = [blogSchema, breadcrumbSchema];
           Get expert window advice, maintenance tips, and exclusive offers delivered to your inbox.
         </p>
         
-        <form id="newsletter-form" action="https://script.google.com/macros/s/AKfycbx_-qUgh0q3at9RlzMvzjiLqBdvoRSg9ZQS4mHaqrlKeWzSY1lBIbPO_Fenza5Q7Jcn/exec" method="POST" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
           <input 
             type="email" 
             name="email"
@@ -278,82 +278,8 @@ const schema = [blogSchema, breadcrumbSchema];
     newsletterForm?.addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      // Check honeypot
-      if (newsletterForm.website.value) {
-        return; // Likely spam
-      }
-
-      // Show loading state
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        btnText?.classList.add('hidden');
-        btnLoading?.classList.remove('hidden');
-      }
-
-      try {
-        const formData = new FormData(newsletterForm);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Add form metadata
-        data.timestamp = new Date().toISOString();
-        data.page = window.location.pathname;
-        data.name = 'Newsletter Subscriber';
-
-        // Track newsletter signup with Vercel Analytics
-        if (typeof window.va !== 'undefined') {
-          window.va('track', 'Newsletter Signup', {
-            email: data.email,
-            source: data.source,
-            page: data.page,
-            timestamp: data.timestamp
-          });
-        }
-
-        const response = await fetch(newsletterForm.action, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-          // Track successful signup
-          if (typeof window.va !== 'undefined') {
-            window.va('track', 'Newsletter Signup Success', {
-              email: data.email,
-              timestamp: result.timestamp
-            });
-          }
-          
-          // Show success message and reset form
-          alert('Thank you for subscribing! You\'ll receive expert window tips and exclusive offers.');
-          newsletterForm.reset();
-        } else {
-          throw new Error(result.message || 'Network response was not ok');
-        }
-      } catch (error) {
-        console.error('Newsletter signup error:', error);
-        
-        // Track signup error
-        if (typeof window.va !== 'undefined') {
-          window.va('track', 'Newsletter Signup Error', {
-            error: error.message,
-            page: window.location.pathname
-          });
-        }
-        
-        alert('Sorry, there was an error signing you up. Please try again.');
-      } finally {
-        // Reset button state
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          btnText?.classList.remove('hidden');
-          btnLoading?.classList.add('hidden');
-        }
-      }
+      // Placeholder - newsletter signup will be implemented with Google Sheets API
+      alert('Newsletter signup will be implemented with Google Sheets API');
     });
   });
 </script> 

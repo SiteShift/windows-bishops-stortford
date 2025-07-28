@@ -118,8 +118,6 @@ const testimonials = [
         <!-- Contact Form -->
         <form 
           id="contact-form"
-          action="https://script.google.com/macros/s/AKfycbx_-qUgh0q3at9RlzMvzjiLqBdvoRSg9ZQS4mHaqrlKeWzSY1lBIbPO_Fenza5Q7Jcn/exec"
-          method="POST"
           class="space-y-4"
         >
           <!-- Name Fields Row -->
@@ -414,15 +412,10 @@ const testimonials = [
       });
     });
 
-    // Form submission with custom event tracking
-    form?.addEventListener('submit', async function(e) {
+    // Form submission - will be implemented with Google Sheets API
+    form?.addEventListener('submit', function(e) {
       e.preventDefault();
-
-      // Hide previous messages
-      formMessages?.classList.add('hidden');
-      successMessage?.classList.add('hidden');
-      errorMessage?.classList.add('hidden');
-
+      
       // Validate all fields
       let isFormValid = true;
       fields?.forEach(field => {
@@ -435,95 +428,8 @@ const testimonials = [
         return;
       }
 
-      // Check honeypot
-      if (form.website.value) {
-        return; // Likely spam
-      }
-
-      // Show loading state
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        btnText?.classList.add('hidden');
-        btnLoading?.classList.remove('hidden');
-      }
-
-      try {
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Combine first and last name
-        data.name = `${data.firstName} ${data.lastName}`;
-        delete data.firstName;
-        delete data.lastName;
-        
-        // Add form metadata
-        data.timestamp = new Date().toISOString();
-        data.source = 'website-contact';
-        data.page = window.location.pathname;
-        data.formType = 'contact';
-
-        // Track form submission with Vercel Analytics
-        if (typeof window.va !== 'undefined') {
-          window.va('track', 'Contact Form Submission', {
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            service: data.service,
-            message: data.message ? 'Yes' : 'No',
-            source: data.source,
-            page: data.page,
-            timestamp: data.timestamp
-          });
-        }
-
-        const response = await fetch(form.action, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-          // Track successful submission
-          if (typeof window.va !== 'undefined') {
-            window.va('track', 'Contact Form Success', {
-              name: data.name,
-              email: data.email,
-              service: data.service,
-              timestamp: result.timestamp
-            });
-          }
-          
-          // Redirect to thank you page
-          window.location.href = '/thank-you/';
-        } else {
-          throw new Error(result.message || 'Network response was not ok');
-        }
-      } catch (error) {
-        console.error('Form submission error:', error);
-        
-        // Show error message
-        formMessages?.classList.remove('hidden');
-        errorMessage?.classList.remove('hidden');
-
-        // Track form error
-        if (typeof window.va !== 'undefined') {
-          window.va('track', 'Contact Form Error', {
-            error: error.message,
-            page: window.location.pathname
-          });
-        }
-      } finally {
-        // Reset button state
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          btnText?.classList.remove('hidden');
-          btnLoading?.classList.add('hidden');
-        }
-      }
+      // Placeholder - form submission will be implemented
+      alert('Form submission will be implemented with Google Sheets API');
     });
   });
 </script> 
