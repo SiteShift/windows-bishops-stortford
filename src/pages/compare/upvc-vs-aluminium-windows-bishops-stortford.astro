@@ -1,0 +1,561 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "uPVC Windows",
+  option2: "Aluminium Windows", 
+  location: "Bishop's Stortford",
+  cta: "See both window samples"
+};
+
+const faqs = [
+  {
+    question: "Are aluminium windows better than uPVC for Bishop's Stortford homes?",
+    answer: "Both have advantages: aluminium offers slimmer frames and modern aesthetics, while uPVC provides better thermal performance and lower cost. Choice depends on your priorities and budget."
+  },
+  {
+    question: "Which windows last longer - uPVC or aluminium?",
+    answer: "Both typically last 20-25 years. Aluminium may last slightly longer (25-30 years) but requires more maintenance. uPVC is virtually maintenance-free throughout its lifespan."
+  },
+  {
+    question: "Are aluminium windows more expensive than uPVC?",
+    answer: "Yes, aluminium windows typically cost 30-50% more than uPVC. For an average Bishop's Stortford home, expect £6,000-9,000 for aluminium vs £4,000-6,000 for uPVC."
+  },
+  {
+    question: "Do aluminium windows conduct heat more than uPVC?",
+    answer: "Traditional aluminium conducts heat, but modern thermally-broken aluminium frames perform similarly to uPVC. However, uPVC still has a slight edge in thermal efficiency."
+  },
+  {
+    question: "Which window material adds more property value?",
+    answer: "Aluminium windows typically add more value due to their premium appearance and association with modern, high-end properties. The difference is usually £2,000-5,000 for a typical home."
+  },
+  {
+    question: "Can I get aluminium-look windows in uPVC?",
+    answer: "Yes, modern uPVC can closely mimic aluminium with anthracite grey finishes and slimline profiles. This offers the look of aluminium at uPVC prices, though purists prefer genuine aluminium."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="uPVC vs Aluminium Windows Bishop's Stortford | Which Is Best?"
+  description="Compare uPVC and aluminium windows for Bishop's Stortford homes. Cost analysis, performance comparison, and expert advice to help you choose the right material."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="uPVC vs Aluminium Windows"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">uPVC vs Aluminium Windows</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          uPVC vs Aluminium Windows in<br>
+          <span class="text-green-300">Bishop's Stortford</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Compare cost, performance, and aesthetics to choose the perfect window material for your Bishop's Stortford home.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Materials
+          </a>
+          <a 
+            href="#calculator" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Calculate Costs
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">uPVC vs Aluminium Comparison</h2>
+          <p class="text-xl text-gray-600">Side-by-side analysis of key factors</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Feature</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">uPVC Windows</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Aluminium Windows</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Typical Cost (per window)</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">£300-500</td>
+                  <td class="py-4 px-4 text-center">£450-750</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Thermal Performance</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Excellent</td>
+                  <td class="py-4 px-4 text-center">Good (with thermal break)</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Frame Thickness</td>
+                  <td class="py-4 px-4 text-center">70-80mm</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">45-65mm</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Maintenance Required</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Minimal</td>
+                  <td class="py-4 px-4 text-center">Low-Medium</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Color Options</td>
+                  <td class="py-4 px-4 text-center">Limited (10-15)</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Unlimited (RAL colors)</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Lifespan</td>
+                  <td class="py-4 px-4 text-center">20-25 years</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">25-30 years</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Property Value Impact</td>
+                  <td class="py-4 px-4 text-center">Good</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Excellent</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Breakdown -->
+  <section id="benefits" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Which Material Suits You?</h2>
+          <p class="text-xl text-gray-600">Expert guidance based on your priorities and property type</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- uPVC Benefits -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-green-600 mb-4">Choose uPVC If:</h3>
+            <ul class="text-left space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Budget is your primary concern
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                You want maximum thermal efficiency
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Low maintenance is important
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Traditional home style
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Quick installation needed
+              </li>
+            </ul>
+          </div>
+
+          <!-- Aluminium Benefits -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">Choose Aluminium If:</h3>
+            <ul class="text-left space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Modern, sleek aesthetics priority
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Maximum glass area desired
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Specific color matching needed
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Contemporary property style
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Long-term investment focus
+              </li>
+            </ul>
+          </div>
+
+          <!-- Expert Recommendation -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-amber-600 mb-4">Expert Recommendation</h3>
+            <div class="text-left text-gray-600 space-y-4">
+              <p>For most Bishop's Stortford homes, <strong>uPVC offers the best value</strong> combining performance, cost, and low maintenance.</p>
+              <p>Choose aluminium for contemporary properties, large glazed areas, or when aesthetics outweigh budget considerations.</p>
+              <p class="text-sm italic">We can show samples of both materials to help you decide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost Calculator -->
+  <section id="calculator" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Cost Comparison Calculator</h2>
+          <p class="text-xl text-gray-600">Compare total costs for your Bishop's Stortford home</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-2xl font-bold text-green-800 mb-6">Your Requirements</h3>
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Number of Windows</label>
+                  <input type="number" id="window-count" value="12" min="1" max="50" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Window Size</label>
+                  <select id="window-size" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    <option value="small">Small (up to 1.2m²)</option>
+                    <option value="medium" selected>Medium (1.2-2.0m²)</option>
+                    <option value="large">Large (2.0m²+)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Quality Level</label>
+                  <select id="quality-level" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    <option value="standard">Standard</option>
+                    <option value="premium" selected>Premium</option>
+                    <option value="luxury">Luxury</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-bold text-green-800 mb-6">Cost Comparison</h3>
+              <div class="space-y-6">
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-800 mb-2">uPVC Windows</h4>
+                  <div class="text-sm space-y-1">
+                    <div class="flex justify-between">
+                      <span>Total Cost:</span>
+                      <span id="upvc-cost" class="font-medium">£6,000</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Cost per Window:</span>
+                      <span id="upvc-per-window" class="font-medium">£500</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Installation:</span>
+                      <span>Included</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>10-Year Warranty:</span>
+                      <span>Included</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-800 mb-2">Aluminium Windows</h4>
+                  <div class="text-sm space-y-1">
+                    <div class="flex justify-between">
+                      <span>Total Cost:</span>
+                      <span id="aluminium-cost" class="font-medium">£8,400</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Cost per Window:</span>
+                      <span id="aluminium-per-window" class="font-medium">£700</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Installation:</span>
+                      <span>Included</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>10-Year Warranty:</span>
+                      <span>Included</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-amber-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-amber-800 mb-2">Cost Difference</h4>
+                  <div class="text-sm">
+                    <div class="flex justify-between">
+                      <span>Aluminium Premium:</span>
+                      <span id="cost-difference" class="font-medium">£2,400 (40% more)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <a href="/contact" class="btn-primary inline-block">
+                    Get Exact Quote for Both Materials
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Planning Considerations -->
+  <section id="planning" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Bishop's Stortford Planning Guidance</h2>
+          <p class="text-xl text-gray-600">Material considerations for local planning</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-bold text-green-800 mb-4">General Properties</h3>
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Both uPVC and aluminium permitted
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  No planning permission usually required
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Color choice generally unrestricted
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-amber-600 mb-4">Conservation Areas</h3>
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                  Material choice may be restricted
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                  Traditional colors often preferred
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                  We handle all planning applications
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to uPVC vs aluminium questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="upvc-vs-aluminium-windows-bishops-stortford"
+    materials={["upvc", "aluminium"]}
+    features={["cost", "thermal", "aesthetics"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">See both window samples</p>
+        <p class="text-xs text-green-100">Compare materials in person</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Book Visit
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script>
+  // FAQ Toggle Function
+  function toggleFaq(index: number) {
+    const answer = document.getElementById(`answer-${index}`);
+    const icon = document.getElementById(`icon-${index}`);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+
+  // Cost Calculator
+  function updateCalculator() {
+    const windowCountEl = document.getElementById('window-count') as HTMLInputElement;
+    const windowSizeEl = document.getElementById('window-size') as HTMLSelectElement;
+    const qualityLevelEl = document.getElementById('quality-level') as HTMLSelectElement;
+    
+    if (!windowCountEl || !windowSizeEl || !qualityLevelEl) return;
+    
+    const windowCount = parseInt(windowCountEl.value) || 12;
+    const windowSize = windowSizeEl.value as 'small' | 'medium' | 'large';
+    const qualityLevel = qualityLevelEl.value as 'standard' | 'premium' | 'luxury';
+    
+    // Base costs per window by size and quality
+    const costs = {
+      small: { 
+        standard: { upvc: 300, aluminium: 450 },
+        premium: { upvc: 400, aluminium: 600 },
+        luxury: { upvc: 500, aluminium: 750 }
+      },
+      medium: { 
+        standard: { upvc: 400, aluminium: 600 },
+        premium: { upvc: 500, aluminium: 750 },
+        luxury: { upvc: 650, aluminium: 950 }
+      },
+      large: { 
+        standard: { upvc: 550, aluminium: 800 },
+        premium: { upvc: 700, aluminium: 1000 },
+        luxury: { upvc: 850, aluminium: 1250 }
+      }
+    };
+    
+    const upvcPerWindow = costs[windowSize][qualityLevel].upvc;
+    const aluminiumPerWindow = costs[windowSize][qualityLevel].aluminium;
+    
+    const upvcTotal = upvcPerWindow * windowCount;
+    const aluminiumTotal = aluminiumPerWindow * windowCount;
+    const difference = aluminiumTotal - upvcTotal;
+    const percentDiff = Math.round((difference / upvcTotal) * 100);
+    
+    // Update display
+    const elements = [
+      { id: 'upvc-cost', value: `£${upvcTotal.toLocaleString()}` },
+      { id: 'upvc-per-window', value: `£${upvcPerWindow}` },
+      { id: 'aluminium-cost', value: `£${aluminiumTotal.toLocaleString()}` },
+      { id: 'aluminium-per-window', value: `£${aluminiumPerWindow}` },
+      { id: 'cost-difference', value: `£${difference.toLocaleString()} (${percentDiff}% more)` }
+    ];
+    
+    elements.forEach(({ id, value }) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    });
+  }
+
+  // Initialize calculator
+  document.addEventListener('DOMContentLoaded', function() {
+    updateCalculator();
+    
+    // Add event listeners
+    const inputs = ['window-count', 'window-size', 'quality-level'];
+    inputs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', updateCalculator);
+        el.addEventListener('change', updateCalculator);
+      }
+    });
+  });
+</script>

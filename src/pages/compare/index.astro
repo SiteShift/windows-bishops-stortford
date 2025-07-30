@@ -1,0 +1,271 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Comparison pages data
+const comparisons = [
+  {
+    title: "Triple vs Double Glazing",
+    slug: "triple-vs-double-glazing-bishops-stortford",
+    description: "Compare triple and double glazing performance, costs, and energy savings for Bishop's Stortford homes.",
+    category: "Glazing Performance",
+    cta: "Get a triple-glazing quote",
+    popular: true
+  },
+  {
+    title: "Single vs Double Glazing", 
+    slug: "single-vs-double-glazing-bishops-stortford",
+    description: "Heritage property owners: understand disruption vs savings when upgrading from single glazing.",
+    category: "Glazing Performance", 
+    cta: "Free upgrade assessment"
+  },
+  {
+    title: "Double vs Secondary Glazing",
+    slug: "double-vs-secondary-glazing-bishops-stortford", 
+    description: "Perfect for flats and heritage homes where frame replacement may be restricted.",
+    category: "Glazing Performance",
+    cta: "Book secondary survey"
+  },
+  {
+    title: "Secondary vs Triple Glazing",
+    slug: "secondary-glazing-vs-triple-glazing-bishops-stortford",
+    description: "Advanced noise reduction and thermal performance comparison for demanding properties.",
+    category: "Glazing Performance", 
+    cta: "Compare cost options"
+  },
+  {
+    title: "uPVC vs Aluminium Windows",
+    slug: "upvc-vs-aluminium-windows-bishops-stortford",
+    description: "Cost-focused buyers vs design-led slim-line preferences. Which suits your Bishop's Stortford home?",
+    category: "Window Materials",
+    cta: "See both window samples",
+    popular: true
+  },
+  {
+    title: "uPVC vs Timber Windows", 
+    slug: "upvc-vs-timber-windows-bishops-stortford",
+    description: "Period property owners balancing authenticity with budget and maintenance considerations.",
+    category: "Window Materials",
+    cta: "Request corner samples"
+  },
+  {
+    title: "Aluminium vs Timber Windows",
+    slug: "aluminium-vs-timber-windows-bishops-stortford", 
+    description: "High-budget renovations: compare premium materials for maximum property value.",
+    category: "Window Materials",
+    cta: "Book side-by-side quote"
+  },
+  {
+    title: "Sash vs Casement Windows",
+    slug: "sash-vs-casement-windows-bishops-stortford",
+    description: "Style decision guide for Bishop's Stortford properties: traditional elegance vs modern functionality.",
+    category: "Window Styles", 
+    cta: "Ask style advice"
+  },
+  {
+    title: "Tilt & Turn vs Casement",
+    slug: "tilt-and-turn-vs-casement-bishops-stortford",
+    description: "Fire escape and easy-clean considerations for modern refurbishments and new builds.",
+    category: "Window Styles",
+    cta: "Check tilt-&-turn pricing"
+  },
+  {
+    title: "Flush vs Stormproof Casement",
+    slug: "flush-casement-vs-stormproof-bishops-stortford", 
+    description: "Design-focused comparison: sleek modern lines vs traditional weather performance.",
+    category: "Window Styles",
+    cta: "See both in showroom"
+  },
+  {
+    title: "Argon vs Krypton Gas Glazing",
+    slug: "argon-vs-krypton-gas-glazing",
+    description: "Energy efficiency enthusiasts: understand gas fill performance and cost differences.",
+    category: "Technical Features",
+    cta: "Download U-value chart"
+  },
+  {
+    title: "Warm Edge vs Aluminium Spacer",
+    slug: "warm-edge-spacer-vs-aluminium", 
+    description: "Solve condensation issues and thermal bridging with the right spacer technology.",
+    category: "Technical Features",
+    cta: "Read full tech spec"
+  },
+  {
+    title: "Low-E Glass vs Standard",
+    slug: "low-e-glass-vs-standard",
+    description: "Low-emissivity coating benefits: energy savings and UV protection explained.",
+    category: "Technical Features", 
+    cta: "See Low-E demo"
+  },
+  {
+    title: "Laminated vs Toughened Safety Glass",
+    slug: "laminated-vs-toughened-safety-glass",
+    description: "Safety and security comparison for schools, commercial properties, and high-risk areas.",
+    category: "Technical Features",
+    cta: "Check safety glass spec"
+  },
+  {
+    title: "Acoustic vs Standard Glazing",
+    slug: "acoustic-glazing-vs-standard", 
+    description: "Airport and main road homes: achieve superior noise reduction with specialist glazing.",
+    category: "Technical Features",
+    cta: "Book dB test at home"
+  }
+];
+
+// Group comparisons by category
+const groupedComparisons = comparisons.reduce((groups: Record<string, typeof comparisons>, comparison) => {
+  const category = comparison.category;
+  if (!groups[category]) {
+    groups[category] = [];
+  }
+  groups[category].push(comparison);
+  return groups;
+}, {} as Record<string, typeof comparisons>);
+
+// ItemList Schema for the hub page
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Window Comparison Guides - Bishop's Stortford",
+  "description": "Comprehensive comparison guides for windows, glazing, and materials in Bishop's Stortford",
+  "numberOfItems": comparisons.length,
+  "itemListElement": comparisons.map((comparison, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "WebPage",
+      "name": comparison.title,
+      "description": comparison.description,
+      "url": `https://www.windowsbishopsstortford.com/compare/${comparison.slug}`
+    }
+  }))
+};
+---
+
+<Layout 
+  title="Compare Windows & Glazing | Bishop's Stortford Expert Guides"
+  description="Compare window types, materials, and glazing options for Bishop's Stortford homes. Expert side-by-side analysis to help you choose the perfect windows."
+>
+  <!-- ItemList Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Compare</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Compare Windows &<br>
+          <span class="text-green-300">Glazing Options</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto">
+          Make informed decisions with our expert comparison guides. Side-by-side analysis of window materials, styles, and glazing technologies for Bishop's Stortford homes.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparisons" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Browse Comparisons
+          </a>
+          <a 
+            href="/contact" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Get Expert Advice
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Categories -->
+  <section id="comparisons" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Window & Glazing Comparisons</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Expert analysis to help you choose the perfect windows for your Bishop's Stortford property. Compare performance, costs, and benefits side-by-side.
+          </p>
+        </div>
+
+        {Object.entries(groupedComparisons).map(([category, categoryComparisons]) => (
+          <div class="mb-16">
+            <h3 class="text-3xl font-bold text-green-800 mb-8 text-center">{category}</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {categoryComparisons.map((comparison) => (
+                <a href={`/compare/${comparison.slug}`} class="card card-hover p-6 text-center relative group">
+                  {comparison.popular && (
+                    <div class="absolute top-4 right-4">
+                      <span class="bg-green-500 text-white text-xs px-3 py-1 rounded-full font-semibold">Popular</span>
+                    </div>
+                  )}
+                  
+                  <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-green-200 transition-colors">
+                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                  </div>
+                  
+                  <h4 class="text-xl font-bold text-green-800 mb-4 group-hover:text-green-600 transition-colors">
+                    {comparison.title}
+                  </h4>
+                  
+                  <p class="text-gray-600 mb-6 leading-relaxed">
+                    {comparison.description}
+                  </p>
+                  
+                  <div class="mt-auto">
+                    <span class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold transition-colors">
+                      {comparison.cta}
+                      <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      </svg>
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding bg-green-800 text-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-extrabold mb-6 text-white">Still Not Sure Which Option Is Right?</h2>
+        <p class="text-xl mb-8 text-green-100 leading-relaxed">
+          Our window experts have 38 years of experience helping Bishop's Stortford homeowners choose the perfect windows. Get personalized advice based on your property, budget, and requirements.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contact" 
+            class="btn-primary bg-white text-green-800 hover:bg-gray-100 font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105"
+          >
+            Get Expert Consultation
+          </a>
+          <a 
+            href="/window-types" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Browse Window Types
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

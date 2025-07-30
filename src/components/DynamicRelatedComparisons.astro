@@ -1,0 +1,189 @@
+---
+export interface Props {
+  currentComparison: string;
+  materials?: string[];
+  styles?: string[];
+  features?: string[];
+}
+
+const { currentComparison, materials = [], styles = [], features = [] } = Astro.props;
+
+// Define all comparisons with their materials/styles/features
+const allComparisons = [
+  {
+    title: "Triple vs Double Glazing",
+    slug: "triple-vs-double-glazing-bishops-stortford",
+    materials: [],
+    styles: [],
+    features: ["glazing", "energy", "thermal"],
+    description: "Compare glazing performance and energy savings"
+  },
+  {
+    title: "Single vs Double Glazing", 
+    slug: "single-vs-double-glazing-bishops-stortford",
+    materials: [],
+    styles: [],
+    features: ["glazing", "heritage", "upgrade"],
+    description: "Heritage property glazing upgrade comparison"
+  },
+  {
+    title: "Double vs Secondary Glazing",
+    slug: "double-vs-secondary-glazing-bishops-stortford",
+    materials: [],
+    styles: [],
+    features: ["glazing", "heritage", "noise"],
+    description: "Glazing options for restricted properties"
+  },
+  {
+    title: "uPVC vs Aluminium Windows",
+    slug: "upvc-vs-aluminium-windows-bishops-stortford",
+    materials: ["upvc", "aluminium"],
+    styles: [],
+    features: ["cost", "thermal", "aesthetics"],
+    description: "Material comparison for modern homes"
+  },
+  {
+    title: "uPVC vs Timber Windows", 
+    slug: "upvc-vs-timber-windows-bishops-stortford",
+    materials: ["upvc", "timber"],
+    styles: [],
+    features: ["cost", "maintenance", "heritage"],
+    description: "Traditional vs modern material choice"
+  },
+  {
+    title: "Aluminium vs Timber Windows",
+    slug: "aluminium-vs-timber-windows-bishops-stortford",
+    materials: ["aluminium", "timber"],
+    styles: [],
+    features: ["premium", "aesthetics", "durability"],
+    description: "Premium material comparison"
+  },
+  {
+    title: "Sash vs Casement Windows",
+    slug: "sash-vs-casement-windows-bishops-stortford",
+    materials: [],
+    styles: ["sash", "casement"],
+    features: ["style", "heritage", "function"],
+    description: "Traditional vs modern window styles"
+  },
+  {
+    title: "Tilt & Turn vs Casement",
+    slug: "tilt-and-turn-vs-casement-bishops-stortford",
+    materials: [],
+    styles: ["tilt-turn", "casement"],
+    features: ["function", "cleaning", "ventilation"],
+    description: "Modern functionality comparison"
+  },
+  {
+    title: "Flush vs Stormproof Casement",
+    slug: "flush-casement-vs-stormproof-bishops-stortford",
+    materials: [],
+    styles: ["flush", "stormproof", "casement"],
+    features: ["style", "weather", "aesthetics"],
+    description: "Casement design comparison"
+  },
+  {
+    title: "Argon vs Krypton Gas Glazing",
+    slug: "argon-vs-krypton-gas-glazing",
+    materials: [],
+    styles: [],
+    features: ["gas", "thermal", "energy"],
+    description: "Gas fill performance comparison"
+  },
+  {
+    title: "Warm Edge vs Aluminium Spacer",
+    slug: "warm-edge-spacer-vs-aluminium",
+    materials: [],
+    styles: [],
+    features: ["thermal", "condensation", "spacer"],
+    description: "Spacer technology comparison"
+  },
+  {
+    title: "Low-E Glass vs Standard",
+    slug: "low-e-glass-vs-standard",
+    materials: [],
+    styles: [],
+    features: ["glass", "energy", "coating"],
+    description: "Glass coating technology comparison"
+  },
+  {
+    title: "Laminated vs Toughened Safety Glass",
+    slug: "laminated-vs-toughened-safety-glass",
+    materials: [],
+    styles: [],
+    features: ["safety", "security", "glass"],
+    description: "Safety glass comparison"
+  },
+  {
+    title: "Acoustic vs Standard Glazing",
+    slug: "acoustic-glazing-vs-standard",
+    materials: [],
+    styles: [],
+    features: ["noise", "acoustic", "glazing"],
+    description: "Noise reduction glazing comparison"
+  }
+];
+
+// Find related comparisons based on shared materials, styles, or features
+const relatedComparisons = allComparisons.filter(comparison => {
+  // Don't include the current comparison
+  if (comparison.slug === currentComparison) return false;
+  
+  // Check for shared materials
+  const sharedMaterials = comparison.materials.some(material => 
+    materials.includes(material)
+  );
+  
+  // Check for shared styles
+  const sharedStyles = comparison.styles.some(style => 
+    styles.includes(style)
+  );
+  
+  // Check for shared features
+  const sharedFeatures = comparison.features.some(feature => 
+    features.includes(feature)
+  );
+  
+  return sharedMaterials || sharedStyles || sharedFeatures;
+}).slice(0, 3); // Limit to 3 related comparisons
+---
+
+{relatedComparisons.length > 0 && (
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Related Comparisons</h2>
+          <p class="text-xl text-gray-600">More comparisons to help you decide</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {relatedComparisons.map((comparison) => (
+            <a href={`/compare/${comparison.slug}`} class="card card-hover p-6 text-center group">
+              <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              
+              <h3 class="text-lg font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">
+                {comparison.title}
+              </h3>
+              
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                {comparison.description}
+              </p>
+              
+              <span class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold transition-colors text-sm">
+                Compare Now
+                <svg class="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}

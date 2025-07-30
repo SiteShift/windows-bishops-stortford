@@ -1,0 +1,109 @@
+---
+import Layout from './Layout.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  comparison: {
+    option1: string;
+    option2: string;
+    location: string;
+    cta: string;
+  };
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
+  breadcrumb?: string;
+}
+
+const { title, description, comparison, faqs, breadcrumb } = Astro.props;
+
+// Generate FAQPage Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+// Generate BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.windowsbishopsstortford.com/"
+    },
+    {
+      "@type": "ListItem", 
+      "position": 2,
+      "name": "Compare",
+      "item": "https://www.windowsbishopsstortford.com/compare"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": breadcrumb || title,
+      "item": `https://www.windowsbishopsstortford.com${Astro.url.pathname}`
+    }
+  ]
+};
+
+// Generate WebPage Schema with Product references
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": title,
+  "description": description,
+  "url": `https://www.windowsbishopsstortford.com${Astro.url.pathname}`,
+  "about": [
+    {
+      "@type": "Product",
+      "name": `${comparison.option1} Windows`,
+      "category": "Windows"
+    },
+    {
+      "@type": "Product", 
+      "name": `${comparison.option2} Windows`,
+      "category": "Windows"
+    }
+  ],
+  "speakableSpecification": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".speakable-content"]
+  }
+};
+
+// Combine all schemas
+const allSchemas = [faqSchema, breadcrumbSchema, webPageSchema];
+---
+
+<Layout title={title} description={description}>
+  <!-- Schema Markup -->
+  {allSchemas.map(schema => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
+
+  <!-- Add scroll-margin-top to all sections -->
+  <style>
+    section[id] {
+      scroll-margin-top: 6rem;
+    }
+    
+    .content-visibility-auto {
+      content-visibility: auto;
+    }
+  </style>
+
+  <slot />
+</Layout>

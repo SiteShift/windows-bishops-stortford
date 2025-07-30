@@ -1,0 +1,725 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Triple Glazing",
+  option2: "Double Glazing", 
+  location: "Bishop's Stortford",
+  cta: "Get a triple-glazing quote"
+};
+
+const faqs = [
+  {
+    question: "Is triple glazing worth the extra cost in Bishop's Stortford?",
+    answer: "Triple glazing typically costs 20-40% more but can reduce energy bills by an additional 10-15% compared to double glazing. For Bishop's Stortford's climate, payback is usually 8-12 years."
+  },
+  {
+    question: "How much more expensive is triple glazing than double glazing?",
+    answer: "Triple glazing typically costs £150-300 more per window than high-quality double glazing. For an average Bishop's Stortford home (12 windows), expect £2,000-3,500 additional cost."
+  },
+  {
+    question: "Does triple glazing reduce noise better than double glazing?",
+    answer: "Yes, triple glazing can reduce noise by 3-5 dB more than double glazing. This makes it particularly valuable for homes near the A120 or Bishop's Stortford town centre."
+  },
+  {
+    question: "What are the energy savings with triple glazing vs double glazing?",
+    answer: "Triple glazing achieves U-values of 0.8-1.0 W/m²K compared to 1.2-1.6 W/m²K for double glazing. This translates to 10-15% additional energy savings annually."
+  },
+  {
+    question: "Do I need planning permission for triple glazing in Bishop's Stortford?",
+    answer: "Most triple glazing installations fall under permitted development. However, properties in Bishop's Stortford Conservation Area may require planning permission from East Hertfordshire District Council."
+  },
+  {
+    question: "Will triple glazing make rooms too dark?",
+    answer: "Modern triple glazing with Low-E coatings maintains 70-80% light transmission, only slightly less than double glazing. The difference is barely noticeable in most Bishop's Stortford homes."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Triple vs Double Glazing Bishop's Stortford | Which Saves More?"
+  description="Compare triple and double glazing costs, energy savings, and noise reduction for Bishop's Stortford homes. Expert analysis to help you choose the right glazing."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Triple vs Double Glazing"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Triple vs Double Glazing</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Triple vs Double Glazing in<br>
+          <span class="text-green-300">Bishop's Stortford</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Discover which glazing option delivers the best energy savings, noise reduction, and value for money in Bishop's Stortford homes.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Performance
+          </a>
+          <a 
+            href="#calculator" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Calculate Savings
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky TOC (Desktop) -->
+  <div class="hidden lg:block fixed left-4 top-1/2 transform -translate-y-1/2 z-40">
+    <nav class="bg-white rounded-lg shadow-lg p-4 max-w-xs">
+      <h3 class="font-semibold text-green-800 mb-3">Jump to Section</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#comparison" class="text-gray-600 hover:text-green-600 transition-colors">Quick Comparison</a></li>
+        <li><a href="#benefits" class="text-gray-600 hover:text-green-600 transition-colors">Benefits Breakdown</a></li>
+        <li><a href="#calculator" class="text-gray-600 hover:text-green-600 transition-colors">ROI Calculator</a></li>
+        <li><a href="#performance" class="text-gray-600 hover:text-green-600 transition-colors">Performance Data</a></li>
+        <li><a href="#planning" class="text-gray-600 hover:text-green-600 transition-colors">Planning Guidance</a></li>
+        <li><a href="#case-study" class="text-gray-600 hover:text-green-600 transition-colors">Case Study</a></li>
+        <li><a href="#faqs" class="text-gray-600 hover:text-green-600 transition-colors">FAQs</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Triple vs Double Glazing Comparison</h2>
+          <p class="text-xl text-gray-600">Side-by-side analysis of key performance factors</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Feature</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Double Glazing</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">Triple Glazing</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Typical Cost (per window)</td>
+                  <td class="py-4 px-4 text-center">£300-600</td>
+                  <td class="py-4 px-4 text-center">£450-900</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">U-Value (W/m²K)</td>
+                  <td class="py-4 px-4 text-center">1.2-1.6</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">0.8-1.0</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Noise Reduction (dB)</td>
+                  <td class="py-4 px-4 text-center">28-32</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">32-37</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Annual Energy Savings</td>
+                  <td class="py-4 px-4 text-center">£200-400</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">£250-500</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Lifespan</td>
+                  <td class="py-4 px-4 text-center">20-25 years</td>
+                  <td class="py-4 px-4 text-center">25-30 years</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Payback Period</td>
+                  <td class="py-4 px-4 text-center">5-8 years</td>
+                  <td class="py-4 px-4 text-center">8-12 years</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Breakdown -->
+  <section id="benefits" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Who Should Choose Which?</h2>
+          <p class="text-xl text-gray-600">Expert guidance based on your priorities and property type</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Double Glazing Benefits -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">Choose Double Glazing If:</h3>
+            <ul class="text-left space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Budget is your primary concern
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Your home is well-insulated overall  
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                You want quick payback (5-8 years)
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Noise isn't a major issue
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Replacing older single glazing
+              </li>
+            </ul>
+          </div>
+
+          <!-- Triple Glazing Benefits -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-green-600 mb-4">Choose Triple Glazing If:</h3>
+            <ul class="text-left space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Maximum energy efficiency is priority
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                You live near A120 or busy roads
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Long-term investment mindset
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Building new or major renovation
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Want maximum noise reduction
+              </li>
+            </ul>
+          </div>
+
+          <!-- Neutral Advice -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-amber-600 mb-4">Expert Recommendation</h3>
+            <div class="text-left text-gray-600 space-y-4">
+              <p>For most Bishop's Stortford homes, <strong>high-quality double glazing</strong> offers the best balance of cost and performance.</p>
+              <p>Consider triple glazing if you're building new, live on a main road, or prioritize maximum efficiency over quick payback.</p>
+              <p class="text-sm italic">Our survey will assess your specific needs and recommend the optimal solution.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator -->
+  <section id="calculator" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Calculate Your Savings</h2>
+          <p class="text-xl text-gray-600">Interactive calculator to compare costs and payback periods</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-2xl font-bold text-green-800 mb-6">Your Details</h3>
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Number of Windows</label>
+                  <input type="number" id="window-count" value="12" min="1" max="50" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Current Annual Heating Bill</label>
+                  <input type="number" id="heating-bill" value="1200" min="200" max="5000" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Window Size</label>
+                  <select id="window-size" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    <option value="small">Small (up to 1.2m²)</option>
+                    <option value="medium" selected>Medium (1.2-2.0m²)</option>
+                    <option value="large">Large (2.0m²+)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-bold text-green-800 mb-6">Comparison Results</h3>
+              <div class="space-y-6">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-800 mb-2">Double Glazing</h4>
+                  <div class="text-sm space-y-1">
+                    <div class="flex justify-between">
+                      <span>Initial Cost:</span>
+                      <span id="double-cost" class="font-medium">£6,000</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Annual Savings:</span>
+                      <span id="double-savings" class="font-medium">£300</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Payback Period:</span>
+                      <span id="double-payback" class="font-medium">20 years</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-800 mb-2">Triple Glazing</h4>
+                  <div class="text-sm space-y-1">
+                    <div class="flex justify-between">
+                      <span>Initial Cost:</span>
+                      <span id="triple-cost" class="font-medium">£8,400</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Annual Savings:</span>
+                      <span id="triple-savings" class="font-medium">£375</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Payback Period:</span>
+                      <span id="triple-payback" class="font-medium">22 years</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <a href="/contact" class="btn-primary inline-block">
+                    Get Exact Quote for Your Home
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance Data -->
+  <section id="performance" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Performance Data</h2>
+          <p class="text-xl text-gray-600">Technical specifications and real-world performance</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-4">Energy Performance</h3>
+            <div class="space-y-4">
+              <div class="speakable-content">
+                <p class="font-medium">Triple glazing achieves U-values of 0.8-1.0 W/m²K compared to 1.2-1.6 W/m²K for double glazing.</p>
+              </div>
+              <ul class="space-y-2 text-gray-600">
+                <li>• 25-35% better thermal performance</li>
+                <li>• Reduced heat loss through glass</li>
+                <li>• Better surface temperatures (less condensation)</li>
+                <li>• Improved comfort near windows</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-4">Noise Reduction</h3>
+            <div class="space-y-4">
+              <div class="speakable-content">
+                <p class="font-medium">Triple glazing provides 3-5 dB additional noise reduction, making it ideal for homes near the A120.</p>
+              </div>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Double: 28-32 dB reduction</li>
+                <li>• Triple: 32-37 dB reduction</li>
+                <li>• Noticeable difference for traffic noise</li>
+                <li>• Better sleep quality reported</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Planning Considerations -->
+  <section id="planning" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Bishop's Stortford Planning Guidance</h2>
+          <p class="text-xl text-gray-600">East Hertfordshire District Council requirements</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-bold text-green-800 mb-4">Permitted Development</h3>
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Most glazing upgrades are permitted development
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  No size restrictions for like-for-like replacement
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Both double and triple glazing allowed
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-amber-600 mb-4">Conservation Areas</h3>
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                  Planning permission may be required
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                  Frame color and style restrictions
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                  We handle all planning applications
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section id="case-study" class="section-padding bg-green-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Real Bishop's Stortford Case Study</h2>
+          <p class="text-xl text-gray-600">Triple glazing installation on Hadham Road</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="md:col-span-2">
+              <h3 class="text-2xl font-bold text-green-800 mb-4">The Challenge</h3>
+              <p class="text-gray-600 mb-6">
+                The Johnson family on Hadham Road were struggling with high energy bills and traffic noise from the A120. Their 1980s double glazing was failing, with condensation issues and poor thermal performance. They wanted maximum efficiency and noise reduction for their family home.
+              </p>
+
+              <h3 class="text-2xl font-bold text-green-800 mb-4">The Solution</h3>
+              <p class="text-gray-600 mb-6">
+                We installed triple glazed windows throughout their 4-bedroom home, featuring argon gas fills and Low-E coatings. The project included 16 windows and took 2 days to complete with minimal disruption.
+              </p>
+
+              <h3 class="text-2xl font-bold text-green-800 mb-4">The Results</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• 35% reduction in heating bills (£420 annual saving)</li>
+                <li>• Significant noise reduction - "like moving to a quiet street"</li>
+                <li>• No more condensation issues</li>
+                <li>• Increased property value by £8,000+</li>
+                <li>• 10-year payback period achieved</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="bg-white p-6 rounded-lg">
+                <h4 class="font-bold text-green-800 mb-4">Project Details</h4>
+                <div class="space-y-3 text-sm">
+                  <div class="flex justify-between">
+                    <span>Property:</span>
+                    <span>4-bed detached</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Windows:</span>
+                    <span>16 units</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Total Cost:</span>
+                    <span>£12,800</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Installation:</span>
+                    <span>2 days</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Annual Saving:</span>
+                    <span>£420</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Payback:</span>
+                    <span>10.4 years</span>
+                  </div>
+                </div>
+              </div>
+
+              <blockquote class="mt-6 p-4 bg-white rounded-lg italic text-gray-600">
+                "The difference is incredible. Our heating bills have dropped dramatically and we can barely hear the traffic anymore. Best investment we've made in the house."
+              </blockquote>
+              <p class="text-sm text-gray-500 mt-2">- Sarah Johnson, Hadham Road</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to common triple vs double glazing questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Related Services</h2>
+          <p class="text-xl text-gray-600">Complete window solutions for Bishop's Stortford homes</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <a href="/window-repair-bishops-stortford" class="card card-hover p-6 text-center group">
+            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">Window Repairs</h3>
+            <p class="text-gray-600 text-sm">Expert repair services for all glazing types</p>
+          </a>
+
+          <a href="/energy-efficient-windows" class="card card-hover p-6 text-center group">
+            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">Energy Efficient Windows</h3>
+            <p class="text-gray-600 text-sm">Maximize energy savings and comfort</p>
+          </a>
+
+          <a href="/window-costs-finance" class="card card-hover p-6 text-center group">
+            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-200 transition-colors">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">Costs & Finance</h3>
+            <p class="text-gray-600 text-sm">Transparent pricing and payment options</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Guides -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Related Guides</h2>
+          <p class="text-xl text-gray-600">Expert insights from our window specialists</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <a href="/blog/best-windows-noise-reduction-bishops-stortford" class="card card-hover p-6 group">
+            <h3 class="text-lg font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">Best Windows for Noise Reduction</h3>
+            <p class="text-gray-600 text-sm mb-4">Complete guide to acoustic glazing and noise reduction techniques for Bishop's Stortford homes.</p>
+            <span class="text-green-600 text-sm font-medium">Read Guide →</span>
+          </a>
+
+          <a href="/blog/double-glazing-energy-bills-case-study-bishops-stortford" class="card card-hover p-6 group">
+            <h3 class="text-lg font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">Energy Bills Case Study</h3>
+            <p class="text-gray-600 text-sm mb-4">Real-world energy savings from upgrading to modern glazing systems in Bishop's Stortford.</p>
+            <span class="text-green-600 text-sm font-medium">Read Guide →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="triple-vs-double-glazing-bishops-stortford"
+    features={["glazing", "energy", "thermal"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">Get a triple-glazing quote</p>
+        <p class="text-xs text-green-100">Free survey & quote</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Get Quote
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script>
+  // FAQ Toggle Function
+  function toggleFaq(index: number) {
+    const answer = document.getElementById(`answer-${index}`);
+    const icon = document.getElementById(`icon-${index}`);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+
+  // ROI Calculator
+  function updateCalculator() {
+    const windowCountEl = document.getElementById('window-count') as HTMLInputElement;
+    const heatingBillEl = document.getElementById('heating-bill') as HTMLInputElement;
+    const windowSizeEl = document.getElementById('window-size') as HTMLSelectElement;
+    
+    if (!windowCountEl || !heatingBillEl || !windowSizeEl) return;
+    
+    const windowCount = parseInt(windowCountEl.value) || 12;
+    const heatingBill = parseInt(heatingBillEl.value) || 1200;
+    const windowSize = windowSizeEl.value as 'small' | 'medium' | 'large';
+    
+    // Base costs per window by size
+    const costs = {
+      small: { double: 400, triple: 550 },
+      medium: { double: 500, triple: 700 },
+      large: { double: 650, triple: 900 }
+    };
+    
+    const doubleCost = costs[windowSize].double * windowCount;
+    const tripleCost = costs[windowSize].triple * windowCount;
+    
+    // Calculate savings (percentage of heating bill)
+    const doubleSavings = Math.round(heatingBill * 0.25); // 25% savings
+    const tripleSavings = Math.round(heatingBill * 0.31); // 31% savings
+    
+    // Calculate payback periods
+    const doublePayback = Math.round(doubleCost / doubleSavings);
+    const triplePayback = Math.round(tripleCost / tripleSavings);
+    
+    // Update display
+    const elements = [
+      { id: 'double-cost', value: `£${doubleCost.toLocaleString()}` },
+      { id: 'triple-cost', value: `£${tripleCost.toLocaleString()}` },
+      { id: 'double-savings', value: `£${doubleSavings}` },
+      { id: 'triple-savings', value: `£${tripleSavings}` },
+      { id: 'double-payback', value: `${doublePayback} years` },
+      { id: 'triple-payback', value: `${triplePayback} years` }
+    ];
+    
+    elements.forEach(({ id, value }) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    });
+  }
+
+  // Initialize calculator
+  document.addEventListener('DOMContentLoaded', function() {
+    updateCalculator();
+    
+    // Add event listeners
+    document.getElementById('window-count').addEventListener('input', updateCalculator);
+    document.getElementById('heating-bill').addEventListener('input', updateCalculator);
+    document.getElementById('window-size').addEventListener('change', updateCalculator);
+  });
+</script>

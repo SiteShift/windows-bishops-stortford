@@ -1,0 +1,184 @@
+{
+  "comparisons": [
+    {
+      "slug": "triple-vs-double-glazing-bishops-stortford",
+      "primary_keyword": "triple vs double glazing Bishop's Stortford",
+      "search_intent": "commercial",
+      "secondary_keywords": ["triple glazing cost", "double glazing upgrade", "energy savings comparison", "noise reduction glazing", "Bishop's Stortford triple glazing"],
+      "paa_questions": [
+        "Is triple glazing worth the extra cost?",
+        "How much more expensive is triple glazing than double?",
+        "Does triple glazing reduce noise better than double?",
+        "What are the energy savings with triple glazing?"
+      ]
+    },
+    {
+      "slug": "single-vs-double-glazing-bishops-stortford", 
+      "primary_keyword": "single vs double glazing Bishop's Stortford",
+      "search_intent": "commercial",
+      "secondary_keywords": ["single glazing replacement", "heritage window upgrade", "conservation area glazing", "listed building windows", "double glazing benefits"],
+      "paa_questions": [
+        "Can I replace single glazing in a listed building?",
+        "How much does it cost to upgrade from single to double glazing?",
+        "Do I need planning permission to replace single glazing?",
+        "What are the benefits of upgrading from single glazing?"
+      ]
+    },
+    {
+      "slug": "double-vs-secondary-glazing-bishops-stortford",
+      "primary_keyword": "double vs secondary glazing Bishop's Stortford", 
+      "search_intent": "commercial",
+      "secondary_keywords": ["secondary glazing cost", "heritage property glazing", "flat window upgrade", "noise reduction glazing", "thermal efficiency glazing"],
+      "paa_questions": [
+        "Is secondary glazing as good as double glazing?",
+        "Can I install secondary glazing in a flat?",
+        "Does secondary glazing need planning permission?",
+        "How much does secondary glazing cost compared to double glazing?"
+      ]
+    },
+    {
+      "slug": "secondary-glazing-vs-triple-glazing-bishops-stortford",
+      "primary_keyword": "secondary vs triple glazing Bishop's Stortford",
+      "search_intent": "commercial", 
+      "secondary_keywords": ["noise reduction windows", "thermal performance glazing", "heritage glazing solutions", "acoustic glazing comparison", "energy efficient glazing"],
+      "paa_questions": [
+        "Which is better for noise reduction - secondary or triple glazing?",
+        "Can you get triple glazing in heritage properties?",
+        "What's the cost difference between secondary and triple glazing?",
+        "Which glazing type saves more energy?"
+      ]
+    },
+    {
+      "slug": "upvc-vs-aluminium-windows-bishops-stortford",
+      "primary_keyword": "uPVC vs aluminium windows Bishop's Stortford",
+      "search_intent": "commercial",
+      "secondary_keywords": ["window material comparison", "aluminium window cost", "uPVC window benefits", "slim frame windows", "modern window materials"],
+      "paa_questions": [
+        "Are aluminium windows better than uPVC?",
+        "Which windows last longer - uPVC or aluminium?",
+        "Are aluminium windows more expensive than uPVC?",
+        "Do aluminium windows conduct heat more than uPVC?"
+      ]
+    },
+    {
+      "slug": "upvc-vs-timber-windows-bishops-stortford",
+      "primary_keyword": "uPVC vs timber windows Bishop's Stortford",
+      "search_intent": "commercial",
+      "secondary_keywords": ["timber window maintenance", "period property windows", "authentic window materials", "window material costs", "heritage window options"],
+      "paa_questions": [
+        "Are timber windows better than uPVC for period properties?",
+        "How much maintenance do timber windows need?",
+        "Are uPVC windows cheaper than timber?",
+        "Do timber windows add more value than uPVC?"
+      ]
+    },
+    {
+      "slug": "aluminium-vs-timber-windows-bishops-stortford",
+      "primary_keyword": "aluminium vs timber windows Bishop's Stortford", 
+      "search_intent": "commercial",
+      "secondary_keywords": ["premium window materials", "luxury window options", "high-end window comparison", "property value windows", "architect specified windows"],
+      "paa_questions": [
+        "Which is more expensive - aluminium or timber windows?",
+        "Do aluminium windows look as good as timber?",
+        "Which windows add more property value - aluminium or timber?",
+        "Are aluminium windows more durable than timber?"
+      ]
+    },
+    {
+      "slug": "sash-vs-casement-windows-bishops-stortford",
+      "primary_keyword": "sash vs casement windows Bishop's Stortford",
+      "search_intent": "informational",
+      "secondary_keywords": ["window style comparison", "traditional vs modern windows", "period property windows", "window design options", "heritage window styles"],
+      "paa_questions": [
+        "Are sash windows better than casement windows?",
+        "Which window style suits Victorian houses?",
+        "Are casement windows more energy efficient than sash?",
+        "Do sash windows cost more than casement windows?"
+      ]
+    },
+    {
+      "slug": "tilt-and-turn-vs-casement-bishops-stortford",
+      "primary_keyword": "tilt and turn vs casement Bishop's Stortford",
+      "search_intent": "commercial",
+      "secondary_keywords": ["easy clean windows", "fire escape windows", "European window styles", "modern window functions", "window ventilation options"],
+      "paa_questions": [
+        "Are tilt and turn windows better than casement?",
+        "Do tilt and turn windows meet fire escape requirements?",
+        "Are tilt and turn windows easier to clean?",
+        "Which windows are better for ventilation?"
+      ]
+    },
+    {
+      "slug": "flush-casement-vs-stormproof-bishops-stortford",
+      "primary_keyword": "flush vs stormproof casement Bishop's Stortford",
+      "search_intent": "informational",
+      "secondary_keywords": ["casement window types", "window design comparison", "modern window styles", "weather resistant windows", "window aesthetics"],
+      "paa_questions": [
+        "What's the difference between flush and stormproof casement windows?",
+        "Are flush casement windows more expensive?",
+        "Which casement style looks more modern?",
+        "Do stormproof windows perform better in bad weather?"
+      ]
+    },
+    {
+      "slug": "argon-vs-krypton-gas-glazing",
+      "primary_keyword": "argon vs krypton gas glazing",
+      "search_intent": "informational",
+      "secondary_keywords": ["gas filled glazing", "window insulation gas", "energy efficient glazing", "thermal performance glazing", "glazing technology"],
+      "paa_questions": [
+        "Is krypton gas better than argon in windows?",
+        "How much more does krypton gas cost than argon?",
+        "Do gas filled windows really make a difference?",
+        "Which gas provides better insulation in windows?"
+      ]
+    },
+    {
+      "slug": "warm-edge-spacer-vs-aluminium",
+      "primary_keyword": "warm edge vs aluminium spacer",
+      "search_intent": "informational", 
+      "secondary_keywords": ["window spacer technology", "condensation prevention", "thermal bridging", "energy efficient spacers", "glazing unit construction"],
+      "paa_questions": [
+        "Do warm edge spacers prevent condensation?",
+        "Are warm edge spacers worth the extra cost?",
+        "What causes condensation around window edges?",
+        "How do spacers affect window energy efficiency?"
+      ]
+    },
+    {
+      "slug": "low-e-glass-vs-standard",
+      "primary_keyword": "Low-E glass vs standard",
+      "search_intent": "informational",
+      "secondary_keywords": ["low emissivity glass", "energy efficient glass", "UV protection glass", "solar heat gain", "glazing coatings"],
+      "paa_questions": [
+        "Is Low-E glass worth the extra cost?",
+        "Does Low-E glass block UV rays?",
+        "How much energy does Low-E glass save?",
+        "Can you see the difference with Low-E glass?"
+      ]
+    },
+    {
+      "slug": "laminated-vs-toughened-safety-glass",
+      "primary_keyword": "laminated vs toughened safety glass",
+      "search_intent": "informational",
+      "secondary_keywords": ["safety glass types", "security glazing", "impact resistant glass", "building regulations glass", "commercial glazing"],
+      "paa_questions": [
+        "Which is safer - laminated or toughened glass?",
+        "What's the difference between laminated and toughened glass?",
+        "Is laminated glass more expensive than toughened?",
+        "Which safety glass is required by building regulations?"
+      ]
+    },
+    {
+      "slug": "acoustic-glazing-vs-standard",
+      "primary_keyword": "acoustic glazing vs standard",
+      "search_intent": "commercial",
+      "secondary_keywords": ["noise reduction windows", "sound proof glazing", "traffic noise windows", "airport noise glazing", "acoustic performance"],
+      "paa_questions": [
+        "How much noise does acoustic glazing reduce?",
+        "Is acoustic glazing worth it for traffic noise?",
+        "What dB reduction does acoustic glazing provide?",
+        "How much more expensive is acoustic glazing?"
+      ]
+    }
+  ]
+}
