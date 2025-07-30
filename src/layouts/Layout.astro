@@ -66,6 +66,16 @@ const { title, description, schema, canonicalUrl, ogImage } = Astro.props;
     <!-- Performance optimizations -->
     <link rel="dns-prefetch" href="//maps.googleapis.com" />
     <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQPXW0KC1E"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CQPXW0KC1E');
+    </script>
   </head>
   <body class="font-sans text-gray-800 bg-gray-50">
     <Header />
@@ -77,8 +87,5 @@ const { title, description, schema, canonicalUrl, ogImage } = Astro.props;
     <!-- Vercel Analytics & Speed Insights -->
     <Analytics />
     <SpeedInsights />
-
-    <!-- Google Analytics 4 - will be added during analytics setup -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
   </body>
 </html> 
