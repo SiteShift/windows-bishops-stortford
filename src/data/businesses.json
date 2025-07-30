@@ -10,9 +10,9 @@
     "google_url": "https://maps.google.com/?cid=15059519774935649606",
     "domain": "markwell-ltd.com",
     "types": [
-      "establishment",
       "general_contractor",
-      "point_of_interest"
+      "point_of_interest",
+      "establishment"
     ],
     "price_level": null
   },
@@ -28,8 +28,8 @@
     "domain": "glazingmasters.co.uk",
     "types": [
       "establishment",
-      "general_contractor",
-      "point_of_interest"
+      "point_of_interest",
+      "general_contractor"
     ],
     "price_level": null
   },
@@ -44,8 +44,8 @@
     "google_url": "https://maps.google.com/?cid=735624541971667881",
     "domain": "hertsandessexwindowdoctor.co.uk",
     "types": [
-      "point_of_interest",
-      "establishment"
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -93,8 +93,8 @@
     "google_url": "https://maps.google.com/?cid=12930376580401500751",
     "domain": null,
     "types": [
-      "point_of_interest",
-      "establishment"
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -109,9 +109,9 @@
     "google_url": "https://maps.google.com/?cid=5194514142468824978",
     "domain": "infiniteglass.co.uk",
     "types": [
-      "establishment",
+      "point_of_interest",
       "general_contractor",
-      "point_of_interest"
+      "establishment"
     ],
     "price_level": null
   },
@@ -126,8 +126,8 @@
     "google_url": "https://maps.google.com/?cid=7285347446079325358",
     "domain": null,
     "types": [
-      "point_of_interest",
-      "establishment"
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -142,8 +142,8 @@
     "google_url": "https://maps.google.com/?cid=14699817120582339398",
     "domain": null,
     "types": [
-      "point_of_interest",
-      "establishment"
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -158,8 +158,8 @@
     "google_url": "https://maps.google.com/?cid=10864565972703615924",
     "domain": "cuffleyconservatories.co.uk",
     "types": [
-      "point_of_interest",
       "locksmith",
+      "point_of_interest",
       "establishment"
     ],
     "price_level": null
@@ -175,8 +175,8 @@
     "google_url": "https://maps.google.com/?cid=9135637835653150638",
     "domain": null,
     "types": [
-      "point_of_interest",
-      "establishment"
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   }
