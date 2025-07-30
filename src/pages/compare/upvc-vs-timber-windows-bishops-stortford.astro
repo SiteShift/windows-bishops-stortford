@@ -1,0 +1,321 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "uPVC Windows",
+  option2: "Timber Windows", 
+  location: "Bishop's Stortford",
+  cta: "Request corner samples"
+};
+
+const faqs = [
+  {
+    question: "Are timber windows better than uPVC for period properties in Bishop's Stortford?",
+    answer: "Timber windows are often preferred for period properties as they maintain authentic character and are usually required in conservation areas. However, modern uPVC can closely replicate traditional timber appearance."
+  },
+  {
+    question: "How much maintenance do timber windows need?",
+    answer: "Timber windows typically need repainting every 5-7 years and regular inspection for rot or decay. uPVC windows require minimal maintenance - just occasional cleaning and hardware lubrication."
+  },
+  {
+    question: "Are uPVC windows cheaper than timber?",
+    answer: "Yes, uPVC windows typically cost 30-50% less than timber. For an average Bishop's Stortford home, expect £4,000-6,000 for uPVC vs £6,000-10,000 for timber windows."
+  },
+  {
+    question: "Do timber windows add more value than uPVC?",
+    answer: "Timber windows typically add more value, especially in period properties. The premium can be £3,000-8,000 for a typical Bishop's Stortford home, often justifying the higher initial cost."
+  },
+  {
+    question: "Which windows last longer - uPVC or timber?",
+    answer: "Both can last 20-25+ years with proper care. uPVC has consistent performance throughout its life, while timber can last longer but requires ongoing maintenance to achieve this lifespan."
+  },
+  {
+    question: "Can I get timber-look uPVC windows?",
+    answer: "Yes, modern uPVC offers excellent timber-effect finishes including woodgrain textures and authentic colors. This provides the timber look with uPVC's low maintenance benefits."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="uPVC vs Timber Windows Bishop's Stortford | Which Is Best?"
+  description="Compare uPVC and timber windows for Bishop's Stortford period properties. Authenticity vs maintenance, costs, and expert advice for heritage homes."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="uPVC vs Timber Windows"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">uPVC vs Timber Windows</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          uPVC vs Timber Windows in<br>
+          <span class="text-green-300">Bishop's Stortford</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Period property owners balancing authenticity with budget and maintenance considerations. Make the right choice for your home.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Materials
+          </a>
+          <a 
+            href="#heritage" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Heritage Guidance
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">uPVC vs Timber Comparison</h2>
+          <p class="text-xl text-gray-600">Traditional authenticity vs modern convenience</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Feature</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">uPVC Windows</th>
+                  <th class="text-center py-4 px-4 font-bold text-amber-600">Timber Windows</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Initial Cost</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">£300-500</td>
+                  <td class="py-4 px-4 text-center">£500-800</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Maintenance Required</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Minimal</td>
+                  <td class="py-4 px-4 text-center">High (repaint 5-7 years)</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Authenticity</td>
+                  <td class="py-4 px-4 text-center">Good (with timber effect)</td>
+                  <td class="py-4 px-4 text-center font-semibold text-amber-600">Excellent</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Thermal Performance</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Excellent</td>
+                  <td class="py-4 px-4 text-center">Good</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Lifespan</td>
+                  <td class="py-4 px-4 text-center">20-25 years</td>
+                  <td class="py-4 px-4 text-center font-semibold text-amber-600">25-30+ years</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Property Value Impact</td>
+                  <td class="py-4 px-4 text-center">Good</td>
+                  <td class="py-4 px-4 text-center font-semibold text-amber-600">Excellent</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Conservation Area</td>
+                  <td class="py-4 px-4 text-center">May be restricted</td>
+                  <td class="py-4 px-4 text-center font-semibold text-amber-600">Usually preferred</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heritage Considerations -->
+  <section id="heritage" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Bishop's Stortford Heritage Properties</h2>
+          <p class="text-xl text-gray-600">Understanding conservation area requirements and options</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- uPVC Options -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-green-600 mb-4">Choose uPVC If:</h3>
+            <ul class="text-left space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Budget is primary concern
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Low maintenance priority
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Not in conservation area
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Modern property style
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">•</span>
+                Maximum thermal efficiency
+              </li>
+            </ul>
+          </div>
+
+          <!-- Timber Options -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 12v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 6.343l-.707.707m12.728 0l-.707-.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-amber-600 mb-4">Choose Timber If:</h3>
+            <ul class="text-left space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <span class="text-amber-500 mr-2">•</span>
+                Period/heritage property
+              </li>
+              <li class="flex items-start">
+                <span class="text-amber-500 mr-2">•</span>
+                Conservation area requirements
+              </li>
+              <li class="flex items-start">
+                <span class="text-amber-500 mr-2">•</span>
+                Authenticity is priority
+              </li>
+              <li class="flex items-start">
+                <span class="text-amber-500 mr-2">•</span>
+                Long-term investment
+              </li>
+              <li class="flex items-start">
+                <span class="text-amber-500 mr-2">•</span>
+                Maximum property value
+              </li>
+            </ul>
+          </div>
+
+          <!-- Expert Recommendation -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">Expert Recommendation</h3>
+            <div class="text-left text-gray-600 space-y-4">
+              <p>For Bishop's Stortford <strong>conservation areas</strong>, timber is usually required.</p>
+              <p>For other period properties, consider <strong>high-quality timber-effect uPVC</strong> for authenticity with low maintenance.</p>
+              <p class="text-sm italic">We can show corner samples to help you decide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to uPVC vs timber questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="upvc-vs-timber-windows-bishops-stortford"
+    materials={["upvc", "timber"]}
+    features={["cost", "maintenance", "heritage"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">Request corner samples</p>
+        <p class="text-xs text-green-100">See both materials</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Get Samples
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+</script>

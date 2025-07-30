@@ -1,0 +1,284 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Single Glazing",
+  option2: "Double Glazing", 
+  location: "Bishop's Stortford",
+  cta: "Free upgrade assessment"
+};
+
+const faqs = [
+  {
+    question: "Can I replace single glazing in a listed building in Bishop's Stortford?",
+    answer: "Yes, but you may need listed building consent. Many listed buildings can upgrade to double glazing with appropriate frame styles and materials that maintain the property's character."
+  },
+  {
+    question: "How much does it cost to upgrade from single to double glazing?",
+    answer: "Upgrading from single to double glazing typically costs £300-600 per window in Bishop's Stortford. The total cost depends on window size, style, and any structural modifications needed."
+  },
+  {
+    question: "Do I need planning permission to replace single glazing in Bishop's Stortford?",
+    answer: "Most single to double glazing upgrades fall under permitted development. However, properties in conservation areas or listed buildings may require planning permission from East Hertfordshire District Council."
+  },
+  {
+    question: "What are the benefits of upgrading from single glazing?",
+    answer: "Upgrading from single glazing can reduce energy bills by 40-60%, eliminate condensation, reduce noise by 20-25dB, and increase property value by £3,000-8,000 in Bishop's Stortford."
+  },
+  {
+    question: "Will double glazing look different from my original single glazed windows?",
+    answer: "Modern double glazing can closely replicate traditional single glazed appearance. We offer heritage-style frames with slim profiles and authentic glazing bar designs for period properties."
+  },
+  {
+    question: "How long does single to double glazing replacement take?",
+    answer: "Most single glazing upgrades take 1-2 days per property. We minimize disruption by working room by room and can often complete an average Bishop's Stortford home in one day."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Single vs Double Glazing Bishop's Stortford | Upgrade Guide"
+  description="Compare single and double glazing for Bishop's Stortford heritage properties. Planning permission guidance, costs, and benefits of upgrading your windows."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Single vs Double Glazing"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Single vs Double Glazing</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Single vs Double Glazing in<br>
+          <span class="text-green-300">Bishop's Stortford</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Heritage property owners: understand the benefits, costs, and planning requirements for upgrading from single to double glazing.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Benefits
+          </a>
+          <a 
+            href="#planning" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Planning Guidance
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Single vs Double Glazing Comparison</h2>
+          <p class="text-xl text-gray-600">Why upgrading makes sense for Bishop's Stortford properties</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Feature</th>
+                  <th class="text-center py-4 px-4 font-bold text-amber-600">Single Glazing</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">Double Glazing</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">U-Value (W/m²K)</td>
+                  <td class="py-4 px-4 text-center">5.0-6.0</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">1.2-1.6</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Heat Loss</td>
+                  <td class="py-4 px-4 text-center">Very High</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Low</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Condensation Issues</td>
+                  <td class="py-4 px-4 text-center">Common</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Rare</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Noise Reduction</td>
+                  <td class="py-4 px-4 text-center">Minimal</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">25-30dB</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Annual Energy Savings</td>
+                  <td class="py-4 px-4 text-center">-</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">£400-800</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Property Value Impact</td>
+                  <td class="py-4 px-4 text-center">Negative</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">+£5,000-10,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planning Considerations -->
+  <section id="planning" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Bishop's Stortford Planning Guidance</h2>
+          <p class="text-xl text-gray-600">Heritage and conservation area requirements</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-4">Standard Properties</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Usually permitted development
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                No planning permission required
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Wide choice of styles and colors
+              </li>
+            </ul>
+          </div>
+
+          <div class="card p-6">
+            <h3 class="text-xl font-bold text-amber-600 mb-4">Heritage Properties</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                </svg>
+                May need listed building consent
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                </svg>
+                Style and material restrictions
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                We handle all applications
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to single vs double glazing questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="single-vs-double-glazing-bishops-stortford"
+    features={["glazing", "heritage", "upgrade"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">Free upgrade assessment</p>
+        <p class="text-xs text-green-100">Heritage property specialists</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Get Assessment
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+</script>

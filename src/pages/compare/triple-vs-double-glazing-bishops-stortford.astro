@@ -650,11 +650,11 @@ const faqs = [
 
 </ComparisonLayout>
 
-<script>
-  // FAQ Toggle Function
-  function toggleFaq(index: number) {
-    const answer = document.getElementById(`answer-${index}`);
-    const icon = document.getElementById(`icon-${index}`);
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
     
     if (answer && icon) {
       if (answer.classList.contains('hidden')) {

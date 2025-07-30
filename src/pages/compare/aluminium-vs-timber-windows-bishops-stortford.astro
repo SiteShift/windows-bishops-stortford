@@ -1,0 +1,316 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Aluminium Windows",
+  option2: "Timber Windows", 
+  location: "Bishop's Stortford",
+  cta: "Book side-by-side quote"
+};
+
+const faqs = [
+  {
+    question: "Which is more expensive - aluminium or timber windows?",
+    answer: "Timber windows are typically 15-25% more expensive than aluminium. For premium hardwood timber, expect £600-1000 per window vs £450-750 for aluminium in Bishop's Stortford."
+  },
+  {
+    question: "Do aluminium windows look as good as timber?",
+    answer: "Modern aluminium windows can achieve very slim sightlines and sophisticated finishes. While different from timber's natural warmth, aluminium offers contemporary elegance that many prefer for modern properties."
+  },
+  {
+    question: "Which windows add more property value - aluminium or timber?",
+    answer: "Both add significant value. Timber typically adds £8,000-12,000 to heritage properties, while aluminium adds £6,000-10,000 to contemporary homes. The context matters more than the material."
+  },
+  {
+    question: "Are aluminium windows more durable than timber?",
+    answer: "Aluminium windows are more durable with minimal maintenance required. Timber can last longer (30+ years) but needs regular maintenance. Aluminium offers consistent performance throughout its 25-30 year lifespan."
+  },
+  {
+    question: "Which material is better for large glazed areas?",
+    answer: "Aluminium is superior for large glazed areas due to its strength and slim profiles. It can support larger glass panels with minimal framing, making it ideal for contemporary designs with maximum light."
+  },
+  {
+    question: "Can I get timber-colored aluminium windows?",
+    answer: "Yes, aluminium windows can be powder-coated in wood-effect finishes or anodized to simulate timber. While not identical to real timber, high-quality finishes can be very convincing and maintenance-free."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Aluminium vs Timber Windows Bishop's Stortford | Premium Comparison"
+  description="Compare aluminium and timber windows for Bishop's Stortford luxury renovations. Premium materials, performance, and property value analysis."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Aluminium vs Timber Windows"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Aluminium vs Timber Windows</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Aluminium vs Timber Windows in<br>
+          <span class="text-green-300">Bishop's Stortford</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          High-budget renovations: compare premium materials for maximum property value and performance.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Premium Materials
+          </a>
+          <a 
+            href="#value" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Property Value Impact
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Aluminium vs Timber Comparison</h2>
+          <p class="text-xl text-gray-600">Premium materials for discerning homeowners</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Feature</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Aluminium Windows</th>
+                  <th class="text-center py-4 px-4 font-bold text-amber-600">Timber Windows</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Cost per Window</td>
+                  <td class="py-4 px-4 text-center">£450-750</td>
+                  <td class="py-4 px-4 text-center">£600-1000</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Frame Thickness</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">45-65mm (slim)</td>
+                  <td class="py-4 px-4 text-center">68-78mm</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Maintenance</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Minimal</td>
+                  <td class="py-4 px-4 text-center">Regular (5-7 years)</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Color Options</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Unlimited (RAL)</td>
+                  <td class="py-4 px-4 text-center">Paint/stain options</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Large Glazing</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Excellent</td>
+                  <td class="py-4 px-4 text-center">Good (size limits)</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Thermal Performance</td>
+                  <td class="py-4 px-4 text-center">Excellent (thermal break)</td>
+                  <td class="py-4 px-4 text-center font-semibold text-amber-600">Excellent (natural)</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Sustainability</td>
+                  <td class="py-4 px-4 text-center">Recyclable</td>
+                  <td class="py-4 px-4 text-center font-semibold text-amber-600">Renewable</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Heritage Properties</td>
+                  <td class="py-4 px-4 text-center">Modern/contemporary</td>
+                  <td class="py-4 px-4 text-center font-semibold text-amber-600">Traditional/period</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Property Value Impact -->
+  <section id="value" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Property Value Impact</h2>
+          <p class="text-xl text-gray-600">Investment returns for premium window materials</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Aluminium Value -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">Aluminium Value Add</h3>
+            <div class="text-left space-y-3 text-gray-600">
+              <div class="flex justify-between">
+                <span>Investment:</span>
+                <span class="font-semibold">£8,000-12,000</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Value increase:</span>
+                <span class="font-semibold text-blue-600">£6,000-10,000</span>
+              </div>
+              <div class="flex justify-between">
+                <span>ROI:</span>
+                <span class="font-semibold">70-85%</span>
+              </div>
+              <div class="border-t pt-3 mt-4">
+                <p class="text-sm">Best for contemporary and modern properties</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timber Value -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 12v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 6.343l-.707.707m12.728 0l-.707-.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-amber-600 mb-4">Timber Value Add</h3>
+            <div class="text-left space-y-3 text-gray-600">
+              <div class="flex justify-between">
+                <span>Investment:</span>
+                <span class="font-semibold">£10,000-15,000</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Value increase:</span>
+                <span class="font-semibold text-amber-600">£8,000-12,000</span>
+              </div>
+              <div class="flex justify-between">
+                <span>ROI:</span>
+                <span class="font-semibold">75-90%</span>
+              </div>
+              <div class="border-t pt-3 mt-4">
+                <p class="text-sm">Best for period and heritage properties</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expert Analysis -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-green-600 mb-4">Investment Analysis</h3>
+            <div class="text-left text-gray-600 space-y-4">
+              <p><strong>Both materials</strong> offer excellent returns for premium Bishop's Stortford properties.</p>
+              <p><strong>Timber</strong> has slight edge for period properties, <strong>aluminium</strong> for contemporary homes.</p>
+              <p class="text-sm italic">Property type and target market determine the best choice.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to aluminium vs timber questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="aluminium-vs-timber-windows-bishops-stortford"
+    materials={["aluminium", "timber"]}
+    features={["premium", "aesthetics", "durability"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">Book side-by-side quote</p>
+        <p class="text-xs text-green-100">Compare premium materials</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Get Quote
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+</script>

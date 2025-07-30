@@ -1,0 +1,297 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Secondary Glazing",
+  option2: "Triple Glazing", 
+  location: "Bishop's Stortford",
+  cta: "Compare cost options"
+};
+
+const faqs = [
+  {
+    question: "Which is better for noise reduction - secondary or triple glazing?",
+    answer: "Secondary glazing typically provides superior noise reduction (40-45dB) compared to triple glazing (32-37dB) due to the larger air gap between the original window and secondary pane."
+  },
+  {
+    question: "Can you get triple glazing in heritage properties?",
+    answer: "Triple glazing in heritage properties depends on planning restrictions. Secondary glazing is often preferred as it preserves original windows while still providing excellent performance."
+  },
+  {
+    question: "What's the cost difference between secondary and triple glazing?",
+    answer: "Secondary glazing costs £200-400 per window compared to £450-900 for triple glazing. Secondary glazing offers better value for heritage properties with planning restrictions."
+  },
+  {
+    question: "Which glazing type saves more energy?",
+    answer: "Triple glazing provides better thermal performance (U-value 0.8-1.0) compared to secondary glazing (1.8-2.5). However, secondary glazing still achieves 60-70% of triple glazing's energy savings."
+  },
+  {
+    question: "Is secondary glazing suitable for modern homes?",
+    answer: "While possible, triple glazing is usually preferred for modern homes as it provides maximum energy efficiency and a cleaner aesthetic without the need to preserve existing windows."
+  },
+  {
+    question: "Which option adds more property value?",
+    answer: "Triple glazing typically adds more value (£8,000-12,000) compared to secondary glazing (£3,000-6,000). However, for heritage properties, sympathetic secondary glazing may be more valuable than inappropriate modern windows."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Secondary vs Triple Glazing Bishop's Stortford | Expert Comparison"
+  description="Compare secondary glazing and triple glazing for noise reduction and thermal performance in Bishop's Stortford. Expert advice for demanding properties."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Secondary vs Triple Glazing"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Secondary vs Triple Glazing</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Secondary vs Triple Glazing in<br>
+          <span class="text-green-300">Bishop's Stortford</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Advanced noise reduction and thermal performance comparison for demanding properties. Which delivers the best results?
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Performance
+          </a>
+          <a 
+            href="#costs" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Compare Costs
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Secondary vs Triple Glazing Comparison</h2>
+          <p class="text-xl text-gray-600">Advanced performance solutions compared</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Feature</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Secondary Glazing</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">Triple Glazing</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Noise Reduction (dB)</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">40-45</td>
+                  <td class="py-4 px-4 text-center">32-37</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">U-Value (W/m²K)</td>
+                  <td class="py-4 px-4 text-center">1.8-2.5</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">0.8-1.0</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Cost per Window</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">£200-400</td>
+                  <td class="py-4 px-4 text-center">£450-900</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Installation Disruption</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Minimal</td>
+                  <td class="py-4 px-4 text-center">High</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Planning Permission</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Not required</td>
+                  <td class="py-4 px-4 text-center">May be required</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Reversible</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Yes</td>
+                  <td class="py-4 px-4 text-center">No</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Energy Savings (Annual)</td>
+                  <td class="py-4 px-4 text-center">£200-400</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">£250-500</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost Comparison -->
+  <section id="costs" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Cost Analysis</h2>
+          <p class="text-xl text-gray-600">Compare total costs and payback periods</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-blue-600 mb-6 text-center">Secondary Glazing</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between">
+                <span>Cost per window:</span>
+                <span class="font-semibold">£200-400</span>
+              </div>
+              <div class="flex justify-between">
+                <span>12 windows total:</span>
+                <span class="font-semibold">£3,600</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Annual energy saving:</span>
+                <span class="font-semibold">£300</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Payback period:</span>
+                <span class="font-semibold">12 years</span>
+              </div>
+              <div class="border-t pt-4">
+                <div class="flex justify-between">
+                  <span class="font-bold">Total investment:</span>
+                  <span class="font-bold text-blue-600">£3,600</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-green-600 mb-6 text-center">Triple Glazing</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between">
+                <span>Cost per window:</span>
+                <span class="font-semibold">£450-900</span>
+              </div>
+              <div class="flex justify-between">
+                <span>12 windows total:</span>
+                <span class="font-semibold">£8,100</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Annual energy saving:</span>
+                <span class="font-semibold">£375</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Payback period:</span>
+                <span class="font-semibold">22 years</span>
+              </div>
+              <div class="border-t pt-4">
+                <div class="flex justify-between">
+                  <span class="font-bold">Total investment:</span>
+                  <span class="font-bold text-green-600">£8,100</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to secondary vs triple glazing questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="secondary-glazing-vs-triple-glazing-bishops-stortford"
+    features={["noise", "thermal", "glazing"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">Compare cost options</p>
+        <p class="text-xs text-green-100">Free consultation</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Get Quote
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+</script>
