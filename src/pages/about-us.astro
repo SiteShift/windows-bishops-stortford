@@ -1,0 +1,548 @@
+---
+import Layout from '../layouts/Layout.astro';
+import siteData from '../data/siteData.json';
+
+// Schema markup for About Us page - Person and Organization
+const oliverGreeneSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Oliver Greene",
+  "jobTitle": "Window Installation Expert & Industry Consultant",
+  "description": "38-year veteran of the UK window industry, FENSA certified specialist, and building regulations advisor helping homeowners in Bishop's Stortford and Hertfordshire.",
+  "url": `https://${siteData.site.domain}/about-us`,
+  "image": `https://${siteData.site.domain}/images/oliver-greene-profilepic_compressed_compressed.webp`,
+  "sameAs": [
+    `https://${siteData.site.domain}`
+  ],
+  "knowsAbout": [
+    "Window Installation",
+    "Building Regulations",
+    "FENSA Compliance",
+    "Energy Efficient Windows",
+    "Heritage Window Restoration",
+    "uPVC Windows",
+    "Aluminium Windows",
+    "Timber Windows"
+  ],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "FENSA Knowledge Specialist",
+      "credentialCategory": "Professional Certification"
+    },
+    {
+      "@type": "EducationalOccupationalCredential", 
+      "name": "Building Regulations Advisor",
+      "credentialCategory": "Professional Qualification"
+    }
+  ],
+  "worksFor": {
+    "@type": "LocalBusiness",
+    "name": siteData.business.name,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bishop's Stortford",
+      "addressRegion": "Hertfordshire",
+      "addressCountry": "GB"
+    }
+  },
+  "alumniOf": {
+    "@type": "Organization",
+    "name": "UK Window Installation Industry",
+    "description": "38 years of hands-on experience from apprentice to expert consultant"
+  }
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": siteData.business.name,
+  "description": "Expert window installation advice and trusted local installer connections in Bishop's Stortford and Hertfordshire. Led by 38-year industry veteran Oliver Greene.",
+  "url": `https://${siteData.site.domain}`,
+  "founder": {
+    "@type": "Person",
+    "name": "Oliver Greene"
+  },
+  "foundingDate": "2024",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Bishop's Stortford",
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": "Hertfordshire"
+      }
+    }
+  ],
+  "serviceType": "Window Installation Consultation",
+  "hasCredential": [
+    "FENSA Knowledge",
+    "Building Regulations Compliance",
+    "Part L Energy Efficiency",
+    "Conservation Area Expertise"
+  ]
+};
+
+// Breadcrumb schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": `https://${siteData.site.domain}`
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "About Us",
+      "item": `https://${siteData.site.domain}/about-us`
+    }
+  ]
+};
+
+const schema = [oliverGreeneSchema, organizationSchema, breadcrumbSchema];
+---
+
+<Layout 
+  title="About Us | Oliver Greene - 38 Years Window Industry Experience"
+  description="Learn about Oliver Greene and the mission behind Windows Bishop's Stortford. Trusted advice, expert insight, and certified local installers across Hertfordshire."
+  canonicalUrl={`https://${siteData.site.domain}/about-us`}
+  ogImage={`https://${siteData.site.domain}/images/oliver-greene-profilepic_compressed_compressed.webp`}
+  schema={schema}
+>
+  <!-- Hero Section -->
+  <section class="relative hero-gradient text-white overflow-hidden">
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="relative container-custom section-padding">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2 text-sm text-green-200">
+          <li>
+            <a href="/" class="hover:text-white transition-colors">Home</a>
+          </li>
+          <li class="text-green-300">/</li>
+          <li class="text-white font-medium">About Us</li>
+        </ol>
+      </nav>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Content -->
+        <div class="max-w-2xl">
+          <div class="flex items-center mb-6">
+            <div class="bg-green-100 p-3 rounded-full mr-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <span class="text-green-200 font-medium text-lg">Led by Experience. Built on Trust.</span>
+          </div>
+          
+          <h1 class="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">
+            About Windows Bishop's Stortford
+          </h1>
+          
+          <p class="text-xl lg:text-2xl mb-8 text-green-50 leading-relaxed">
+            Founded by <strong>Oliver Greene</strong>, a 38-year veteran of the UK window industry, to help homeowners make smarter, safer, and more energy-efficient window choices.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/contact" class="btn-primary bg-white text-green-600 hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-colors text-center">
+              Get Expert Advice
+            </a>
+            <a href="/projects" class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-xl font-semibold transition-colors text-center">
+              View Our Work
+            </a>
+          </div>
+        </div>
+
+        <!-- Oliver's Photo -->
+        <div class="relative">
+          <div class="relative z-10">
+            <img 
+              src="/images/oliver-greene-profilepic_compressed_compressed.webp" 
+              alt="Oliver Greene - Window Installation Expert and Industry Consultant"
+              class="w-full max-w-md mx-auto rounded-2xl shadow-2xl"
+            />
+            <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-green-600">38</div>
+                <div class="text-sm text-gray-600 font-medium">Years Experience</div>
+              </div>
+            </div>
+          </div>
+          <!-- Decorative elements -->
+          <div class="absolute -top-8 -left-8 w-24 h-24 bg-green-400 rounded-full opacity-20 blur-xl"></div>
+          <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-green-300 rounded-full opacity-30 blur-lg"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Decorative background elements -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-green-400 rounded-full opacity-10 blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-32 w-128 h-128 bg-green-300 rounded-full opacity-10 blur-3xl"></div>
+  </section>
+
+  <!-- Oliver Greene Profile Section -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Meet Oliver Greene</h2>
+          <p class="text-xl text-gray-600">Window Installation Expert • FENSA Knowledge Specialist • Building Regulations Advisor</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Profile Card -->
+          <div class="lg:col-span-1">
+            <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl shadow-sm">
+              <div class="text-center mb-6">
+                <img 
+                  src="/images/oliver-greene-profilepic_compressed_compressed.webp" 
+                  alt="Oliver Greene - Professional headshot"
+                  class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg"
+                />
+                <h3 class="text-xl font-bold text-gray-800">Oliver Greene</h3>
+                <p class="text-green-600 font-medium">Industry Expert & Consultant</p>
+              </div>
+              
+              <!-- Credentials -->
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span class="text-sm text-gray-700">FENSA Knowledge Specialist</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span class="text-sm text-gray-700">Building Regulations Advisor</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span class="text-sm text-gray-700">38 Years Industry Experience</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span class="text-sm text-gray-700">Conservation Area Specialist</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience Story -->
+          <div class="lg:col-span-2">
+            <div class="prose prose-lg max-w-none">
+              <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                Oliver began his career in 1986 as an apprentice installer, working on everything from heritage timber sash restorations to advanced aluminium glazing systems. Over nearly four decades, he built deep expertise in:
+              </p>
+              
+              <div class="grid md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                    <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m0 0h2M7 7h10M7 11h10M7 15h10"></path>
+                    </svg>
+                    UK Building Regulations
+                  </h4>
+                  <p class="text-sm text-gray-600">Part L energy efficiency, Part F ventilation, and compliance requirements</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                    <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m0 0h2M7 7h10M7 11h10M7 15h10"></path>
+                    </svg>
+                    Conservation Area Rules
+                  </h4>
+                  <p class="text-sm text-gray-600">Listed building consent, heritage requirements, and planning permissions</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                    <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    Energy-Efficient Upgrades
+                  </h4>
+                  <p class="text-sm text-gray-600">Advanced glazing, thermal performance, and sustainable solutions</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                    <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Installer Vetting
+                  </h4>
+                  <p class="text-sm text-gray-600">Quality assessment, certification verification, and best practice standards</p>
+                </div>
+              </div>
+
+              <blockquote class="border-l-4 border-green-500 pl-6 italic text-xl text-gray-700 mb-6">
+                "I started this platform to cut through the confusion. Most people just want straight answers and a trustworthy recommendation. That's what I offer."
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Indicators -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Why Homeowners Trust Us</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Built on decades of real-world experience and a commitment to honest, pressure-free advice
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Trust Factor 1 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Local Insight</h3>
+          <p class="text-gray-600">
+            We understand Bishop's Stortford architecture, planning rules, and homeowner needs like no one else.
+          </p>
+        </div>
+
+        <!-- Trust Factor 2 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Real Experience</h3>
+          <p class="text-gray-600">
+            38+ years in the trade, on-site and off. From apprentice to expert consultant.
+          </p>
+        </div>
+
+        <!-- Trust Factor 3 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Trusted Network</h3>
+          <p class="text-gray-600">
+            We only recommend certified, vetted local installers — no call centres, no gimmicks.
+          </p>
+        </div>
+
+        <!-- Trust Factor 4 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Educational First</h3>
+          <p class="text-gray-600">
+            Our goal is to inform, not pressure. The site is packed with honest advice and real examples.
+          </p>
+        </div>
+
+        <!-- Trust Factor 5 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Built for You</h3>
+          <p class="text-gray-600">
+            Everything here is written with homeowners in mind — no technical waffle or generic sales copy.
+          </p>
+        </div>
+
+        <!-- Trust Factor 6 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Zero Pressure</h3>
+          <p class="text-gray-600">
+            Zero commission deals, zero pressure — just reliable information to help you decide.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications & Standards -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Certifications & Compliance You Can Rely On</h2>
+          <p class="text-xl text-gray-600">
+            While we don't carry out installations directly, we connect homeowners with <strong>trusted, fully certified local window specialists</strong> across Bishop's Stortford and Hertfordshire.
+          </p>
+        </div>
+
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl mb-8">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Every Business We Recommend Meets These Standards:</h3>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="flex items-start">
+              <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-800 mb-2">FENSA or CERTASS Registered</h4>
+                <p class="text-gray-600 text-sm">Ensuring all installations are building regulations compliant</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-800 mb-2">Part L & Part F Knowledgeable</h4>
+                <p class="text-gray-600 text-sm">Covering energy efficiency and ventilation compliance</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-800 mb-2">Manufacturer-Backed Warranties</h4>
+                <p class="text-gray-600 text-sm">Often 10+ years for peace of mind</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-800 mb-2">Insurance-Backed Guarantees</h4>
+                <p class="text-gray-600 text-sm">For added homeowner protection</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <p class="text-lg text-gray-600 mb-6">
+            Our vetting process ensures you only get quotes from professionals we would trust with our own homes.
+          </p>
+          <a href="/contact" class="btn-primary bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-semibold transition-colors">
+            Get Connected with Trusted Installers
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Makes Us Different -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">What Makes This Site Different?</h2>
+          <p class="text-xl text-gray-600">
+            Honest expertise, local focus, and zero sales pressure
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="text-3xl mb-4">🔍</div>
+            <h3 class="font-bold text-gray-800 mb-2">Real Answers</h3>
+            <p class="text-gray-600 text-sm">We answer the questions other sites dodge</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="text-3xl mb-4">🧠</div>
+            <h3 class="font-bold text-gray-800 mb-2">Expert Content</h3>
+            <p class="text-gray-600 text-sm">Written by a real industry expert — not AI or copywriters with no field experience</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="text-3xl mb-4">📍</div>
+            <h3 class="font-bold text-gray-800 mb-2">Hyper-Local</h3>
+            <p class="text-gray-600 text-sm">We don't try to rank nationally, just serve Bishop's Stortford and Hertfordshire properly</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="text-3xl mb-4">📸</div>
+            <h3 class="font-bold text-gray-800 mb-2">Real Projects</h3>
+            <p class="text-gray-600 text-sm">Real project case studies, not stock photos</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="text-3xl mb-4">🤝</div>
+            <h3 class="font-bold text-gray-800 mb-2">No Commission</h3>
+            <p class="text-gray-600 text-sm">Zero commission deals, zero pressure — just reliable info</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="text-3xl mb-4">💡</div>
+            <h3 class="font-bold text-gray-800 mb-2">Education First</h3>
+            <p class="text-gray-600 text-sm">We're here to inform and guide, not to sell</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section-padding hero-gradient text-white relative overflow-hidden">
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="relative container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl lg:text-4xl font-extrabold mb-6 tracking-tight text-white">
+          Need Help Choosing the Right Windows?
+        </h2>
+        <p class="text-xl mb-8 text-green-50 leading-relaxed">
+          That's exactly what we're here for. Browse the site, check the comparisons, or get in touch — and let us help you make a smart, informed choice for your home.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/faqs" class="btn-primary bg-white text-green-600 hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-colors">
+            📚 Browse FAQs
+          </a>
+          <a href="/projects" class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-xl font-semibold transition-colors">
+            🏡 View Projects
+          </a>
+          <a href="/contact" class="btn-primary bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-xl font-semibold transition-colors">
+            📞 Get Expert Advice
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Decorative elements -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-green-400 rounded-full opacity-10 blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-32 w-128 h-128 bg-green-300 rounded-full opacity-10 blur-3xl"></div>
+  </section>
+</Layout>

@@ -114,88 +114,123 @@ const completionDate = new Date(project.completionDate).toLocaleDateString('en-G
 <Layout 
   title={`${project.title} | Window Installation Project in ${project.location.split(',')[0]}`}
   description={`${project.description.substring(0, 155)}...`}
+  canonicalUrl={`https://${siteData.site.domain}/projects/${project.slug}`}
+  ogImage={`https://${siteData.site.domain}${project.afterImage}`}
   schema={schema}
 >
   <!-- Hero Section -->
-  <section class="relative">
-    <!-- Breadcrumbs -->
-    <div class="bg-gray-50 py-4">
-      <div class="container-custom">
-        <nav aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2 text-sm text-gray-600">
-            <li>
-              <a href="/" class="hover:text-green-600 transition-colors">Home</a>
-            </li>
-            <li class="text-gray-400">/</li>
-            <li>
-              <a href="/projects" class="hover:text-green-600 transition-colors">Projects</a>
-            </li>
-            <li class="text-gray-400">/</li>
-            <li class="text-gray-800 font-medium">{project.title}</li>
-          </ol>
-        </nav>
+  <!-- Project Hero with Background Image -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`/${project.afterImage}`}
+        alt={`${project.title} - Professional installation in ${project.location}`}
+        class="w-full h-full object-cover"
+      />
+      <!-- Dark Overlay -->
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+    
+    <!-- Content -->
+    <div class="relative z-10 container-custom text-center text-white pt-24 pb-16 px-4">
+      <div class="max-w-5xl mx-auto">
+        <!-- Tags -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
+          <span class="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium bg-white/20 backdrop-blur-sm text-white border border-white/30">
+            {project.windowType}
+          </span>
+          <span class="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium bg-white/20 backdrop-blur-sm text-white border border-white/30">
+            {project.material}
+          </span>
+          <span class="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium bg-white/20 backdrop-blur-sm text-white border border-white/30">
+            {project.color}
+          </span>
+        </div>
+        
+        <!-- Title -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight text-white">
+          {project.title}
+        </h1>
+        
+        <!-- Location Only -->
+        <div class="flex items-center justify-center text-white/90 mb-10 text-base sm:text-lg">
+          <svg class="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <span class="font-medium">{project.location}</span>
+        </div>
+
+        <!-- Description -->
+        <p class="text-lg sm:text-xl text-white/90 leading-relaxed mb-12 max-w-4xl mx-auto px-4">
+          {project.description.substring(0, 280)}...
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
+          <a href="/contact" class="btn-primary bg-green-600 hover:bg-green-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-semibold transition-all duration-300 text-center shadow-lg hover:shadow-xl text-sm sm:text-base">
+            Get Similar Quote
+          </a>
+          <a href="/projects" class="btn-secondary bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-gray-800 px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-semibold transition-all duration-300 text-center text-sm sm:text-base">
+            View All Projects
+          </a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Project Hero -->
-    <div class="bg-white py-12">
-      <div class="container-custom">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <!-- Project Info -->
-          <div>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                {project.windowType}
-              </span>
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                {project.material}
-              </span>
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
-                {project.color}
-              </span>
-            </div>
-            
-            <h1 class="text-3xl lg:text-4xl font-extrabold text-gray-800 mb-4 leading-tight">
-              {project.title}
-            </h1>
-            
-            <div class="flex items-center text-gray-600 mb-6">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 py-4">
+    <div class="container-custom">
+      <nav aria-label="Breadcrumb">
+        <ol class="flex items-center space-x-2 text-sm text-gray-600">
+          <li>
+            <a href="/" class="hover:text-green-600 transition-colors">Home</a>
+          </li>
+          <li class="text-gray-400">/</li>
+          <li>
+            <a href="/projects" class="hover:text-green-600 transition-colors">Projects</a>
+          </li>
+          <li class="text-gray-400">/</li>
+          <li class="text-gray-800 font-medium">{project.title}</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Key Benefits -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="bg-gray-50 rounded-2xl p-8 max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Key Benefits Delivered</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
-              <span class="font-medium">{project.location}</span>
-              <span class="mx-3">•</span>
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-              </svg>
-              <span>Completed {completionDate}</span>
             </div>
-
-            <p class="text-lg text-gray-600 leading-relaxed mb-8">
-              {project.description.substring(0, 200)}...
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a href="/contact" class="btn-primary bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition-colors text-center">
-                Get Similar Quote
-              </a>
-              <a href="/projects" class="btn-secondary border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 rounded-xl font-semibold transition-colors text-center">
-                View All Projects
-              </a>
-            </div>
+            <h4 class="font-semibold text-gray-800 mb-2">Energy Efficiency</h4>
+            <p class="text-gray-600 text-sm">Superior thermal performance and reduced heating costs</p>
           </div>
-
-          <!-- Project Image -->
-          <div class="relative">
-            <img 
-              src={project.afterImage} 
-              alt={`${project.title} - Completed installation in ${project.location}`}
-              class="w-full h-96 object-cover rounded-2xl shadow-lg"
-            />
-            <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-semibold text-gray-800 shadow-md">
-              After Installation
+          <div class="text-center">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+              </svg>
             </div>
+            <h4 class="font-semibold text-gray-800 mb-2">Enhanced Security</h4>
+            <p class="text-gray-600 text-sm">Advanced locking systems and safety features</p>
+          </div>
+          <div class="text-center">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h4 class="font-semibold text-gray-800 mb-2">Low Maintenance</h4>
+            <p class="text-gray-600 text-sm">Premium materials requiring minimal upkeep</p>
           </div>
         </div>
       </div>
@@ -205,7 +240,7 @@ const completionDate = new Date(project.completionDate).toLocaleDateString('en-G
   <!-- Project Overview -->
   <section class="section-padding bg-gray-50">
     <div class="container-custom">
-      <div class="grid lg:grid-cols-3 gap-8">
+      <div class="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
         <!-- Quick Facts -->
         <div class="bg-white p-6 rounded-2xl shadow-sm">
           <h2 class="text-xl font-bold text-gray-800 mb-4">Project Overview</h2>
@@ -235,7 +270,7 @@ const completionDate = new Date(project.completionDate).toLocaleDateString('en-G
 
         <!-- Specifications -->
         <div class="bg-white p-6 rounded-2xl shadow-sm">
-          <h2 class="text-xl font-bold text-gray-800 mb-4">Specifications</h2>
+          <h3 class="text-xl font-bold text-gray-800 mb-4">Specifications</h3>
           <dl class="space-y-3">
             <div>
               <dt class="text-sm font-medium text-gray-500">Windows</dt>
@@ -260,20 +295,7 @@ const completionDate = new Date(project.completionDate).toLocaleDateString('en-G
           </dl>
         </div>
 
-        <!-- Before Image -->
-        <div class="bg-white p-6 rounded-2xl shadow-sm">
-          <h2 class="text-xl font-bold text-gray-800 mb-4">Before Installation</h2>
-          <div class="relative">
-            <img 
-              src={project.beforeImage} 
-              alt={`${project.title} - Before installation`}
-              class="w-full h-48 object-cover rounded-xl"
-            />
-            <div class="absolute top-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs font-medium">
-              Before
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
@@ -376,7 +398,7 @@ const completionDate = new Date(project.completionDate).toLocaleDateString('en-G
             <article class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
               <div class="relative">
                 <img 
-                  src={relatedProject.afterImage} 
+                  src={`/${relatedProject.afterImage}`} 
                   alt={`${relatedProject.title} in ${relatedProject.location}`}
                   class="w-full h-48 object-cover"
                 />

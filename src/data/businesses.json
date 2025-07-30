@@ -28,8 +28,8 @@
     "domain": "glazingmasters.co.uk",
     "types": [
       "general_contractor",
-      "establishment",
-      "point_of_interest"
+      "point_of_interest",
+      "establishment"
     ],
     "price_level": null
   },
@@ -66,22 +66,6 @@
     "price_level": null
   },
   {
-    "place_id": "ChIJ36Y4n3-F2EcRT5Lc5v3scbM",
-    "name": "N L Glass & Glazing Ltd",
-    "rating": 5,
-    "user_ratings_total": 12,
-    "vicinity": "Unit 4c Hadham Industrial Estate, Church End",
-    "website": null,
-    "phone": "01279 771472",
-    "google_url": "https://maps.google.com/?cid=12930376580401500751",
-    "domain": null,
-    "types": [
-      "point_of_interest",
-      "establishment"
-    ],
-    "price_level": null
-  },
-  {
     "place_id": "ChIJMdTZePiF2EcR9ny-Pg_RxGQ",
     "name": "Hertfordshire Windows and Doors",
     "rating": 5,
@@ -92,9 +76,25 @@
     "google_url": "https://maps.google.com/?cid=7261158362635468022",
     "domain": "hertswd.com",
     "types": [
-      "point_of_interest",
       "general_contractor",
-      "establishment"
+      "establishment",
+      "point_of_interest"
+    ],
+    "price_level": null
+  },
+  {
+    "place_id": "ChIJ36Y4n3-F2EcRT5Lc5v3scbM",
+    "name": "N L Glass & Glazing Ltd",
+    "rating": 5,
+    "user_ratings_total": 12,
+    "vicinity": "Unit 4c Hadham Industrial Estate, Church End",
+    "website": null,
+    "phone": "01279 771472",
+    "google_url": "https://maps.google.com/?cid=12930376580401500751",
+    "domain": null,
+    "types": [
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -109,8 +109,8 @@
     "google_url": "https://maps.google.com/?cid=5194514142468824978",
     "domain": "infiniteglass.co.uk",
     "types": [
-      "establishment",
       "general_contractor",
+      "establishment",
       "point_of_interest"
     ],
     "price_level": null
@@ -126,8 +126,8 @@
     "google_url": "https://maps.google.com/?cid=10864565972703615924",
     "domain": "cuffleyconservatories.co.uk",
     "types": [
-      "point_of_interest",
       "locksmith",
+      "point_of_interest",
       "establishment"
     ],
     "price_level": null

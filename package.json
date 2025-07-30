@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "fetch-businesses": "node scripts/fetch-businesses.js",
+    "generate-images": "node scripts/generate-project-images.js",
     "audit": "node scripts/audit-website.cjs",
     "audit:links": "echo 'Link checking temporarily disabled - broken-link-checker removed due to security vulnerabilities'",
     "audit:lighthouse": "npm run build && npm run preview & sleep 3 && npx lighthouse http://localhost:4321 --output=html --output-path=./lighthouse-report.html && pkill -f 'astro preview'",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "htmlhint": "^1.6.3",
-    "lighthouse": "^12.8.0"
+    "lighthouse": "^12.8.0",
+    "sharp": "^0.34.3"
   }
 }

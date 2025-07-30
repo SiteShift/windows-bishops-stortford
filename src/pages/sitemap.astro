@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
+import projectsData from '../data/projects.json';
 
 // Get all blog posts for the sitemap
 const blogPosts = await getCollection('blog');
@@ -55,6 +56,8 @@ const blogPosts = await getCollection('blog');
                 <li><a href="/projects" class="text-blue-600 hover:text-blue-800 transition-colors">Projects</a></li>
                 <li><a href="/faqs" class="text-blue-600 hover:text-blue-800 transition-colors">FAQs</a></li>
                 <li><a href="/blog" class="text-blue-600 hover:text-blue-800 transition-colors">Blog</a></li>
+                <li><a href="/about-us" class="text-blue-600 hover:text-blue-800 transition-colors">About Us</a></li>
+                <li><a href="/window-buying-guide" class="text-blue-600 hover:text-blue-800 transition-colors">Window Buying Guide</a></li>
                 <li><a href="/thank-you" class="text-blue-600 hover:text-blue-800 transition-colors">Thank You</a></li>
               </ul>
             </div>
@@ -252,6 +255,46 @@ const blogPosts = await getCollection('blog');
                   </a>
                   <p class="text-sm text-gray-500 mt-1">
                     {new Date(post.data.publishDate).toLocaleDateString('en-GB', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Portfolio -->
+        <div class="mb-12">
+          <h2 class="text-3xl font-bold text-green-800 mb-6">Project Portfolio</h2>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <p class="text-gray-600 mb-4">Real window installation projects showcasing our quality workmanship:</p>
+            
+            <div class="mb-4">
+              <div class="bg-green-100 p-4 rounded-lg">
+                <a href="/projects" class="text-green-700 hover:text-green-900 transition-colors font-semibold">
+                  📁 View All Projects →
+                </a>
+                <p class="text-sm text-green-600 mt-1">Browse our complete portfolio of {projectsData.length} completed installations</p>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3">
+              {projectsData.map((project) => (
+                <div class="py-2">
+                  <a 
+                    href={`/projects/${project.slug}`} 
+                    class="text-blue-600 hover:text-blue-800 transition-colors block font-medium"
+                  >
+                    {project.title}
+                  </a>
+                  <p class="text-sm text-gray-500 mt-1">
+                    {project.location} • {project.windowType} • {project.material}
+                  </p>
+                  <p class="text-xs text-gray-400">
+                    Completed {new Date(project.completionDate).toLocaleDateString('en-GB', { 
                       year: 'numeric', 
                       month: 'long', 
                       day: 'numeric' 
