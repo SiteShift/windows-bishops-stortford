@@ -1,0 +1,372 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import siteData from '../../data/siteData.json';
+import projectsData from '../../data/projects.json';
+
+// Schema markup for projects page
+const projectsSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Window Installation Projects",
+  "description": "Showcase of completed window installation projects in Bishop's Stortford and Hertfordshire",
+  "url": `https://${siteData.site.domain}/projects`,
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": siteData.business.name,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bishop's Stortford",
+      "addressRegion": "Hertfordshire",
+      "addressCountry": "GB"
+    }
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": projectsData.map((project, index) => ({
+      "@type": "CreativeWork",
+      "position": index + 1,
+      "name": project.title,
+      "description": project.description.substring(0, 160) + "...",
+      "url": `https://${siteData.site.domain}/projects/${project.slug}`,
+      "image": `https://${siteData.site.domain}${project.afterImage}`,
+      "dateCreated": project.completionDate,
+      "locationCreated": project.location
+    }))
+  }
+};
+
+// Breadcrumb schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": `https://${siteData.site.domain}`
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Projects",
+      "item": `https://${siteData.site.domain}/projects`
+    }
+  ]
+};
+
+const schema = [projectsSchema, breadcrumbSchema];
+
+// Get unique values for filters
+const windowTypes = [...new Set(projectsData.map(p => p.windowType))];
+const materials = [...new Set(projectsData.map(p => p.material))];
+const locations = [...new Set(projectsData.map(p => p.location.split(',')[0]))];
+---
+
+<Layout 
+  title="Window Installation Projects | Bishop's Stortford Specialists Portfolio"
+  description="View our completed window installation projects across Bishop's Stortford and Hertfordshire. Real homes, real transformations with uPVC, aluminium and timber windows."
+  schema={schema}
+>
+  <!-- Hero Section -->
+  <section class="relative text-white overflow-hidden h-[60vh] md:h-[70vh] flex items-center" style="background-image: url('/images/windowsbishopsstortford-blogimages/dommoore_2018_mccarter_april_300dpi-3821-scaled_compressed-geotagged.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+    <div class="relative container-custom section-padding">
+      <div class="max-w-4xl">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+          <ol class="flex items-center space-x-2 text-sm text-green-200">
+            <li>
+              <a href="/" class="hover:text-white transition-colors">Home</a>
+            </li>
+            <li class="text-green-300">/</li>
+            <li class="text-white font-medium">Projects</li>
+          </ol>
+        </nav>
+
+        <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tighter text-white">
+          Our Window Projects
+        </h1>
+        <p class="text-xl lg:text-2xl mb-8 text-green-50 font-medium leading-relaxed max-w-3xl">
+          Real homes, real transformations. See how we've helped homeowners across Bishop's Stortford and Hertfordshire upgrade their windows.
+        </p>
+        <div class="flex items-center text-green-200">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m0 0h2M7 7h10M7 11h10M7 15h10"></path>
+          </svg>
+          <span class="font-medium">{projectsData.length} Completed Projects</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">Filter Projects</h2>
+        <div class="grid md:grid-cols-4 gap-4">
+          <!-- Window Type Filter -->
+          <div>
+            <label for="window-type" class="block text-sm font-medium text-gray-700 mb-2">Window Type</label>
+            <select id="window-type" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              <option value="">All Types</option>
+              {windowTypes.map(type => (
+                <option value={type}>{type}</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Material Filter -->
+          <div>
+            <label for="material" class="block text-sm font-medium text-gray-700 mb-2">Material</label>
+            <select id="material" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              <option value="">All Materials</option>
+              {materials.map(material => (
+                <option value={material}>{material}</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Location Filter -->
+          <div>
+            <label for="location" class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+            <select id="location" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              <option value="">All Locations</option>
+              {locations.map(location => (
+                <option value={location}>{location}</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Search -->
+          <div>
+            <label for="search" class="block text-sm font-medium text-gray-700 mb-2">Search</label>
+            <input 
+              type="text" 
+              id="search" 
+              placeholder="Search projects..."
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            />
+          </div>
+        </div>
+        
+        <div class="mt-4 flex justify-between items-center">
+          <button 
+            id="clear-filters" 
+            class="text-sm text-gray-600 hover:text-green-600 transition-colors"
+          >
+            Clear All Filters
+          </button>
+          <div id="results-count" class="text-sm text-gray-600"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projectsData.map((project) => (
+          <article 
+            class="project-card bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 group"
+            data-window-type={project.windowType}
+            data-material={project.material}
+            data-location={project.location.split(',')[0]}
+            data-search-text={`${project.title} ${project.location} ${project.windowType} ${project.material} ${project.description}`.toLowerCase()}
+          >
+            <!-- Project Image -->
+            <div class="relative overflow-hidden">
+              <img 
+                src={project.afterImage} 
+                alt={`${project.title} - After installation in ${project.location}`}
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+              <div class="absolute top-4 left-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  {project.windowType}
+                </span>
+              </div>
+              <div class="absolute top-4 right-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  {project.material}
+                </span>
+              </div>
+            </div>
+
+            <!-- Project Content -->
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-gray-800 mb-1 group-hover:text-green-600 transition-colors">
+                    {project.title}
+                  </h3>
+                  <div class="flex items-center text-gray-600 text-sm mb-3">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    {project.location}
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                {project.description.substring(0, 150)}...
+              </p>
+
+              <!-- Project Details -->
+              <div class="flex items-center justify-between mb-4">
+                <div class="text-xs text-gray-500">
+                  <span class="font-medium">{project.color}</span> • 
+                  <span class="font-medium">{project.propertyType}</span>
+                </div>
+                <div class="text-xs text-gray-500">
+                  {new Date(project.completionDate).toLocaleDateString('en-GB', { 
+                    year: 'numeric', 
+                    month: 'short' 
+                  })}
+                </div>
+              </div>
+
+              <!-- CTA Button -->
+              <a 
+                href={`/projects/${project.slug}`}
+                class="block w-full bg-green-600 hover:bg-green-700 text-white text-center py-3 px-4 rounded-xl font-semibold transition-colors duration-200"
+              >
+                View Project Details
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- No Results Message -->
+      <div id="no-results" class="hidden text-center py-16">
+        <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-700 mb-2">No projects found</h3>
+        <p class="text-gray-500 mb-4">Try adjusting your filters or search terms.</p>
+        <button 
+          id="reset-search" 
+          class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+        >
+          Show All Projects
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding hero-gradient text-white relative overflow-hidden">
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="relative container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl lg:text-4xl font-extrabold mb-6 tracking-tight text-white">
+          Ready to Transform Your Home?
+        </h2>
+        <p class="text-xl mb-8 text-green-50 leading-relaxed">
+          Get inspired by our completed projects and start planning your own window transformation. Free quotes and expert advice available.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="btn-primary bg-white text-green-600 hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-colors">
+            Get Free Quote
+          </a>
+          <a href="/#businesses" class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-xl font-semibold transition-colors">
+            Find Local Installers
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Decorative elements -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-green-400 rounded-full opacity-10 blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-32 w-128 h-128 bg-green-300 rounded-full opacity-10 blur-3xl"></div>
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const projectCards = document.querySelectorAll('.project-card') as NodeListOf<HTMLElement>;
+    const windowTypeFilter = document.getElementById('window-type') as HTMLSelectElement;
+    const materialFilter = document.getElementById('material') as HTMLSelectElement;
+    const locationFilter = document.getElementById('location') as HTMLSelectElement;
+    const searchInput = document.getElementById('search') as HTMLInputElement;
+    const clearFiltersBtn = document.getElementById('clear-filters') as HTMLButtonElement;
+    const resetSearchBtn = document.getElementById('reset-search') as HTMLButtonElement;
+    const resultsCount = document.getElementById('results-count') as HTMLElement;
+    const noResults = document.getElementById('no-results') as HTMLElement;
+
+    function filterProjects() {
+      const windowType = windowTypeFilter.value;
+      const material = materialFilter.value;
+      const location = locationFilter.value;
+      const searchTerm = searchInput.value.toLowerCase();
+
+      let visibleCount = 0;
+
+      projectCards.forEach(card => {
+        const cardWindowType = card.dataset.windowType || '';
+        const cardMaterial = card.dataset.material || '';
+        const cardLocation = card.dataset.location || '';
+        const cardSearchText = card.dataset.searchText || '';
+
+        const matchesWindowType = !windowType || cardWindowType === windowType;
+        const matchesMaterial = !material || cardMaterial === material;
+        const matchesLocation = !location || cardLocation === location;
+        const matchesSearch = !searchTerm || cardSearchText.includes(searchTerm);
+
+        if (matchesWindowType && matchesMaterial && matchesLocation && matchesSearch) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Update results count
+      resultsCount.textContent = `${visibleCount} project${visibleCount !== 1 ? 's' : ''} found`;
+
+      // Show/hide no results message
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    function clearAllFilters() {
+      windowTypeFilter.value = '';
+      materialFilter.value = '';
+      locationFilter.value = '';
+      searchInput.value = '';
+      filterProjects();
+    }
+
+    // Event listeners
+    windowTypeFilter.addEventListener('change', filterProjects);
+    materialFilter.addEventListener('change', filterProjects);
+    locationFilter.addEventListener('change', filterProjects);
+    searchInput.addEventListener('input', filterProjects);
+    clearFiltersBtn.addEventListener('click', clearAllFilters);
+    resetSearchBtn.addEventListener('click', clearAllFilters);
+
+    // Initial filter
+    filterProjects();
+  });
+</script>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

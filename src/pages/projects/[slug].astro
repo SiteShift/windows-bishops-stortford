@@ -1,0 +1,437 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import siteData from '../../data/siteData.json';
+import projectsData from '../../data/projects.json';
+
+export async function getStaticPaths() {
+  return projectsData.map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+interface Props {
+  project: typeof projectsData[0];
+}
+
+const { project } = Astro.props;
+
+// Get related projects (same material or window type, excluding current)
+const relatedProjects = projectsData
+  .filter(p => p.slug !== project.slug && (p.material === project.material || p.windowType === project.windowType))
+  .slice(0, 3);
+
+// Schema markup for individual project
+const projectSchema = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": project.title,
+  "description": project.description,
+  "url": `https://${siteData.site.domain}/projects/${project.slug}`,
+  "image": `https://${siteData.site.domain}${project.afterImage}`,
+  "dateCreated": project.completionDate,
+  "locationCreated": {
+    "@type": "Place",
+    "name": project.location
+  },
+  "creator": {
+    "@type": "LocalBusiness",
+    "name": siteData.business.name,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bishop's Stortford",
+      "addressRegion": "Hertfordshire",
+      "addressCountry": "GB"
+    }
+  },
+  "about": {
+    "@type": "Thing",
+    "name": `${project.windowType} Window Installation`,
+    "description": `${project.material} ${project.windowType} windows in ${project.color}`
+  }
+};
+
+// Review schema if testimonial exists
+const reviewSchema = project.customerTestimonial ? {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "reviewBody": project.customerTestimonial.text,
+  "author": {
+    "@type": "Person",
+    "name": project.customerTestimonial.author
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": project.customerTestimonial.rating,
+    "bestRating": 5
+  },
+  "itemReviewed": {
+    "@type": "Service",
+    "name": "Window Installation Service",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": siteData.business.name
+    }
+  }
+} : null;
+
+// Breadcrumb schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": `https://${siteData.site.domain}`
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Projects",
+      "item": `https://${siteData.site.domain}/projects`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": project.title,
+      "item": `https://${siteData.site.domain}/projects/${project.slug}`
+    }
+  ]
+};
+
+const schema = [projectSchema, reviewSchema, breadcrumbSchema].filter(Boolean);
+
+// Format completion date
+const completionDate = new Date(project.completionDate).toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout 
+  title={`${project.title} | Window Installation Project in ${project.location.split(',')[0]}`}
+  description={`${project.description.substring(0, 155)}...`}
+  schema={schema}
+>
+  <!-- Hero Section -->
+  <section class="relative">
+    <!-- Breadcrumbs -->
+    <div class="bg-gray-50 py-4">
+      <div class="container-custom">
+        <nav aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2 text-sm text-gray-600">
+            <li>
+              <a href="/" class="hover:text-green-600 transition-colors">Home</a>
+            </li>
+            <li class="text-gray-400">/</li>
+            <li>
+              <a href="/projects" class="hover:text-green-600 transition-colors">Projects</a>
+            </li>
+            <li class="text-gray-400">/</li>
+            <li class="text-gray-800 font-medium">{project.title}</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Project Hero -->
+    <div class="bg-white py-12">
+      <div class="container-custom">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Project Info -->
+          <div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                {project.windowType}
+              </span>
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                {project.material}
+              </span>
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+                {project.color}
+              </span>
+            </div>
+            
+            <h1 class="text-3xl lg:text-4xl font-extrabold text-gray-800 mb-4 leading-tight">
+              {project.title}
+            </h1>
+            
+            <div class="flex items-center text-gray-600 mb-6">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <span class="font-medium">{project.location}</span>
+              <span class="mx-3">•</span>
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span>Completed {completionDate}</span>
+            </div>
+
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+              {project.description.substring(0, 200)}...
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/contact" class="btn-primary bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition-colors text-center">
+                Get Similar Quote
+              </a>
+              <a href="/projects" class="btn-secondary border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 rounded-xl font-semibold transition-colors text-center">
+                View All Projects
+              </a>
+            </div>
+          </div>
+
+          <!-- Project Image -->
+          <div class="relative">
+            <img 
+              src={project.afterImage} 
+              alt={`${project.title} - Completed installation in ${project.location}`}
+              class="w-full h-96 object-cover rounded-2xl shadow-lg"
+            />
+            <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-semibold text-gray-800 shadow-md">
+              After Installation
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Overview -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Quick Facts -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <h2 class="text-xl font-bold text-gray-800 mb-4">Project Overview</h2>
+          <dl class="space-y-3">
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Property Type</dt>
+              <dd class="text-sm text-gray-800 font-semibold">{project.propertyType}</dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Window Type</dt>
+              <dd class="text-sm text-gray-800 font-semibold">{project.windowType}</dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Material & Color</dt>
+              <dd class="text-sm text-gray-800 font-semibold">{project.color} {project.material}</dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Location</dt>
+              <dd class="text-sm text-gray-800 font-semibold">{project.location}</dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Completion Date</dt>
+              <dd class="text-sm text-gray-800 font-semibold">{completionDate}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Specifications -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <h2 class="text-xl font-bold text-gray-800 mb-4">Specifications</h2>
+          <dl class="space-y-3">
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Windows</dt>
+              <dd class="text-sm text-gray-800">{project.specifications.windows}</dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Glazing</dt>
+              <dd class="text-sm text-gray-800">{project.specifications.glazing}</dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Hardware</dt>
+              <dd class="text-sm text-gray-800">{project.specifications.hardware}</dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Energy Rating</dt>
+              <dd class="text-sm text-gray-800 font-semibold">{project.specifications.energyRating}</dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Warranty</dt>
+              <dd class="text-sm text-gray-800">{project.specifications.warranty}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Before Image -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <h2 class="text-xl font-bold text-gray-800 mb-4">Before Installation</h2>
+          <div class="relative">
+            <img 
+              src={project.beforeImage} 
+              alt={`${project.title} - Before installation`}
+              class="w-full h-48 object-cover rounded-xl"
+            />
+            <div class="absolute top-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs font-medium">
+              Before
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Story -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Project Story</h2>
+        
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-600 leading-relaxed text-lg">
+            {project.description}
+          </p>
+        </div>
+
+        <!-- Challenges & Results -->
+        <div class="grid md:grid-cols-2 gap-8 mt-12">
+          <!-- Challenges -->
+          <div class="bg-red-50 p-6 rounded-2xl">
+            <h3 class="text-xl font-bold text-red-800 mb-4 flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+              </svg>
+              Challenges
+            </h3>
+            <ul class="space-y-2">
+              {project.challenges.map(challenge => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mr-2 mt-1 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                  <span class="text-red-700 text-sm">{challenge}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Results -->
+          <div class="bg-green-50 p-6 rounded-2xl">
+            <h3 class="text-xl font-bold text-green-800 mb-4 flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Results
+            </h3>
+            <ul class="space-y-2">
+              {project.results.map(result => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mr-2 mt-1 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-green-700 text-sm">{result}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Testimonial -->
+  {project.customerTestimonial && (
+    <section class="section-padding bg-gray-50">
+      <div class="container-custom">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">What Our Customer Says</h2>
+          
+          <div class="bg-white p-8 rounded-2xl shadow-sm">
+            <div class="flex justify-center mb-4">
+              {Array.from({ length: project.customerTestimonial.rating }, (_, i) => (
+                <svg key={i} class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              ))}
+            </div>
+            
+            <blockquote class="text-xl text-gray-600 italic mb-6 leading-relaxed">
+              "{project.customerTestimonial.text}"
+            </blockquote>
+            
+            <cite class="text-gray-800 font-semibold not-italic">
+              — {project.customerTestimonial.author}
+            </cite>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Related Projects -->
+  {relatedProjects.length > 0 && (
+    <section class="section-padding bg-white">
+      <div class="container-custom">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Related Projects</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          {relatedProjects.map(relatedProject => (
+            <article class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="relative">
+                <img 
+                  src={relatedProject.afterImage} 
+                  alt={`${relatedProject.title} in ${relatedProject.location}`}
+                  class="w-full h-48 object-cover"
+                />
+                <div class="absolute top-4 left-4">
+                  <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    {relatedProject.windowType}
+                  </span>
+                </div>
+              </div>
+              
+              <div class="p-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">
+                  {relatedProject.title}
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  {relatedProject.location}
+                </p>
+                <a 
+                  href={`/projects/${relatedProject.slug}`}
+                  class="block w-full bg-green-600 hover:bg-green-700 text-white text-center py-2 px-4 rounded-lg font-semibold transition-colors text-sm"
+                >
+                  View Project
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="section-padding hero-gradient text-white relative overflow-hidden">
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="relative container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl lg:text-4xl font-extrabold mb-6 tracking-tight text-white">
+          Inspired by This Project?
+        </h2>
+        <p class="text-xl mb-8 text-green-50 leading-relaxed">
+          Get your own professional window installation with the same attention to detail and quality craftsmanship.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="btn-primary bg-white text-green-600 hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-colors">
+            Get Free Quote
+          </a>
+          <a href="/#businesses" class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-xl font-semibold transition-colors">
+            Find Local Installers
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Decorative elements -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-green-400 rounded-full opacity-10 blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-32 w-128 h-128 bg-green-300 rounded-full opacity-10 blur-3xl"></div>
+  </section>
+</Layout>
