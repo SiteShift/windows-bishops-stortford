@@ -31,6 +31,27 @@ const businessSchemas = displayedBusinesses.map(business => ({
   "priceRange": business.price_level ? "$".repeat(business.price_level) : undefined
 })).filter(schema => schema.aggregateRating); // Only include businesses with ratings
 
+// Add Harrington Windows schema
+const harringtonSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Harrington Windows",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bishop's Stortford, Hertfordshire"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 5.0,
+    "reviewCount": 8
+  },
+  "url": "https://www.harringtonwindows.com/locations/hertfordshire/bishops-stortford",
+  "priceRange": "$$"
+};
+
+// Combine all schemas
+const allBusinessSchemas = [harringtonSchema, ...businessSchemas];
+
 /**
  * Get favicon URL for a domain
  */
@@ -78,6 +99,67 @@ function generateStars(rating: number): string {
         </div>
       ) : (
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Harrington Windows - Our Choice Card */}
+          <div class="business-card relative">
+            {/* Our Choice Ribbon */}
+            <div class="absolute -top-2 -right-2 z-10">
+              <div class="bg-green-100 border-2 border-green-600 text-green-800 px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span class="text-xs font-bold tracking-wide">Our Choice</span>
+              </div>
+            </div>
+            
+            {/* Hidden SEO Link */}
+            <a href="https://www.harringtonwindows.com/locations/hertfordshire/bishops-stortford" 
+               class="absolute inset-0 w-0 h-0 opacity-0 pointer-events-none" 
+               rel="dofollow"
+               aria-hidden="true">
+              Harrington Windows Bishop's Stortford
+            </a>
+            
+            {/* Business Header */}
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0 border border-gray-200">
+                <img 
+                  src="/images/harringtonwindowlogo-icon-white.webp"
+                  alt="Harrington Windows logo"
+                  class="w-10 h-10 rounded-lg object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="font-bold text-xl text-green-800 mb-2 tracking-tight line-clamp-2">
+                  Harrington Windows
+                </h3>
+                <p class="text-sm text-gray-500 font-medium">Bishop's Stortford, Hertfordshire</p>
+              </div>
+            </div>
+
+            {/* Rating */}
+            <div class="flex items-center gap-3 mb-6">
+              <div class="flex items-center">
+                <span class="rating-stars" aria-label="5 star rating">
+                  ★★★★★
+                </span>
+                <span class="ml-2 font-bold text-gray-800">
+                  5.0
+                </span>
+              </div>
+              <span class="text-sm text-gray-500 font-medium">
+                (8 reviews)
+              </span>
+            </div>
+
+            {/* Action Buttons */}
+            <div class="flex flex-col gap-3 mt-auto">
+              <a href="/contact" class="btn-primary w-full text-center inline-block">
+                Get a Free Quote
+              </a>
+            </div>
+          </div>
+          
           {displayedBusinesses.map((business) => (
             <div class="business-card">
               {/* Business Header */}
@@ -177,7 +259,7 @@ function generateStars(rating: number): string {
 </section>
 
 <!-- Schema.org markup for businesses -->
-{businessSchemas.map((schema) => (
+{allBusinessSchemas.map((schema) => (
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 ))}
 
