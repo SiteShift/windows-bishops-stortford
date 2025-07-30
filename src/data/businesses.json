@@ -10,8 +10,8 @@
     "google_url": "https://maps.google.com/?cid=15059519774935649606",
     "domain": "markwell-ltd.com",
     "types": [
-      "general_contractor",
       "establishment",
+      "general_contractor",
       "point_of_interest"
     ],
     "price_level": null
@@ -28,8 +28,8 @@
     "domain": "glazingmasters.co.uk",
     "types": [
       "establishment",
-      "point_of_interest",
-      "general_contractor"
+      "general_contractor",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -60,8 +60,8 @@
     "google_url": "https://maps.google.com/?cid=2780338047919075709",
     "domain": "facebook.com",
     "types": [
-      "establishment",
-      "point_of_interest"
+      "point_of_interest",
+      "establishment"
     ],
     "price_level": null
   },
@@ -76,9 +76,9 @@
     "google_url": "https://maps.google.com/?cid=7261158362635468022",
     "domain": "hertswd.com",
     "types": [
-      "establishment",
+      "point_of_interest",
       "general_contractor",
-      "point_of_interest"
+      "establishment"
     ],
     "price_level": null
   },
@@ -109,9 +109,9 @@
     "google_url": "https://maps.google.com/?cid=5194514142468824978",
     "domain": "infiniteglass.co.uk",
     "types": [
+      "establishment",
       "general_contractor",
-      "point_of_interest",
-      "establishment"
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -126,8 +126,8 @@
     "google_url": "https://maps.google.com/?cid=7285347446079325358",
     "domain": null,
     "types": [
-      "establishment",
-      "point_of_interest"
+      "point_of_interest",
+      "establishment"
     ],
     "price_level": null
   },
@@ -175,8 +175,8 @@
     "google_url": "https://maps.google.com/?cid=9135637835653150638",
     "domain": null,
     "types": [
-      "establishment",
-      "point_of_interest"
+      "point_of_interest",
+      "establishment"
     ],
     "price_level": null
   }

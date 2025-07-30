@@ -1,0 +1,326 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Flush Casement",
+  option2: "Stormproof Casement", 
+  location: "Bishop's Stortford",
+  cta: "See both in showroom"
+};
+
+const faqs = [
+  {
+    question: "What's the difference between flush and stormproof casement windows?",
+    answer: "Flush casement windows sit flush with the frame when closed, creating clean modern lines. Stormproof casement windows have overlapping sections that provide superior weather sealing and traditional appearance."
+  },
+  {
+    question: "Which casement style is better for weather protection?",
+    answer: "Stormproof casement windows provide better weather protection due to their overlapping design that creates multiple sealing points. They're ideal for exposed positions in Bishop's Stortford."
+  },
+  {
+    question: "Are flush casement windows more expensive than stormproof?",
+    answer: "Flush casement windows are typically 10-20% more expensive due to precision manufacturing requirements. Expect £350-550 for flush vs £300-500 for stormproof casement windows."
+  },
+  {
+    question: "Which casement style suits period properties better?",
+    answer: "Stormproof casement windows better suit traditional and period properties as they replicate the overlapping style of original timber windows. Flush casement windows are more suited to contemporary designs."
+  },
+  {
+    question: "Do flush casement windows provide better views?",
+    answer: "Yes, flush casement windows provide slightly better views due to their clean lines and minimal frame visibility when closed. The flush design creates a more seamless glass appearance."
+  },
+  {
+    question: "Which casement type is easier to maintain?",
+    answer: "Both are equally easy to maintain. However, stormproof casement windows may collect slightly more dirt in the overlapping sections, while flush casement windows have smoother surfaces for cleaning."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Flush vs Stormproof Casement Windows Bishop's Stortford | Design Guide"
+  description="Compare flush and stormproof casement windows for Bishop's Stortford properties. Modern sleek lines vs traditional weather performance."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Flush vs Stormproof Casement"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Flush vs Stormproof Casement</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Flush vs Stormproof Casement in<br>
+          <span class="text-green-300">Bishop's Stortford</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Design-focused comparison: sleek modern lines vs traditional weather performance.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Designs
+          </a>
+          <a 
+            href="#performance" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Weather Performance
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Flush vs Stormproof Casement Comparison</h2>
+          <p class="text-xl text-gray-600">Modern aesthetics vs traditional performance</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Feature</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">Flush Casement</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Stormproof Casement</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Appearance</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Clean, modern lines</td>
+                  <td class="py-4 px-4 text-center">Traditional overlap</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Cost Range</td>
+                  <td class="py-4 px-4 text-center">£350-550</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">£300-500</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Weather Sealing</td>
+                  <td class="py-4 px-4 text-center">Good</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Excellent</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Period Properties</td>
+                  <td class="py-4 px-4 text-center">Limited</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Excellent</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Contemporary Homes</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Excellent</td>
+                  <td class="py-4 px-4 text-center">Good</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">View Quality</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Superior</td>
+                  <td class="py-4 px-4 text-center">Good</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Manufacturing</td>
+                  <td class="py-4 px-4 text-center">Precision required</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Standard</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance Analysis -->
+  <section id="performance" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Weather Performance Analysis</h2>
+          <p class="text-xl text-gray-600">How design affects weather protection</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Flush Casement Performance -->
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-green-600 mb-6 text-center">Flush Casement Design</h3>
+            <div class="space-y-6">
+              <div class="text-center mb-6">
+                <div class="w-24 h-24 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                  </svg>
+                </div>
+                <p class="text-gray-600">Sash sits flush with frame when closed</p>
+              </div>
+              
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Clean, uninterrupted sightlines</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Modern, minimalist appearance</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Good weather sealing with gaskets</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-amber-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                  <span class="text-gray-600">Requires precision manufacturing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stormproof Performance -->
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-blue-600 mb-6 text-center">Stormproof Casement Design</h3>
+            <div class="space-y-6">
+              <div class="text-center mb-6">
+                <div class="w-24 h-24 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                </div>
+                <p class="text-gray-600">Overlapping design for maximum protection</p>
+              </div>
+              
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Superior weather resistance</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Multiple sealing points</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Traditional appearance</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Proven design reliability</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to flush vs stormproof casement questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="flush-casement-vs-stormproof-bishops-stortford"
+    styles={["casement"]}
+    features={["design", "weather", "aesthetics"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">See both in showroom</p>
+        <p class="text-xs text-green-100">Compare designs</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Visit Showroom
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+</script>

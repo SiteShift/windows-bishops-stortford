@@ -1,0 +1,353 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Low-E Glass",
+  option2: "Standard Glass", 
+  location: "Bishop's Stortford",
+  cta: "See Low-E demo"
+};
+
+const faqs = [
+  {
+    question: "What is Low-E glass and how does it work?",
+    answer: "Low-E (low-emissivity) glass has a microscopic metallic coating that reflects heat back while allowing light through. This keeps heat inside in winter and blocks solar heat in summer, improving energy efficiency."
+  },
+  {
+    question: "How much energy does Low-E glass save compared to standard glass?",
+    answer: "Low-E glass can reduce energy bills by 15-25% compared to standard double glazing. For an average Bishop's Stortford home, this represents £150-300 annual savings."
+  },
+  {
+    question: "Does Low-E glass reduce natural light in my home?",
+    answer: "No, modern Low-E coatings allow 70-80% of visible light through while blocking infrared heat. Your rooms will be just as bright but more comfortable and energy-efficient."
+  },
+  {
+    question: "Is Low-E glass worth the extra cost?",
+    answer: "Yes, Low-E glass typically adds £20-40 per window but saves £25-50 annually per window in energy costs. The payback period is usually 2-3 years with 20+ years of continued savings."
+  },
+  {
+    question: "Can you see the Low-E coating on the glass?",
+    answer: "Low-E coatings are virtually invisible to the naked eye. You might notice a very slight tint in certain lighting conditions, but it doesn't affect the appearance of your windows."
+  },
+  {
+    question: "Does Low-E glass help with UV protection?",
+    answer: "Yes, Low-E glass blocks 95%+ of harmful UV rays, protecting furniture, carpets, and artwork from fading. This is an additional benefit beyond the energy savings."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Low-E Glass vs Standard Glass | Energy Efficiency Comparison"
+  description="Compare Low-E and standard glass for Bishop's Stortford homes. Energy savings, UV protection, and performance benefits explained."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Low-E Glass vs Standard"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Low-E Glass vs Standard</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Low-E Glass vs Standard Glass<br>
+          <span class="text-green-300">Energy Efficiency Guide</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Low-emissivity coating benefits: energy savings and UV protection explained for Bishop's Stortford homeowners.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Performance
+          </a>
+          <a 
+            href="#savings" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Calculate Savings
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Low-E vs Standard Glass Comparison</h2>
+          <p class="text-xl text-gray-600">Advanced coating technology vs traditional glazing</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Property</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">Low-E Glass</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Standard Glass</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">U-Value (W/m²K)</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">1.4-1.6</td>
+                  <td class="py-4 px-4 text-center">2.0-2.8</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Solar Heat Gain</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Controlled</td>
+                  <td class="py-4 px-4 text-center">High</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">UV Protection</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">95%+ blocked</td>
+                  <td class="py-4 px-4 text-center">Limited</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Light Transmission</td>
+                  <td class="py-4 px-4 text-center">70-80%</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">85-90%</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Cost Premium</td>
+                  <td class="py-4 px-4 text-center">£20-40 per window</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Standard</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Annual Energy Savings</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">£25-50 per window</td>
+                  <td class="py-4 px-4 text-center">Baseline</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Payback Period</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">2-3 years</td>
+                  <td class="py-4 px-4 text-center">N/A</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Savings Calculator -->
+  <section id="savings" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Low-E Glass Savings Calculator</h2>
+          <p class="text-xl text-gray-600">Calculate your potential energy savings</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Number of Windows</label>
+              <input type="range" id="window-count-lowe" min="6" max="20" value="12" class="w-full" onchange="updateLoweCalculator()">
+              <div class="text-center text-sm text-gray-600 mt-1">
+                <span id="window-count-lowe-display">12</span> windows
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Annual Heating Bill</label>
+              <input type="range" id="heating-bill-lowe" min="800" max="2000" step="100" value="1200" class="w-full" onchange="updateLoweCalculator()">
+              <div class="text-center text-sm text-gray-600 mt-1">
+                £<span id="heating-bill-lowe-display">1200</span>/year
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Current Windows</label>
+              <select id="current-windows-lowe" class="w-full p-2 border rounded" onchange="updateLoweCalculator()">
+                <option value="single">Single glazing</option>
+                <option value="double-standard">Double glazing (standard)</option>
+                <option value="double-lowe">Double glazing (Low-E)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="text-center p-6 bg-blue-50 rounded-lg">
+              <h4 class="text-lg font-bold text-blue-600 mb-2">Standard Glass Upgrade</h4>
+              <div class="text-3xl font-bold text-blue-600 mb-2">£<span id="standard-savings">180</span></div>
+              <div class="text-sm text-gray-600">Annual savings</div>
+              <div class="text-sm text-gray-600 mt-2">Cost: £<span id="standard-cost">4800</span></div>
+              <div class="text-sm text-gray-600">Payback: <span id="standard-payback">27</span> years</div>
+            </div>
+            <div class="text-center p-6 bg-green-50 rounded-lg">
+              <h4 class="text-lg font-bold text-green-600 mb-2">Low-E Glass Upgrade</h4>
+              <div class="text-3xl font-bold text-green-600 mb-2">£<span id="lowe-savings">300</span></div>
+              <div class="text-sm text-gray-600">Annual savings</div>
+              <div class="text-sm text-gray-600 mt-2">Cost: £<span id="lowe-cost">5160</span></div>
+              <div class="text-sm text-gray-600">Payback: <span id="lowe-payback">17</span> years</div>
+            </div>
+          </div>
+
+          <div class="mt-8 p-6 bg-green-50 rounded-lg">
+            <h4 class="text-lg font-bold text-green-600 mb-4 text-center">Low-E Glass Additional Benefits</h4>
+            <div class="grid md:grid-cols-3 gap-4 text-center">
+              <div>
+                <div class="text-2xl font-bold text-green-600">95%</div>
+                <div class="text-sm text-gray-600">UV rays blocked</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-green-600">£<span id="uv-protection-value">500</span></div>
+                <div class="text-sm text-gray-600">Furniture protection value</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-green-600">20+</div>
+                <div class="text-sm text-gray-600">Years of savings</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to Low-E glass questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="low-e-glass-vs-standard"
+    features={["glass", "energy", "coating", "uv-protection"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">See Low-E demo</p>
+        <p class="text-xs text-green-100">Energy efficiency</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Book Demo
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+
+  // Low-E Calculator
+  function updateLoweCalculator() {
+    const windowCount = parseInt(document.getElementById('window-count-lowe').value) || 12;
+    const heatingBill = parseInt(document.getElementById('heating-bill-lowe').value) || 1200;
+    const currentWindows = document.getElementById('current-windows-lowe').value;
+    
+    // Update displays
+    document.getElementById('window-count-lowe-display').textContent = windowCount;
+    document.getElementById('heating-bill-lowe-display').textContent = heatingBill;
+    
+    // Base savings percentages based on current windows
+    let standardSavings = 0;
+    let loweSavings = 0;
+    
+    switch(currentWindows) {
+      case 'single':
+        standardSavings = heatingBill * 0.15; // 15% savings single to double standard
+        loweSavings = heatingBill * 0.25; // 25% savings single to double Low-E
+        break;
+      case 'double-standard':
+        standardSavings = 0; // Already have standard double glazing
+        loweSavings = heatingBill * 0.15; // 15% savings standard to Low-E
+        break;
+      case 'double-lowe':
+        standardSavings = 0; // Would be downgrade
+        loweSavings = 0; // Already have Low-E
+        break;
+    }
+    
+    // Calculate costs and payback
+    const standardCost = windowCount * 400; // £400 per window for standard double glazing
+    const loweCost = windowCount * 430; // £430 per window for Low-E double glazing
+    
+    const standardPayback = standardSavings > 0 ? Math.round(standardCost / standardSavings) : 0;
+    const lowePayback = loweSavings > 0 ? Math.round(loweCost / loweSavings) : 0;
+    
+    // UV protection value (estimated furniture replacement savings)
+    const uvProtectionValue = windowCount * 40; // £40 per window in furniture protection
+    
+    // Update display
+    document.getElementById('standard-savings').textContent = Math.round(standardSavings);
+    document.getElementById('lowe-savings').textContent = Math.round(loweSavings);
+    document.getElementById('standard-cost').textContent = standardCost;
+    document.getElementById('lowe-cost').textContent = loweCost;
+    document.getElementById('standard-payback').textContent = standardPayback || 'N/A';
+    document.getElementById('lowe-payback').textContent = lowePayback || 'N/A';
+    document.getElementById('uv-protection-value').textContent = uvProtectionValue;
+  }
+
+  // Initialize calculator on page load
+  document.addEventListener('DOMContentLoaded', updateLoweCalculator);
+</script>

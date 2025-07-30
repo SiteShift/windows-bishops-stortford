@@ -1,0 +1,379 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Argon Gas Glazing",
+  option2: "Krypton Gas Glazing", 
+  location: "Bishop's Stortford",
+  cta: "Download U-value chart"
+};
+
+const faqs = [
+  {
+    question: "Is krypton gas better than argon for double glazing?",
+    answer: "Krypton gas provides superior insulation with 30% better thermal performance than argon. However, it costs significantly more and is typically only cost-effective in triple glazing or very high-performance applications."
+  },
+  {
+    question: "How much more expensive is krypton gas compared to argon?",
+    answer: "Krypton gas glazing typically costs 40-60% more than argon. For Bishop's Stortford homes, expect £50-100 extra per window for krypton vs argon gas fills."
+  },
+  {
+    question: "Do gas-filled windows lose their gas over time?",
+    answer: "High-quality sealed units retain 90%+ of their gas for 20+ years. Both argon and krypton have similar retention rates when properly manufactured and sealed."
+  },
+  {
+    question: "Can you tell the difference between argon and krypton glazing?",
+    answer: "Visually, there's no difference. The performance difference is measurable through U-values and energy bills, with krypton providing slightly better thermal comfort and reduced condensation risk."
+  },
+  {
+    question: "Is krypton gas worth the extra cost for Bishop's Stortford homes?",
+    answer: "Krypton is most cost-effective for triple glazing or very exposed properties. For most Bishop's Stortford homes, argon provides excellent performance at better value for money."
+  },
+  {
+    question: "What happens if the gas leaks from double glazing?",
+    answer: "If gas leaks, the unit reverts to air-filled performance (similar to standard double glazing). Quality units with proper sealing rarely experience gas loss within their warranty period."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Argon vs Krypton Gas Glazing | Energy Efficiency Guide"
+  description="Compare argon and krypton gas glazing for maximum energy efficiency. U-values, costs, and performance differences explained by experts."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Argon vs Krypton Gas Glazing"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Argon vs Krypton Gas Glazing</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Argon vs Krypton Gas Glazing<br>
+          <span class="text-green-300">Energy Efficiency Guide</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Energy efficiency enthusiasts: understand gas fill performance and cost differences for maximum thermal performance.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Performance
+          </a>
+          <a 
+            href="#u-values" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            See U-Values
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Argon vs Krypton Gas Comparison</h2>
+          <p class="text-xl text-gray-600">Technical performance and cost analysis</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Property</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Argon Gas</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">Krypton Gas</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Thermal Conductivity</td>
+                  <td class="py-4 px-4 text-center">17.8 mW/m·K</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">9.5 mW/m·K</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Density</td>
+                  <td class="py-4 px-4 text-center">1.78 kg/m³</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">3.75 kg/m³</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Cost Premium</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Standard</td>
+                  <td class="py-4 px-4 text-center">+40-60%</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">U-Value Improvement</td>
+                  <td class="py-4 px-4 text-center">15-20% vs air</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">25-30% vs air</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Best Application</td>
+                  <td class="py-4 px-4 text-center">Double glazing</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Triple glazing</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Availability</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Standard</td>
+                  <td class="py-4 px-4 text-center">Specialist</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Payback Period</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">5-8 years</td>
+                  <td class="py-4 px-4 text-center">12-18 years</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- U-Value Analysis -->
+  <section id="u-values" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">U-Value Performance Chart</h2>
+          <p class="text-xl text-gray-600">Thermal performance comparison across glazing types</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Double Glazing Performance -->
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-blue-600 mb-6 text-center">Double Glazing U-Values</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center py-3 px-4 bg-gray-50 rounded-lg">
+                <span class="font-medium">Air-filled</span>
+                <span class="font-bold text-gray-600">2.8 W/m²K</span>
+              </div>
+              <div class="flex justify-between items-center py-3 px-4 bg-blue-50 rounded-lg">
+                <span class="font-medium">Argon-filled</span>
+                <span class="font-bold text-blue-600">2.0 W/m²K</span>
+              </div>
+              <div class="flex justify-between items-center py-3 px-4 bg-green-50 rounded-lg">
+                <span class="font-medium">Krypton-filled</span>
+                <span class="font-bold text-green-600">1.8 W/m²K</span>
+              </div>
+              <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                <p class="text-sm text-gray-700">
+                  <strong>Recommendation:</strong> Argon provides excellent value for double glazing with 95% of krypton's performance at 60% of the cost.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Triple Glazing Performance -->
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-green-600 mb-6 text-center">Triple Glazing U-Values</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center py-3 px-4 bg-gray-50 rounded-lg">
+                <span class="font-medium">Air-filled</span>
+                <span class="font-bold text-gray-600">1.8 W/m²K</span>
+              </div>
+              <div class="flex justify-between items-center py-3 px-4 bg-blue-50 rounded-lg">
+                <span class="font-medium">Argon-filled</span>
+                <span class="font-bold text-blue-600">1.0 W/m²K</span>
+              </div>
+              <div class="flex justify-between items-center py-3 px-4 bg-green-50 rounded-lg">
+                <span class="font-medium">Krypton-filled</span>
+                <span class="font-bold text-green-600">0.8 W/m²K</span>
+              </div>
+              <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                <p class="text-sm text-gray-700">
+                  <strong>Recommendation:</strong> Krypton shows greater benefit in triple glazing, achieving passive house standards (≤0.8 W/m²K).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Energy Savings Calculator -->
+        <div class="card p-8 mt-8">
+          <h3 class="text-2xl font-bold text-green-800 mb-6 text-center">Annual Energy Savings Calculator</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Number of Windows</label>
+              <input type="range" id="window-count-gas" min="6" max="20" value="12" class="w-full" onchange="updateGasCalculator()">
+              <div class="text-center text-sm text-gray-600 mt-1">
+                <span id="window-count-display">12</span> windows
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Current Heating Bill</label>
+              <input type="range" id="heating-bill-gas" min="800" max="2000" step="100" value="1200" class="w-full" onchange="updateGasCalculator()">
+              <div class="text-center text-sm text-gray-600 mt-1">
+                £<span id="heating-bill-display">1200</span>/year
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Current Windows</label>
+              <select id="current-windows" class="w-full p-2 border rounded" onchange="updateGasCalculator()">
+                <option value="single">Single glazing</option>
+                <option value="double-air">Double glazing (air)</option>
+                <option value="double-argon">Double glazing (argon)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8 mt-8">
+            <div class="text-center p-6 bg-blue-50 rounded-lg">
+              <h4 class="text-lg font-bold text-blue-600 mb-2">Argon Upgrade</h4>
+              <div class="text-3xl font-bold text-blue-600 mb-2">£<span id="argon-savings">240</span></div>
+              <div class="text-sm text-gray-600">Annual savings</div>
+              <div class="text-sm text-gray-600 mt-2">Payback: <span id="argon-payback">6</span> years</div>
+            </div>
+            <div class="text-center p-6 bg-green-50 rounded-lg">
+              <h4 class="text-lg font-bold text-green-600 mb-2">Krypton Upgrade</h4>
+              <div class="text-3xl font-bold text-green-600 mb-2">£<span id="krypton-savings">300</span></div>
+              <div class="text-sm text-gray-600">Annual savings</div>
+              <div class="text-sm text-gray-600 mt-2">Payback: <span id="krypton-payback">14</span> years</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to argon vs krypton gas questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="argon-vs-krypton-gas-glazing"
+    features={["gas-fill", "energy", "thermal", "technical"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">Download U-value chart</p>
+        <p class="text-xs text-green-100">Technical specifications</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Get Chart
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+
+  // Gas Calculator
+  function updateGasCalculator() {
+    const windowCount = parseInt(document.getElementById('window-count-gas').value) || 12;
+    const heatingBill = parseInt(document.getElementById('heating-bill-gas').value) || 1200;
+    const currentWindows = document.getElementById('current-windows').value;
+    
+    // Update displays
+    document.getElementById('window-count-display').textContent = windowCount;
+    document.getElementById('heating-bill-display').textContent = heatingBill;
+    
+    // Base savings percentages based on current windows
+    let argonSavings = 0;
+    let kryptonSavings = 0;
+    
+    switch(currentWindows) {
+      case 'single':
+        argonSavings = heatingBill * 0.25; // 25% savings from single to double argon
+        kryptonSavings = heatingBill * 0.30; // 30% savings from single to double krypton
+        break;
+      case 'double-air':
+        argonSavings = heatingBill * 0.15; // 15% savings from air to argon
+        kryptonSavings = heatingBill * 0.20; // 20% savings from air to krypton
+        break;
+      case 'double-argon':
+        argonSavings = 0; // Already have argon
+        kryptonSavings = heatingBill * 0.08; // 8% savings from argon to krypton
+        break;
+    }
+    
+    // Calculate payback periods (rough estimates)
+    const argonCost = windowCount * 30; // £30 premium per window
+    const kryptonCost = windowCount * 80; // £80 premium per window
+    
+    const argonPayback = argonSavings > 0 ? Math.round(argonCost / argonSavings) : 0;
+    const kryptonPayback = kryptonSavings > 0 ? Math.round(kryptonCost / kryptonSavings) : 0;
+    
+    // Update display
+    document.getElementById('argon-savings').textContent = Math.round(argonSavings);
+    document.getElementById('krypton-savings').textContent = Math.round(kryptonSavings);
+    document.getElementById('argon-payback').textContent = argonPayback || 'N/A';
+    document.getElementById('krypton-payback').textContent = kryptonPayback || 'N/A';
+  }
+
+  // Initialize calculator on page load
+  document.addEventListener('DOMContentLoaded', updateGasCalculator);
+</script>

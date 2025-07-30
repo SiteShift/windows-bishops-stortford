@@ -1,0 +1,350 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Warm Edge Spacer",
+  option2: "Aluminium Spacer", 
+  location: "Bishop's Stortford",
+  cta: "Read full tech spec"
+};
+
+const faqs = [
+  {
+    question: "What is the difference between warm edge and aluminium spacers?",
+    answer: "Warm edge spacers use materials like stainless steel or composite materials that conduct less heat than aluminium. This reduces thermal bridging and improves the overall U-value of the glazing unit."
+  },
+  {
+    question: "Do warm edge spacers prevent condensation better than aluminium?",
+    answer: "Yes, warm edge spacers significantly reduce condensation risk by keeping the glass edge warmer. This prevents the cold spots that cause condensation to form around window edges."
+  },
+  {
+    question: "Are warm edge spacers worth the extra cost?",
+    answer: "For Bishop's Stortford homes, warm edge spacers typically add £10-20 per window but can reduce energy bills by £30-50 annually per window, providing payback within 2-3 years."
+  },
+  {
+    question: "How much do warm edge spacers improve U-values?",
+    answer: "Warm edge spacers can improve whole window U-values by 0.1-0.2 W/m²K compared to aluminium spacers. This represents a 5-10% improvement in thermal performance."
+  },
+  {
+    question: "Do warm edge spacers last as long as aluminium spacers?",
+    answer: "High-quality warm edge spacers have similar lifespans to aluminium spacers (20+ years). Modern composite spacers are highly durable and maintain their performance throughout the window's life."
+  },
+  {
+    question: "Can you see the difference between spacer types?",
+    answer: "Visually, warm edge spacers may appear darker (black or grey) compared to silver aluminium spacers. However, the performance difference is more important than the aesthetic difference."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Warm Edge vs Aluminium Spacer | Thermal Bridge Solution"
+  description="Compare warm edge and aluminium spacers for condensation control and thermal bridging. Technical specifications and performance benefits."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Warm Edge vs Aluminium Spacer"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Warm Edge vs Aluminium Spacer</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Warm Edge vs Aluminium Spacer<br>
+          <span class="text-green-300">Thermal Bridge Solution</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Solve condensation issues and thermal bridging with the right spacer technology. Technical performance explained.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Technology
+          </a>
+          <a 
+            href="#condensation" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Condensation Solutions
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Warm Edge vs Aluminium Spacer Comparison</h2>
+          <p class="text-xl text-gray-600">Technical performance and thermal bridging analysis</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Property</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">Warm Edge Spacer</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Aluminium Spacer</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Thermal Conductivity</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Low (0.1-0.3 W/mK)</td>
+                  <td class="py-4 px-4 text-center">High (200+ W/mK)</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">U-Value Improvement</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">0.1-0.2 W/m²K better</td>
+                  <td class="py-4 px-4 text-center">Standard</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Condensation Risk</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Significantly reduced</td>
+                  <td class="py-4 px-4 text-center">Higher risk</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Cost Premium</td>
+                  <td class="py-4 px-4 text-center">£10-20 per window</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Standard</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Energy Savings</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">£30-50/year per window</td>
+                  <td class="py-4 px-4 text-center">Baseline</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Durability</td>
+                  <td class="py-4 px-4 text-center">20+ years</td>
+                  <td class="py-4 px-4 text-center">20+ years</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Payback Period</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">2-3 years</td>
+                  <td class="py-4 px-4 text-center">N/A</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Condensation Solutions -->
+  <section id="condensation" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Condensation Control Technology</h2>
+          <p class="text-xl text-gray-600">How spacer technology affects condensation formation</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Thermal Bridging Explanation -->
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-red-600 mb-6 text-center">Aluminium Spacer Issues</h3>
+            <div class="space-y-6">
+              <div class="text-center mb-6">
+                <div class="w-24 h-24 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                </div>
+                <p class="text-gray-600">High thermal conductivity creates cold spots</p>
+              </div>
+              
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                  <span class="text-gray-600">Creates thermal bridge between glass panes</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                  <span class="text-gray-600">Glass edges become cold in winter</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                  <span class="text-gray-600">Condensation forms around window edges</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                  <span class="text-gray-600">Higher heat loss through thermal bridge</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Warm Edge Solution -->
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-green-600 mb-6 text-center">Warm Edge Solution</h3>
+            <div class="space-y-6">
+              <div class="text-center mb-6">
+                <div class="w-24 h-24 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <p class="text-gray-600">Low conductivity materials reduce heat transfer</p>
+              </div>
+              
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Minimizes thermal bridging</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Keeps glass edges warmer</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Prevents edge condensation</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600">Improves overall window U-value</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Specifications -->
+        <div class="card p-8 mt-8">
+          <h3 class="text-2xl font-bold text-green-800 mb-6 text-center">Technical Performance Data</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center p-6 bg-blue-50 rounded-lg">
+              <h4 class="text-lg font-bold text-blue-600 mb-2">Standard Aluminium</h4>
+              <div class="text-3xl font-bold text-blue-600 mb-2">2.0</div>
+              <div class="text-sm text-gray-600">W/m²K whole window U-value</div>
+              <div class="text-sm text-gray-600 mt-2">High condensation risk</div>
+            </div>
+            <div class="text-center p-6 bg-green-50 rounded-lg">
+              <h4 class="text-lg font-bold text-green-600 mb-2">Warm Edge Spacer</h4>
+              <div class="text-3xl font-bold text-green-600 mb-2">1.8</div>
+              <div class="text-sm text-gray-600">W/m²K whole window U-value</div>
+              <div class="text-sm text-gray-600 mt-2">Low condensation risk</div>
+            </div>
+            <div class="text-center p-6 bg-amber-50 rounded-lg">
+              <h4 class="text-lg font-bold text-amber-600 mb-2">Performance Gain</h4>
+              <div class="text-3xl font-bold text-amber-600 mb-2">10%</div>
+              <div class="text-sm text-gray-600">Thermal improvement</div>
+              <div class="text-sm text-gray-600 mt-2">2-3 year payback</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to warm edge vs aluminium spacer questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="warm-edge-spacer-vs-aluminium"
+    features={["thermal", "condensation", "technical", "energy"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">Read full tech spec</p>
+        <p class="text-xs text-green-100">Technical details</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Get Spec
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+</script>

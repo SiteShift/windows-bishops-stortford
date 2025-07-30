@@ -1,0 +1,471 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Acoustic Glazing",
+  option2: "Standard Glazing", 
+  location: "Bishop's Stortford",
+  cta: "Book dB test at home"
+};
+
+const faqs = [
+  {
+    question: "How much noise does acoustic glazing reduce compared to standard glazing?",
+    answer: "Acoustic glazing can reduce noise by 35-45dB compared to 25-30dB for standard double glazing. This represents a significant improvement, especially for traffic noise and aircraft noise near Stansted Airport."
+  },
+  {
+    question: "Is acoustic glazing worth it for homes near Bishop's Stortford roads?",
+    answer: "Yes, acoustic glazing provides excellent value for homes near A120, M11, or main roads through Bishop's Stortford. The improved quality of life and sleep quality often justifies the 20-40% cost premium."
+  },
+  {
+    question: "What makes acoustic glazing different from standard double glazing?",
+    answer: "Acoustic glazing uses different glass thicknesses, wider air gaps, laminated glass, or special acoustic interlayers. These features specifically target noise frequencies rather than just thermal performance."
+  },
+  {
+    question: "Can acoustic glazing help with aircraft noise from Stansted Airport?",
+    answer: "Yes, acoustic glazing is particularly effective against aircraft noise. Many Bishop's Stortford residents near flight paths see dramatic improvements in indoor noise levels with specialist acoustic glazing."
+  },
+  {
+    question: "Does acoustic glazing affect thermal performance?",
+    answer: "Acoustic glazing often improves thermal performance too, as many acoustic features (thicker glass, wider gaps, laminated glass) also enhance insulation. You get both noise reduction and energy savings."
+  },
+  {
+    question: "How do I know if I need acoustic glazing?",
+    answer: "If you can't hold a normal conversation with windows closed, or if traffic/aircraft noise disrupts sleep, acoustic glazing will make a significant difference. We offer free noise assessments to determine the best solution."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Acoustic Glazing vs Standard Glazing | Noise Reduction Guide"
+  description="Compare acoustic and standard glazing for Bishop's Stortford homes near roads and flight paths. Superior noise reduction solutions explained."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Acoustic vs Standard Glazing"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Acoustic vs Standard Glazing</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Acoustic vs Standard Glazing<br>
+          <span class="text-green-300">Noise Reduction Guide</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Airport and main road homes: achieve superior noise reduction with specialist glazing for Bishop's Stortford properties.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Noise Reduction
+          </a>
+          <a 
+            href="#noise-sources" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Local Noise Issues
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Acoustic vs Standard Glazing Comparison</h2>
+          <p class="text-xl text-gray-600">Specialist noise reduction vs standard performance</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Property</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">Acoustic Glazing</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Standard Glazing</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Noise Reduction (dB)</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">35-45dB</td>
+                  <td class="py-4 px-4 text-center">25-30dB</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Traffic Noise</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Excellent reduction</td>
+                  <td class="py-4 px-4 text-center">Good reduction</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Aircraft Noise</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Significant improvement</td>
+                  <td class="py-4 px-4 text-center">Limited improvement</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Cost Premium</td>
+                  <td class="py-4 px-4 text-center">20-40% more</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Standard</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Thermal Performance</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Often improved</td>
+                  <td class="py-4 px-4 text-center">Standard</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Glass Configuration</td>
+                  <td class="py-4 px-4 text-center">Asymmetric/laminated</td>
+                  <td class="py-4 px-4 text-center">Symmetric</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Sleep Quality Impact</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Dramatic improvement</td>
+                  <td class="py-4 px-4 text-center">Moderate improvement</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Noise Sources -->
+  <section id="noise-sources" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Bishop's Stortford Noise Challenges</h2>
+          <p class="text-xl text-gray-600">Common noise sources and acoustic solutions</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Traffic Noise -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-red-600 mb-4">Road Traffic Noise</h3>
+            <div class="text-left space-y-3 text-gray-600">
+              <div class="flex justify-between">
+                <span>A120 (nearby):</span>
+                <span class="font-semibold">70-75dB</span>
+              </div>
+              <div class="flex justify-between">
+                <span>M11 (distant):</span>
+                <span class="font-semibold">60-65dB</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Local roads:</span>
+                <span class="font-semibold">55-65dB</span>
+              </div>
+              <div class="border-t pt-3 mt-4">
+                <p class="text-sm"><strong>Solution:</strong> Acoustic glazing reduces traffic noise to comfortable 35-40dB levels indoors.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Aircraft Noise -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-amber-600 mb-4">Aircraft Noise (Stansted)</h3>
+            <div class="text-left space-y-3 text-gray-600">
+              <div class="flex justify-between">
+                <span>Takeoff/Landing:</span>
+                <span class="font-semibold">65-80dB</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Flight paths:</span>
+                <span class="font-semibold">55-70dB</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Peak frequency:</span>
+                <span class="font-semibold">6am-11pm</span>
+              </div>
+              <div class="border-t pt-3 mt-4">
+                <p class="text-sm"><strong>Solution:</strong> Specialized acoustic glazing targets aircraft noise frequencies for maximum reduction.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other Sources -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">Other Noise Sources</h3>
+            <div class="text-left space-y-3 text-gray-600">
+              <div class="flex justify-between">
+                <span>Train lines:</span>
+                <span class="font-semibold">60-70dB</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Construction:</span>
+                <span class="font-semibold">70-85dB</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Neighbours:</span>
+                <span class="font-semibold">45-60dB</span>
+              </div>
+              <div class="border-t pt-3 mt-4">
+                <p class="text-sm"><strong>Solution:</strong> Acoustic glazing provides comprehensive noise reduction across all frequency ranges.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Noise Reduction Calculator -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Noise Reduction Calculator</h2>
+          <p class="text-xl text-gray-600">See the difference acoustic glazing makes</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Primary Noise Source</label>
+              <select id="noise-source" class="w-full p-2 border rounded" onchange="updateNoiseCalculator()">
+                <option value="traffic">Road Traffic</option>
+                <option value="aircraft">Aircraft (Stansted)</option>
+                <option value="train">Railway</option>
+                <option value="mixed">Mixed Sources</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Current Noise Level</label>
+              <input type="range" id="noise-level" min="50" max="80" value="65" class="w-full" onchange="updateNoiseCalculator()">
+              <div class="text-center text-sm text-gray-600 mt-1">
+                <span id="noise-level-display">65</span>dB outside
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Current Windows</label>
+              <select id="current-windows-noise" class="w-full p-2 border rounded" onchange="updateNoiseCalculator()">
+                <option value="single">Single glazing</option>
+                <option value="double-standard">Standard double glazing</option>
+                <option value="double-acoustic">Acoustic double glazing</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="text-center p-6 bg-blue-50 rounded-lg">
+              <h4 class="text-lg font-bold text-blue-600 mb-2">Standard Glazing Result</h4>
+              <div class="text-3xl font-bold text-blue-600 mb-2"><span id="standard-noise-result">40</span>dB</div>
+              <div class="text-sm text-gray-600">Indoor noise level</div>
+              <div class="text-sm text-gray-600 mt-2">
+                Noise reduction: <span id="standard-reduction">25</span>dB
+              </div>
+              <div class="mt-4 text-xs text-gray-600">
+                <span id="standard-description">Noticeable but may disrupt conversation</span>
+              </div>
+            </div>
+            <div class="text-center p-6 bg-green-50 rounded-lg">
+              <h4 class="text-lg font-bold text-green-600 mb-2">Acoustic Glazing Result</h4>
+              <div class="text-3xl font-bold text-green-600 mb-2"><span id="acoustic-noise-result">25</span>dB</div>
+              <div class="text-sm text-gray-600">Indoor noise level</div>
+              <div class="text-sm text-gray-600 mt-2">
+                Noise reduction: <span id="acoustic-reduction">40</span>dB
+              </div>
+              <div class="mt-4 text-xs text-gray-600">
+                <span id="acoustic-description">Quiet library level - excellent for sleep</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 p-6 bg-green-50 rounded-lg text-center">
+            <h4 class="text-lg font-bold text-green-600 mb-2">Quality of Life Improvement</h4>
+            <div class="text-2xl font-bold text-green-600 mb-2">
+              <span id="improvement-factor">4x</span> Quieter
+            </div>
+            <div class="text-sm text-gray-600">
+              Acoustic glazing makes your home <span id="improvement-description">4 times quieter</span> than standard glazing
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-gray-50 content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to acoustic glazing questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="acoustic-glazing-vs-standard"
+    features={["noise", "acoustic", "glazing", "comfort"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">Book dB test at home</p>
+        <p class="text-xs text-green-100">Free noise assessment</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Book Test
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+
+  // Noise Calculator
+  function updateNoiseCalculator() {
+    const noiseSource = document.getElementById('noise-source').value;
+    const noiseLevel = parseInt(document.getElementById('noise-level').value) || 65;
+    const currentWindows = document.getElementById('current-windows-noise').value;
+    
+    // Update noise level display
+    document.getElementById('noise-level-display').textContent = noiseLevel;
+    
+    // Calculate noise reduction based on current windows
+    let standardReduction = 0;
+    let acousticReduction = 0;
+    
+    switch(currentWindows) {
+      case 'single':
+        standardReduction = 25; // Standard double glazing from single
+        acousticReduction = 40; // Acoustic glazing from single
+        break;
+      case 'double-standard':
+        standardReduction = 0; // Already have standard
+        acousticReduction = 15; // Upgrade to acoustic
+        break;
+      case 'double-acoustic':
+        standardReduction = -15; // Would be downgrade
+        acousticReduction = 0; // Already have acoustic
+        break;
+    }
+    
+    // Adjust for noise source type
+    const sourceMultiplier = {
+      'traffic': 1.0,
+      'aircraft': 1.2, // Acoustic glazing more effective for aircraft
+      'train': 1.1,
+      'mixed': 1.0
+    };
+    
+    acousticReduction = Math.round(acousticReduction * sourceMultiplier[noiseSource]);
+    
+    // Calculate indoor noise levels
+    const standardIndoor = Math.max(noiseLevel - standardReduction, 20);
+    const acousticIndoor = Math.max(noiseLevel - acousticReduction, 15);
+    
+    // Update displays
+    document.getElementById('standard-reduction').textContent = Math.max(standardReduction, 0);
+    document.getElementById('acoustic-reduction').textContent = Math.max(acousticReduction, 0);
+    document.getElementById('standard-noise-result').textContent = standardIndoor;
+    document.getElementById('acoustic-noise-result').textContent = acousticIndoor;
+    
+    // Calculate improvement factor
+    const improvementFactor = Math.round((standardIndoor / acousticIndoor) * 10) / 10;
+    document.getElementById('improvement-factor').textContent = improvementFactor + 'x';
+    
+    // Update descriptions
+    const getNoiseDescription = (level) => {
+      if (level <= 25) return 'Quiet library level - excellent for sleep';
+      if (level <= 35) return 'Quiet home environment';
+      if (level <= 45) return 'Noticeable but comfortable';
+      if (level <= 55) return 'May disrupt conversation';
+      return 'Disruptive to daily activities';
+    };
+    
+    document.getElementById('standard-description').textContent = getNoiseDescription(standardIndoor);
+    document.getElementById('acoustic-description').textContent = getNoiseDescription(acousticIndoor);
+    
+    const improvementText = improvementFactor >= 2 ? 
+      `${improvementFactor} times quieter` : 
+      `${Math.round((improvementFactor - 1) * 100)}% quieter`;
+    document.getElementById('improvement-description').textContent = improvementText;
+  }
+
+  // Initialize calculator on page load
+  document.addEventListener('DOMContentLoaded', updateNoiseCalculator);
+</script>

@@ -1,0 +1,326 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Sash Windows",
+  option2: "Casement Windows", 
+  location: "Bishop's Stortford",
+  cta: "Ask style advice"
+};
+
+const faqs = [
+  {
+    question: "Are sash windows better than casement for period properties in Bishop's Stortford?",
+    answer: "Sash windows are often preferred for period properties as they maintain historical authenticity. Many Bishop's Stortford conservation areas specifically require sash windows to preserve the area's character."
+  },
+  {
+    question: "Which windows are more secure - sash or casement?",
+    answer: "Modern casement windows typically offer better security with multi-point locking systems. However, high-quality sash windows can achieve similar security levels with sash locks, restrictors, and toughened glass."
+  },
+  {
+    question: "Do sash windows let in more draughts than casement windows?",
+    answer: "Traditional sash windows can be draughtier, but modern double-glazed sash windows with proper seals perform similarly to casement windows for thermal efficiency and draught prevention."
+  },
+  {
+    question: "Are casement windows cheaper than sash windows?",
+    answer: "Yes, casement windows are typically 20-40% cheaper than sash windows. Expect £300-500 for casement vs £450-700 for sash windows in Bishop's Stortford, depending on materials and size."
+  },
+  {
+    question: "Which window style adds more property value?",
+    answer: "Both add value, but it depends on property type. Sash windows add more value to period properties (£5,000-10,000), while casement windows suit modern homes better (£4,000-8,000)."
+  },
+  {
+    question: "Can you get modern sash windows that look traditional?",
+    answer: "Yes, modern sash windows can perfectly replicate traditional appearance while offering double glazing, draught seals, and easy maintenance. Many are indistinguishable from original Victorian sash windows."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Sash vs Casement Windows Bishop's Stortford | Style Guide"
+  description="Compare sash and casement windows for Bishop's Stortford properties. Traditional elegance vs modern functionality - expert style advice."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Sash vs Casement Windows"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Sash vs Casement Windows</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Sash vs Casement Windows in<br>
+          <span class="text-green-300">Bishop's Stortford</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Style decision guide for Bishop's Stortford properties: traditional elegance vs modern functionality.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Styles
+          </a>
+          <a 
+            href="#property-types" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            Property Guidance
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Sash vs Casement Comparison</h2>
+          <p class="text-xl text-gray-600">Traditional elegance meets modern functionality</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Feature</th>
+                  <th class="text-center py-4 px-4 font-bold text-amber-600">Sash Windows</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Casement Windows</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Opening Style</td>
+                  <td class="py-4 px-4 text-center">Vertical sliding</td>
+                  <td class="py-4 px-4 text-center">Side hinged</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Cost Range</td>
+                  <td class="py-4 px-4 text-center">£450-700</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">£300-500</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Period Properties</td>
+                  <td class="py-4 px-4 text-center font-semibold text-amber-600">Perfect</td>
+                  <td class="py-4 px-4 text-center">May be restricted</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Modern Properties</td>
+                  <td class="py-4 px-4 text-center">Good</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Excellent</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Ventilation Control</td>
+                  <td class="py-4 px-4 text-center font-semibold text-amber-600">Excellent (top/bottom)</td>
+                  <td class="py-4 px-4 text-center">Good</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Security</td>
+                  <td class="py-4 px-4 text-center">Good (with upgrades)</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Excellent</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Maintenance</td>
+                  <td class="py-4 px-4 text-center">Higher</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Lower</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Conservation Areas</td>
+                  <td class="py-4 px-4 text-center font-semibold text-amber-600">Usually required</td>
+                  <td class="py-4 px-4 text-center">Often restricted</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Property Type Guidance -->
+  <section id="property-types" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Which Style for Your Property?</h2>
+          <p class="text-xl text-gray-600">Expert guidance for Bishop's Stortford homes</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Sash Windows -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-amber-600 mb-4">Choose Sash Windows If:</h3>
+            <ul class="text-left space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <span class="text-amber-500 mr-2">•</span>
+                Victorian/Georgian property
+              </li>
+              <li class="flex items-start">
+                <span class="text-amber-500 mr-2">•</span>
+                Conservation area requirements
+              </li>
+              <li class="flex items-start">
+                <span class="text-amber-500 mr-2">•</span>
+                Traditional character priority
+              </li>
+              <li class="flex items-start">
+                <span class="text-amber-500 mr-2">•</span>
+                Superior ventilation control needed
+              </li>
+              <li class="flex items-start">
+                <span class="text-amber-500 mr-2">•</span>
+                Space constraints (no outward opening)
+              </li>
+            </ul>
+          </div>
+
+          <!-- Casement Windows -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">Choose Casement Windows If:</h3>
+            <ul class="text-left space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Modern or contemporary property
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Budget is primary concern
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Maximum security needed
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                Low maintenance priority
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2">•</span>
+                No planning restrictions
+              </li>
+            </ul>
+          </div>
+
+          <!-- Expert Recommendation -->
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-green-600 mb-4">Expert Recommendation</h3>
+            <div class="text-left text-gray-600 space-y-4">
+              <p>For Bishop's Stortford <strong>period properties</strong>, sash windows are usually the right choice.</p>
+              <p>For <strong>modern homes</strong> and new builds, casement windows offer better value and performance.</p>
+              <p class="text-sm italic">We can advise on the best style for your specific property and area.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to sash vs casement questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="sash-vs-casement-windows-bishops-stortford"
+    styles={["sash", "casement"]}
+    features={["style", "heritage", "functionality"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">Ask style advice</p>
+        <p class="text-xs text-green-100">Free consultation</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Get Advice
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+</script>

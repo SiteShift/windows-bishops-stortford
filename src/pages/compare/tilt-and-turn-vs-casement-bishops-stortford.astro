@@ -1,0 +1,328 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import DynamicRelatedComparisons from '../../components/DynamicRelatedComparisons.astro';
+
+const comparison = {
+  option1: "Tilt & Turn Windows",
+  option2: "Casement Windows", 
+  location: "Bishop's Stortford",
+  cta: "Check tilt-&-turn pricing"
+};
+
+const faqs = [
+  {
+    question: "What are the benefits of tilt and turn windows over casement?",
+    answer: "Tilt and turn windows offer dual opening modes: tilt for secure ventilation and turn for full opening and easy cleaning. They provide better security when tilted and easier maintenance access than casement windows."
+  },
+  {
+    question: "Are tilt and turn windows more expensive than casement?",
+    answer: "Yes, tilt and turn windows typically cost 40-60% more than casement windows. Expect £450-750 for tilt and turn vs £300-500 for casement windows in Bishop's Stortford."
+  },
+  {
+    question: "Do tilt and turn windows work for fire escape?",
+    answer: "Yes, tilt and turn windows can meet fire escape requirements when fully opened (turn mode). They provide a larger opening than many casement windows, making them ideal for bedroom fire escape routes."
+  },
+  {
+    question: "Are tilt and turn windows suitable for period properties?",
+    answer: "Tilt and turn windows are more suited to modern properties. For period properties in Bishop's Stortford conservation areas, traditional casement or sash windows are usually required to maintain character."
+  },
+  {
+    question: "Which windows are easier to clean - tilt and turn or casement?",
+    answer: "Tilt and turn windows are much easier to clean as both sides can be accessed from inside when in turn mode. Casement windows often require external access for cleaning the outside, especially on upper floors."
+  },
+  {
+    question: "Do tilt and turn windows provide better ventilation?",
+    answer: "Tilt and turn windows offer superior ventilation control. The tilt position provides secure background ventilation without security concerns, while the turn position allows maximum airflow when needed."
+  }
+];
+---
+
+<ComparisonLayout 
+  title="Tilt & Turn vs Casement Windows Bishop's Stortford | Modern Comparison"
+  description="Compare tilt & turn and casement windows for Bishop's Stortford refurbishments. Fire escape, cleaning access, and modern functionality explained."
+  comparison={comparison}
+  faqs={faqs}
+  breadcrumb="Tilt & Turn vs Casement"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center py-20">
+        <nav class="text-sm mb-6">
+          <ol class="flex items-center justify-center space-x-2 text-green-200">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li><a href="/compare" class="hover:text-white transition-colors">Compare</a></li>
+            <li class="text-green-300">&gt;</li>
+            <li class="text-white">Tilt & Turn vs Casement</li>
+          </ol>
+        </nav>
+        
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Tilt & Turn vs Casement in<br>
+          <span class="text-green-300">Bishop's Stortford</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto speakable-content">
+          Fire escape and easy-clean considerations for modern refurbishments and new builds.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#comparison" 
+            class="btn-primary bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            Compare Functionality
+          </a>
+          <a 
+            href="#benefits" 
+            class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-green-800 font-semibold py-4 px-8 rounded-2xl transition-all duration-300"
+          >
+            See Benefits
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Table -->
+  <section id="comparison" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Tilt & Turn vs Casement Comparison</h2>
+          <p class="text-xl text-gray-600">Modern functionality vs traditional simplicity</p>
+        </div>
+
+        <div class="card p-8">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-green-100">
+                  <th class="text-left py-4 px-4 font-bold text-green-800">Feature</th>
+                  <th class="text-center py-4 px-4 font-bold text-green-600">Tilt & Turn</th>
+                  <th class="text-center py-4 px-4 font-bold text-blue-600">Casement</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-4 px-4 font-medium">Opening Options</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Dual (tilt + turn)</td>
+                  <td class="py-4 px-4 text-center">Single (side hung)</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Cost Range</td>
+                  <td class="py-4 px-4 text-center">£450-750</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">£300-500</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Cleaning Access</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Both sides from inside</td>
+                  <td class="py-4 px-4 text-center">External access needed</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Fire Escape</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Excellent (large opening)</td>
+                  <td class="py-4 px-4 text-center">Good</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Secure Ventilation</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Excellent (tilt mode)</td>
+                  <td class="py-4 px-4 text-center">Limited</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Period Properties</td>
+                  <td class="py-4 px-4 text-center">Not suitable</td>
+                  <td class="py-4 px-4 text-center font-semibold text-blue-600">Good</td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium">Modern Properties</td>
+                  <td class="py-4 px-4 text-center font-semibold text-green-600">Excellent</td>
+                  <td class="py-4 px-4 text-center">Good</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Breakdown -->
+  <section id="benefits" class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Key Benefits Comparison</h2>
+          <p class="text-xl text-gray-600">Which window type suits your needs?</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Tilt & Turn Benefits -->
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-green-600 mb-6 text-center">Tilt & Turn Advantages</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-800">Easy Cleaning</h4>
+                  <p class="text-gray-600">Clean both sides from inside - perfect for upper floors</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-800">Secure Ventilation</h4>
+                  <p class="text-gray-600">Tilt mode provides airflow while maintaining security</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-800">Fire Safety</h4>
+                  <p class="text-gray-600">Large opening area ideal for emergency escape</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-800">Weather Protection</h4>
+                  <p class="text-gray-600">Tilt mode allows ventilation even in light rain</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Casement Benefits -->
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-blue-600 mb-6 text-center">Casement Advantages</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-800">Lower Cost</h4>
+                  <p class="text-gray-600">40-50% cheaper than tilt and turn windows</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-800">Traditional Style</h4>
+                  <p class="text-gray-600">Suitable for period and conservation properties</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-800">Simple Operation</h4>
+                  <p class="text-gray-600">Straightforward mechanism, fewer moving parts</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-800">Wide Availability</h4>
+                  <p class="text-gray-600">More suppliers and style options available</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="section-padding bg-white content-visibility-auto">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-extrabold text-green-800 mb-6">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600">Expert answers to tilt & turn vs casement questions</p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="card">
+              <button 
+                class="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-green-600 transform transition-transform" id={`icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="hidden px-6 pb-6" id={`answer-${index}`}>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Related Comparisons -->
+  <DynamicRelatedComparisons 
+    currentComparison="tilt-and-turn-vs-casement-bishops-stortford"
+    styles={["tilt-turn", "casement"]}
+    features={["functionality", "modern", "cleaning"]}
+  />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- Sticky CTA Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white p-4 z-50 md:hidden">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-semibold text-sm">Check tilt-&-turn pricing</p>
+        <p class="text-xs text-green-100">Modern functionality</p>
+      </div>
+      <a href="/contact" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold text-sm">
+        Get Pricing
+      </a>
+    </div>
+  </div>
+
+</ComparisonLayout>
+
+<script is:inline>
+  // FAQ Toggle Function - Global scope
+  window.toggleFaq = function(index) {
+    const answer = document.getElementById('answer-' + index);
+    const icon = document.getElementById('icon-' + index);
+    
+    if (answer && icon) {
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+</script>
