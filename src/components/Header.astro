@@ -12,7 +12,7 @@
             id="header-logo"
             src="/images/windows-logo-cropped.svg" 
             alt="Windows Bishop's Stortford Logo" 
-            class="h-8 md:h-10 w-auto filter brightness-0 invert transition-all duration-300"
+            class="h-8 md:h-12 lg:h-10 w-auto filter brightness-0 invert transition-all duration-300"
           />
         </a>
       </div>
@@ -70,80 +70,133 @@
       </div>
 
       <!-- CTA Button -->
-      <div class="hidden md:block">
+      <div class="hidden lg:block">
         <a 
           href="/contact" 
-          class="btn-header bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          class="btn-header bg-gradient-to-b from-green-400 to-green-600 hover:from-green-400 hover:to-green-600 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl border border-green-300 hover:border-green-200"
+          style="text-shadow: 0 1px 2px rgba(0,0,0,0.1);"
         >
           Get a Free Quote
+        </a>
+      </div>
+
+      <!-- Tablet CTA Button (shown between md and lg) -->
+      <div class="hidden md:block lg:hidden">
+        <a 
+          href="/contact" 
+          class="bg-green-500 hover:bg-green-400 text-white font-semibold py-2 px-4 rounded-xl transition-all duration-300 text-sm"
+        >
+          Quote
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
       <button 
         id="mobile-menu-toggle"
-        class="md:hidden text-white p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors duration-200"
+        class="md:hidden text-white p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors duration-200 relative z-[60]"
         aria-label="Toggle mobile menu"
+        aria-expanded="false"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
+        <div class="menu-icon w-6 h-6 relative">
+          <span class="menu-line absolute left-0 w-full h-0.5 bg-current transition-all duration-300 ease-out" style="top: 5px;"></span>
+          <span class="menu-line absolute left-0 w-full h-0.5 bg-current transition-all duration-300 ease-out" style="top: 11px;"></span>
+          <span class="menu-line absolute left-0 w-full h-0.5 bg-current transition-all duration-300 ease-out" style="top: 17px;"></span>
+        </div>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden mt-4 py-4 border-t border-white border-opacity-20">
-      <div class="flex flex-col space-y-4">
-        <a href="/#businesses" class="nav-link text-white hover:text-green-300 font-semibold transition-colors duration-200">
-          Companies
-        </a>
-        
-        <!-- Mobile Services Section -->
-        <div class="border-l-2 border-green-300 pl-4">
-          <p class="text-green-300 font-semibold mb-2 text-sm">Our Services</p>
-          <a href="/window-installation-bishops-stortford" class="block text-white hover:text-green-300 transition-colors duration-200 mb-2">
-            Window Installation
-          </a>
-          <a href="/window-types" class="block text-white hover:text-green-300 transition-colors duration-200 mb-2">
-            Window Types & Materials
-          </a>
-          <a href="/energy-efficient-windows" class="block text-white hover:text-green-300 transition-colors duration-200 mb-2">
-            Energy Efficient Windows
-        </a>
-          <a href="/window-repair-bishops-stortford" class="block text-white hover:text-green-300 transition-colors duration-200 mb-2">
-            Window Repair
-          </a>
-          <a href="/window-costs-finance" class="block text-white hover:text-green-300 transition-colors duration-200">
-            Costs & Finance
-          </a>
-        </div>
-        
-        <a href="/compare" class="nav-link text-white hover:text-green-300 font-semibold transition-colors duration-200">
-          Compare
-        </a>
-        
-        <a href="/projects" class="nav-link text-white hover:text-green-300 font-semibold transition-colors duration-200">
-          Projects
-        </a>
-        
-        <a href="/blog" class="nav-link text-white hover:text-green-300 font-semibold transition-colors duration-200">
-          Blog
-        </a>
-        
-        <a href="/about-us" class="nav-link text-white hover:text-green-300 font-semibold transition-colors duration-200">
-          About
-        </a>
-        
-        <a 
-          href="/contact" 
-          class="btn-header bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 text-center mt-4"
-        >
-          Get a Free Quote
-        </a>
-      </div>
-    </div>
+
   </nav>
 </header>
+
+<!-- Full Page Mobile Menu -->
+<div id="mobile-menu-overlay" class="fixed inset-0 z-[55] md:hidden pointer-events-none">
+  <!-- Green Background Overlay -->
+  <div class="mobile-menu-bg absolute inset-0 bg-green-600 transform -translate-x-full transition-transform duration-500 ease-out"></div>
+  
+  <!-- Logo in top left -->
+  <div class="mobile-menu-logo absolute top-6 left-6 z-10 opacity-0 transition-opacity duration-300">
+    <img 
+      src="/images/windows-logo-cropped.svg" 
+      alt="Windows Bishop's Stortford Logo" 
+      class="h-8 w-auto filter brightness-0 invert"
+    />
+  </div>
+  
+  <!-- Close X button in top right -->
+  <button 
+    id="mobile-menu-close"
+    class="absolute top-6 right-6 z-10 text-white p-2 opacity-0 transition-opacity duration-300"
+    aria-label="Close mobile menu"
+  >
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+  
+  <!-- Menu Content -->
+  <div class="mobile-menu-content relative h-full flex flex-col justify-start items-end px-8 sm:px-12 pt-24 pb-8 opacity-0 transition-opacity duration-300 overflow-y-auto scrollbar-hide">
+    <nav class="text-right space-y-6 sm:space-y-8 w-full flex-shrink-0">
+      <!-- Main Navigation Links -->
+      <div class="mobile-menu-item overflow-hidden">
+        <a href="/#businesses" class="mobile-nav-link block text-white text-3xl sm:text-4xl font-extrabold tracking-tight transform translate-y-full transition-all duration-500">
+          Companies
+        </a>
+      </div>
+      
+      <!-- Services Dropdown -->
+      <div class="mobile-menu-item overflow-hidden">
+        <button class="mobile-services-toggle mobile-nav-link block text-white text-3xl sm:text-4xl font-extrabold tracking-tight transform translate-y-full transition-all duration-500 w-full text-right">
+          Services
+          <svg class="mobile-services-arrow inline-block ml-2 w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="mobile-services-dropdown max-h-0 overflow-hidden transition-all duration-300 ease-out mt-4 space-y-3 text-right">
+          <a href="/window-installation-bishops-stortford" class="block text-green-100 text-lg font-medium opacity-0 transform translate-y-2 transition-all duration-300">Window Installation</a>
+          <a href="/window-types" class="block text-green-100 text-lg font-medium opacity-0 transform translate-y-2 transition-all duration-300">Window Types & Materials</a>
+          <a href="/energy-efficient-windows" class="block text-green-100 text-lg font-medium opacity-0 transform translate-y-2 transition-all duration-300">Energy Efficient Windows</a>
+          <a href="/window-repair-bishops-stortford" class="block text-green-100 text-lg font-medium opacity-0 transform translate-y-2 transition-all duration-300">Window Repair</a>
+          <a href="/window-costs-finance" class="block text-green-100 text-lg font-medium opacity-0 transform translate-y-2 transition-all duration-300">Costs & Finance</a>
+        </div>
+      </div>
+      
+      <div class="mobile-menu-item overflow-hidden">
+        <a href="/compare" class="mobile-nav-link block text-white text-3xl sm:text-4xl font-extrabold tracking-tight transform translate-y-full transition-all duration-500">
+          Compare
+        </a>
+      </div>
+      
+      <div class="mobile-menu-item overflow-hidden">
+        <a href="/projects" class="mobile-nav-link block text-white text-3xl sm:text-4xl font-extrabold tracking-tight transform translate-y-full transition-all duration-500">
+          Projects
+        </a>
+      </div>
+      
+      <div class="mobile-menu-item overflow-hidden">
+        <a href="/blog" class="mobile-nav-link block text-white text-3xl sm:text-4xl font-extrabold tracking-tight transform translate-y-full transition-all duration-500">
+          Blog
+        </a>
+      </div>
+      
+      <div class="mobile-menu-item overflow-hidden">
+        <a href="/about-us" class="mobile-nav-link block text-white text-3xl sm:text-4xl font-extrabold tracking-tight transform translate-y-full transition-all duration-500">
+          About
+        </a>
+      </div>
+      
+      <!-- CTA Button -->
+      <div class="mobile-menu-item overflow-hidden mt-8 sm:mt-12 mb-8">
+        <a 
+          href="/contact" 
+          class="mobile-nav-cta inline-block bg-white text-green-600 font-bold text-xl sm:text-2xl py-4 px-10 sm:py-5 sm:px-12 rounded-full transform translate-y-full transition-all duration-500"
+        >
+          Get Free Quote
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>
 
 <script is:inline>
   // Header scroll effect and mobile menu
@@ -152,10 +205,12 @@
     const logo = document.getElementById('header-logo');
     const navLinks = document.querySelectorAll('.nav-link');
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const menuLines = document.querySelectorAll('.menu-line');
+    let isMenuOpen = false;
 
     // Return early if essential elements are not found
-    if (!header || !logo || !mobileMenuToggle || !mobileMenu) {
+    if (!header || !logo || !mobileMenuToggle || !mobileMenuOverlay) {
       return;
     }
 
@@ -165,9 +220,10 @@
       
       if (scrolled) {
         header.classList.add('scrolled');
-        header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
         header.style.backdropFilter = 'blur(20px)';
         header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
+        header.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
         
         // Update logo to dark for white background
         logo.classList.remove('brightness-0', 'invert');
@@ -186,6 +242,7 @@
         header.style.backgroundColor = 'transparent';
         header.style.backdropFilter = 'none';
         header.style.borderBottom = 'none';
+        header.style.boxShadow = 'none';
         
         // Update logo to white for transparent background
         logo.classList.add('brightness-0', 'invert');
@@ -202,16 +259,151 @@
       }
     }
 
-    // Mobile menu toggle
-    mobileMenuToggle.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
+    // Mobile menu toggle with animations
+    function toggleMobileMenu() {
+      isMenuOpen = !isMenuOpen;
+      const menuBg = mobileMenuOverlay.querySelector('.mobile-menu-bg');
+      const menuContent = mobileMenuOverlay.querySelector('.mobile-menu-content');
+      const menuItems = mobileMenuOverlay.querySelectorAll('.mobile-nav-link, .mobile-nav-cta');
+      const menuLogo = mobileMenuOverlay.querySelector('.mobile-menu-logo');
+      const closeButton = mobileMenuOverlay.querySelector('#mobile-menu-close');
+      
+      if (isMenuOpen) {
+        // Open menu
+        mobileMenuOverlay.classList.remove('pointer-events-none');
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        
+        // Animate hamburger to X
+        menuLines[0].style.transform = 'rotate(45deg) translateY(6px)';
+        menuLines[1].style.opacity = '0';
+        menuLines[2].style.transform = 'rotate(-45deg) translateY(-6px)';
+        
+        // Slide in green background
+        menuBg.classList.remove('-translate-x-full');
+        menuBg.classList.add('translate-x-0');
+        
+        // Fade in content container
+        setTimeout(function() {
+          menuContent.classList.remove('opacity-0');
+          menuContent.classList.add('opacity-100');
+          
+          // Show logo and close button
+          menuLogo.classList.remove('opacity-0');
+          menuLogo.classList.add('opacity-100');
+          closeButton.classList.remove('opacity-0');
+          closeButton.classList.add('opacity-100');
+          
+          // Animate menu items with stagger
+          menuItems.forEach(function(item, index) {
+            setTimeout(function() {
+              item.classList.remove('translate-y-full');
+              item.classList.add('translate-y-0');
+            }, index * 80); // 80ms stagger between items
+          });
+        }, 200); // Wait for background to start sliding
+        
+      } else {
+        // Close menu
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        
+        // Animate X back to hamburger
+        menuLines[0].style.transform = 'rotate(0) translateY(0)';
+        menuLines[1].style.opacity = '1';
+        menuLines[2].style.transform = 'rotate(0) translateY(0)';
+        
+        // Hide logo and close button
+        menuLogo.classList.add('opacity-0');
+        menuLogo.classList.remove('opacity-100');
+        closeButton.classList.add('opacity-0');
+        closeButton.classList.remove('opacity-100');
+        
+        // Animate menu items out
+        menuItems.forEach(function(item, index) {
+          setTimeout(function() {
+            item.classList.add('translate-y-full');
+            item.classList.remove('translate-y-0');
+          }, index * 50); // Faster stagger for closing
+        });
+        
+        // Fade out content and slide out background
+        setTimeout(function() {
+          menuContent.classList.add('opacity-0');
+          menuContent.classList.remove('opacity-100');
+          
+          setTimeout(function() {
+            menuBg.classList.add('-translate-x-full');
+            menuBg.classList.remove('translate-x-0');
+            
+            setTimeout(function() {
+              mobileMenuOverlay.classList.add('pointer-events-none');
+              document.body.style.overflow = ''; // Re-enable scrolling
+            }, 500);
+          }, 200);
+        }, menuItems.length * 50);
+      }
+    }
+
+    // Add click event to toggle button
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+    // Add click event to close button
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Services dropdown functionality
+    const servicesToggle = mobileMenuOverlay.querySelector('.mobile-services-toggle');
+    const servicesDropdown = mobileMenuOverlay.querySelector('.mobile-services-dropdown');
+    const servicesArrow = mobileMenuOverlay.querySelector('.mobile-services-arrow');
+    const dropdownLinks = servicesDropdown.querySelectorAll('a');
+    
+    if (servicesToggle && servicesDropdown) {
+      servicesToggle.addEventListener('click', function() {
+        const isOpen = servicesDropdown.style.maxHeight && servicesDropdown.style.maxHeight !== '0px';
+        
+        if (isOpen) {
+          // Close dropdown
+          servicesDropdown.style.maxHeight = '0px';
+          servicesArrow.style.transform = 'rotate(0deg)';
+          
+          // Hide dropdown links
+          dropdownLinks.forEach(function(link, index) {
+            setTimeout(function() {
+              link.classList.add('opacity-0', 'translate-y-2');
+            }, index * 50);
+          });
+        } else {
+          // Open dropdown
+          servicesDropdown.style.maxHeight = servicesDropdown.scrollHeight + 'px';
+          servicesArrow.style.transform = 'rotate(180deg)';
+          
+          // Show dropdown links with stagger
+          dropdownLinks.forEach(function(link, index) {
+            setTimeout(function() {
+              link.classList.remove('opacity-0', 'translate-y-2');
+            }, index * 100 + 200);
+          });
+        }
+      });
+    }
 
     // Close mobile menu when clicking on links
-    navLinks.forEach(function(link) {
+    const mobileNavLinks = mobileMenuOverlay.querySelectorAll('a');
+    mobileNavLinks.forEach(function(link) {
       link.addEventListener('click', function() {
-        mobileMenu.classList.add('hidden');
+        if (isMenuOpen) {
+          toggleMobileMenu();
+        }
       });
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && isMenuOpen) {
+        toggleMobileMenu();
+      }
     });
 
     // Initial call and scroll listener
@@ -240,16 +432,216 @@
 <style>
   .btn-header {
     letter-spacing: -0.01em;
+    box-shadow: 
+      0 4px 15px rgba(34, 197, 94, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  .btn-header:hover {
+    box-shadow: 
+      0 8px 25px rgba(34, 197, 94, 0.35),
+      0 4px 8px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+  
+  .btn-header:active {
+    transform: translateY(1px) scale(1.02);
+    box-shadow: 
+      0 2px 10px rgba(34, 197, 94, 0.3),
+      0 1px 2px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
   
   /* Ensure header stays above other content */
   #main-header {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   #main-header.scrolled {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Enhanced glassmorphism support */
+  @supports (backdrop-filter: blur(20px)) {
+    #main-header.scrolled {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  /* Fallback for browsers without backdrop-filter support */
+  @supports not (backdrop-filter: blur(20px)) {
+    #main-header.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+    }
+  }
+  
+  /* Mobile Menu Animations */
+  .mobile-menu-bg {
+    will-change: transform;
+    transform-origin: left center;
+  }
+  
+  .mobile-menu-content {
+    will-change: opacity;
+  }
+  
+  .mobile-nav-link,
+  .mobile-nav-cta {
+    will-change: transform;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  /* Hamburger to X animation */
+  .menu-line {
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+  
+  /* Remove all hover and active effects on mobile menu items */
+  .mobile-nav-link:hover,
+  .mobile-nav-link:active,
+  .mobile-nav-link:focus,
+  .mobile-nav-cta:hover,
+  .mobile-nav-cta:active,
+  .mobile-nav-cta:focus,
+  .mobile-services-toggle:hover,
+  .mobile-services-toggle:active,
+  .mobile-services-toggle:focus {
+    transform: none !important;
+    background-color: inherit !important;
+    color: inherit !important;
+    outline: none !important;
+    box-shadow: none !important;
+    scale: none !important;
+  }
+  
+  /* Remove tap highlight on mobile */
+  .mobile-nav-link,
+  .mobile-nav-cta,
+  .mobile-services-toggle {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Smooth easing for menu background */
+  .mobile-menu-bg {
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  
+  /* Typography for mobile menu */
+  .mobile-nav-link {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  
+  /* Performance optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu-bg,
+    .mobile-menu-content,
+    .mobile-nav-link,
+    .mobile-nav-cta,
+    .menu-line {
+      transition-duration: 0.1s !important;
+    }
+  }
+  
+  /* Ensure menu is above everything except the toggle button */
+  #mobile-menu-overlay {
+    isolation: isolate;
+  }
+  
+  /* Subtle text shadow for better readability */
+  .mobile-nav-link,
+  .mobile-nav-cta {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Green gradient background variation */
+  .mobile-menu-bg {
+    background: linear-gradient(135deg, #357960 0%, #2d6551 100%);
+  }
+  
+  /* Services dropdown styling */
+  .mobile-services-dropdown {
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  }
+  
+  .mobile-services-dropdown a {
+    transition: all 0.3s ease-out;
+  }
+  
+  /* Responsive menu typography and spacing */
+  .mobile-menu-content {
+    min-height: 100vh;
+  }
+  
+  .mobile-menu-content nav {
+    min-height: auto;
+    padding-bottom: 2rem;
+  }
+  
+  /* Responsive text sizing for better mobile experience */
+  @media (max-width: 375px) {
+    .mobile-nav-link {
+      font-size: 2rem !important;
+      line-height: 1.1 !important;
+    }
+    
+    .mobile-nav-cta {
+      font-size: 1.125rem !important;
+      padding: 0.875rem 2rem !important;
+    }
+    
+    .mobile-menu-content {
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
+    }
+    
+    .mobile-services-dropdown a {
+      font-size: 1rem !important;
+    }
+  }
+  
+  /* Better spacing for larger mobile screens */
+  @media (min-width: 414px) and (max-width: 768px) {
+    .mobile-nav-link {
+      font-size: 3rem !important;
+    }
+    
+    .mobile-services-dropdown a {
+      font-size: 1.125rem !important;
+    }
+  }
+  
+  /* Services toggle button styling */
+  .mobile-services-toggle {
+    cursor: pointer;
+  }
+  
+  /* Arrow rotation animation */
+  .mobile-services-arrow {
+    transition: transform 0.3s ease-out;
+  }
+  
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
   }
 </style> 
