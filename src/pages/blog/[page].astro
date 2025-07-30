@@ -3,20 +3,48 @@ import Layout from '../../layouts/Layout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import siteData from '../../data/siteData.json';
 
-// Get all blog posts using import.meta.glob
-const postModules = import.meta.glob('../../content/blog/*.md', { eager: true });
-const allPosts = Object.values(postModules) as any[];
+export async function getStaticPaths() {
+  // Get all blog posts using import.meta.glob
+  const postModules = import.meta.glob('../../content/blog/*.md', { eager: true });
+  const allPosts = Object.values(postModules) as any[];
 
-const publishedPosts = allPosts
-  .filter(post => !post.frontmatter?.draft)
-  .sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+  const publishedPosts = allPosts
+    .filter(post => !post.frontmatter?.draft)
+    .sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
 
-// Pagination setup - Page 1 shows first 12 posts
-const postsPerPage = 12;
-const totalPosts = publishedPosts.length;
-const totalPages = Math.ceil(totalPosts / postsPerPage);
-const currentPage = 1; // This is always page 1
-const paginatedPosts = publishedPosts.slice(0, postsPerPage);
+  const postsPerPage = 12;
+  const totalPosts = publishedPosts.length;
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+  // Generate paths for all pagination pages (starting from page 2, as page 1 is /blog/)
+  return Array.from({ length: totalPages - 1 }, (_, i) => {
+    const pageNum = i + 2; // Start from page 2
+    const startIndex = (pageNum - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+    const paginatedPosts = publishedPosts.slice(startIndex, endIndex);
+
+    return {
+      params: { page: pageNum.toString() },
+      props: {
+        posts: paginatedPosts,
+        currentPage: pageNum,
+        totalPages,
+        totalPosts,
+        postsPerPage
+      }
+    };
+  });
+}
+
+interface Props {
+  posts: any[];
+  currentPage: number;
+  totalPages: number;
+  totalPosts: number;
+  postsPerPage: number;
+}
+
+const { posts, currentPage, totalPages, totalPosts } = Astro.props;
 
 // Schema markup for blog listing
 const blogSchema = {
@@ -30,7 +58,7 @@ const blogSchema = {
     "name": siteData.business.name,
     "logo": `https://${siteData.site.domain}/images/windows-logo-cropped.svg`
   },
-  "blogPost": paginatedPosts.map(post => ({
+  "blogPost": posts.map(post => ({
     "@type": "BlogPosting",
     "headline": post.frontmatter?.title || "",
     "description": post.frontmatter?.description || "",
@@ -59,24 +87,41 @@ const breadcrumbSchema = {
       "position": 2,
       "name": "Blog",
       "item": `https://${siteData.site.domain}/blog`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": `Page ${currentPage}`,
+      "item": `https://${siteData.site.domain}/blog/${currentPage}`
     }
   ]
 };
 
 const schema = [blogSchema, breadcrumbSchema];
+
+// SEO meta for paginated pages
+const pageTitle = `Windows Blog - Page ${currentPage} | Bishop's Stortford Window Specialists`;
+const pageDescription = `Expert window advice, installation guides, and local insights from Bishop's Stortford's trusted window specialists. Page ${currentPage} of ${totalPages}.`;
+
+// Canonical URL and pagination links
+const canonicalUrl = `https://${siteData.site.domain}/blog/${currentPage}`;
+const prevUrl = currentPage > 2 ? `https://${siteData.site.domain}/blog/${currentPage - 1}` : (currentPage === 2 ? `https://${siteData.site.domain}/blog` : null);
+const nextUrl = currentPage < totalPages ? `https://${siteData.site.domain}/blog/${currentPage + 1}` : null;
 ---
 
 <Layout 
-  title="Windows Blog | Expert Advice from Bishop's Stortford Window Specialists"
-  description="Expert window advice, installation guides, and local insights from Bishop's Stortford's trusted window specialists. Tips, costs, and maintenance guides."
+  title={pageTitle}
+  description={pageDescription}
   schema={schema}
-  canonicalUrl={`https://${siteData.site.domain}/blog`}
+  canonicalUrl={canonicalUrl}
 >
-  <!-- SEO: Add next pagination link for page 1 -->
+  <!-- SEO: Add prev/next pagination links -->
   <Fragment slot="head">
-    {totalPages > 1 && <link rel="next" href={`https://${siteData.site.domain}/blog/2`} />}
+    {prevUrl && <link rel="prev" href={prevUrl} />}
+    {nextUrl && <link rel="next" href={nextUrl} />}
     <meta name="robots" content="index, follow" />
   </Fragment>
+
   <!-- Blog Hero Section -->
   <section class="relative text-white overflow-hidden h-[60vh] md:h-[70vh] flex items-center" style="background-image: url('/images/windowsbishopsstortford-blogimages/Cream-aluminium-bay-windows_compressed-geotagged.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <!-- Dark overlay -->
@@ -90,12 +135,16 @@ const schema = [blogSchema, breadcrumbSchema];
               <a href="/" class="hover:text-white transition-colors">Home</a>
             </li>
             <li class="text-green-300">/</li>
-            <li class="text-white font-medium">Blog</li>
+            <li>
+              <a href="/blog" class="hover:text-white transition-colors">Blog</a>
+            </li>
+            <li class="text-green-300">/</li>
+            <li class="text-white font-medium">Page {currentPage}</li>
           </ol>
         </nav>
 
         <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tighter text-white">
-          Bishops Stortford Window Blog
+          Windows Blog - Page {currentPage}
         </h1>
         <p class="text-xl lg:text-2xl mb-8 text-green-50 font-medium leading-relaxed max-w-3xl">
           Professional insights, installation guides, and expert advice from Bishop's Stortford's window specialists
@@ -109,8 +158,6 @@ const schema = [blogSchema, breadcrumbSchema];
       </div>
     </div>
   </section>
-
-
 
   <!-- Blog Posts Grid -->
   <section class="section-padding bg-white">
@@ -136,9 +183,9 @@ const schema = [blogSchema, breadcrumbSchema];
         </div>
       </div>
 
-      {paginatedPosts.length > 0 ? (
+      {posts.length > 0 ? (
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {paginatedPosts.map((post) => (
+          {posts.map((post) => (
             <BlogCard post={post} />
           ))}
         </div>
@@ -158,10 +205,27 @@ const schema = [blogSchema, breadcrumbSchema];
       {totalPages > 1 && (
         <nav aria-label="Blog pagination" class="flex justify-center">
           <div class="flex items-center space-x-2">
-            {/* No previous links on page 1 */}
+            {currentPage > 1 && (
+              <>
+                <a 
+                  href="/blog" 
+                  class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-green-600 transition-colors"
+                  aria-label="Go to first page"
+                >
+                  First
+                </a>
+                <a 
+                  href={currentPage === 2 ? '/blog' : `/blog/${currentPage - 1}`}
+                  class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-green-600 transition-colors"
+                  aria-label="Go to previous page"
+                >
+                  Previous
+                </a>
+              </>
+            )}
 
             {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-              const pageNum = i + 1;
+              const pageNum = Math.max(1, currentPage - 2) + i;
               if (pageNum > totalPages) return null;
               
               return (
@@ -183,7 +247,7 @@ const schema = [blogSchema, breadcrumbSchema];
             {currentPage < totalPages && (
               <>
                 <a 
-                  href="/blog/2"
+                  href={`/blog/${currentPage + 1}`}
                   class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-green-600 transition-colors"
                   aria-label="Go to next page"
                 >
@@ -334,4 +398,4 @@ const schema = [blogSchema, breadcrumbSchema];
       }
     });
   });
-</script> 
+</script>

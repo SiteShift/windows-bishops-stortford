@@ -8,9 +8,10 @@ export interface Props {
   title: string;
   description: string;
   schema?: any;
+  canonicalUrl?: string;
 }
 
-const { title, description, schema } = Astro.props;
+const { title, description, schema, canonicalUrl } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -33,7 +34,7 @@ const { title, description, schema } = Astro.props;
     <meta name="google-site-verification" content="oWUd1gugwfwgnOL_JjvPs08GXDn2Ipz1QLYXWRByVWY" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href={`https://www.windowsbishopsstortford.com${Astro.url.pathname}`} />
+    <link rel="canonical" href={canonicalUrl || `https://www.windowsbishopsstortford.com${Astro.url.pathname}`} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
