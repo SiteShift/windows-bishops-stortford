@@ -381,7 +381,7 @@ const schema = [faqSchema, breadcrumbSchema];
           >
             <div class="text-2xl mb-2">{category.icon}</div>
             <h3 class="font-semibold text-gray-800 group-hover:text-green-600 transition-colors text-sm">
-              {category.title.replace(/^[🏠💰🛠🪟🌡🧼🔐📜📍🤔]\s/, '')}
+              {category.title.replace(/^[🏠💰🛠🪟🌡🧼🔐📜📍🤔]\s*/, '')}
             </h3>
             <p class="text-xs text-gray-500 mt-1">{category.faqs.length} questions</p>
           </a>
