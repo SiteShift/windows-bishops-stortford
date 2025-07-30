@@ -1,0 +1,560 @@
+---
+import Layout from '../layouts/Layout.astro';
+import siteData from '../data/siteData.json';
+
+// FAQ data organized by categories
+const faqCategories = [
+  {
+    id: 'general',
+    title: '🏠 General Purchase Questions',
+    icon: '🏠',
+    faqs: [
+      {
+        question: 'Do I need to replace all my windows at once?',
+        answer: 'No, you can replace windows in phases. Many homeowners prioritize the most damaged or inefficient windows first, then complete the rest over time. However, replacing all windows at once often provides better value through bulk pricing and ensures consistent aesthetics and performance across your home.'
+      },
+      {
+        question: 'How do I know if I need new windows?',
+        answer: 'Key signs include: visible damage or rot, difficulty opening/closing, drafts around frames, condensation between glass panes, high energy bills, or windows over 20 years old. If you notice any of these issues, it\'s worth getting a professional assessment to determine if repair or replacement is the best option.'
+      },
+      {
+        question: 'What are the benefits of replacing my windows?',
+        answer: 'New windows provide improved energy efficiency (reducing heating bills by 15-25%), enhanced security, better noise reduction, increased property value, reduced maintenance requirements, and improved comfort with fewer drafts and better temperature control throughout your home.'
+      },
+      {
+        question: 'What\'s the difference between replacement windows and new construction windows?',
+        answer: 'Replacement windows are designed to fit into existing window openings without major structural changes, making installation faster and less disruptive. New construction windows include the full frame and are typically used in new builds or major renovations where the entire window opening is being rebuilt.'
+      },
+      {
+        question: 'Is it worth replacing windows before selling my home?',
+        answer: 'Quality window replacement can increase property value by 5-10% and make your home more attractive to buyers. Energy-efficient windows are particularly appealing as they promise lower running costs. However, consider the cost versus expected return and how long you plan to stay in the property.'
+      },
+      {
+        question: 'How long do windows usually last?',
+        answer: 'Quality uPVC windows last 20-25 years, aluminium windows 25-30 years, and timber windows 15-20 years with proper maintenance. However, performance may decline gradually, so replacement might be beneficial before complete failure to maintain energy efficiency and security.'
+      }
+    ]
+  },
+  {
+    id: 'pricing',
+    title: '💰 Pricing & Budget',
+    icon: '💰',
+    faqs: [
+      {
+        question: 'How much does window replacement cost?',
+        answer: 'In Bishop\'s Stortford, expect to pay £300-600 per window for uPVC, £500-900 for aluminium, and £600-1,200 for timber. Total project costs typically range from £3,000-15,000 depending on property size, window type, and specification. Get multiple quotes for accurate pricing specific to your requirements.'
+      },
+      {
+        question: 'What\'s the average cost per window installed?',
+        answer: 'Average installed costs: uPVC casement £400-500, uPVC sash £500-700, aluminium casement £600-800, timber casement £700-1,000. Prices vary based on size, glazing specification, hardware quality, and installation complexity. Always request detailed quotes including VAT and disposal of old windows.'
+      },
+      {
+        question: 'Are there any grants or schemes for window replacement in 2025 (UK)?',
+        answer: 'The ECO4 scheme provides funding for energy efficiency improvements including windows for eligible low-income households. Local authorities may offer additional grants. Check gov.uk for current schemes, as eligibility criteria and funding levels change regularly. Some energy suppliers also offer discounted installations.'
+      },
+      {
+        question: 'Can I get financing or pay monthly?',
+        answer: 'Many window companies offer financing options including 0% interest deals (typically 12-24 months), longer-term payment plans, and buy-now-pay-later schemes. Compare total costs carefully, as extended financing may increase the overall price. Some companies also accept credit cards or personal loans.'
+      },
+      {
+        question: 'How much can new windows save me on energy bills?',
+        answer: 'Quality double glazing can reduce heating costs by 15-25%, while triple glazing may save 25-35%. For an average Bishop\'s Stortford home spending £1,200 annually on heating, this represents £180-420 yearly savings. Payback periods typically range from 8-15 years depending on window specification and energy costs.'
+      },
+      {
+        question: 'Are there cheaper alternatives to full replacement?',
+        answer: 'Secondary glazing costs 50-70% less than replacement and provides good thermal and acoustic benefits. Window refurbishment (draught-proofing, new hardware, glass replacement) can extend life by 10+ years at lower cost. However, full replacement often provides better long-term value and performance.'
+      }
+    ]
+  },
+  {
+    id: 'installation',
+    title: '🛠 Installation & Process',
+    icon: '🛠',
+    faqs: [
+      {
+        question: 'How long does window installation take?',
+        answer: 'Typical timelines: single window 2-4 hours, full house (10-15 windows) 2-3 days. Complex installations with structural work may take longer. Weather conditions can affect external work. Your installer should provide a detailed schedule and keep you informed of any delays.'
+      },
+      {
+        question: 'Will there be a lot of mess or disruption?',
+        answer: 'Professional installers use dust sheets and protective coverings to minimize mess. Expect some dust and debris, particularly when removing old windows. Most disruption occurs during removal and fitting - rooms are typically unusable for 2-4 hours per window. Choose installers who prioritize cleanliness and site protection.'
+      },
+      {
+        question: 'Do I need planning permission to replace windows?',
+        answer: 'Most window replacements fall under permitted development and don\'t require planning permission. However, listed buildings, conservation areas, and some flats may have restrictions. Always check with your local planning authority before starting work, especially if changing window styles or sizes significantly.'
+      },
+      {
+        question: 'Can I live in my house during installation?',
+        answer: 'Yes, most window installations allow you to remain in your home. Installers typically work room by room, maintaining security and weather protection. You\'ll need to relocate furniture temporarily and may experience some noise and dust. Discuss scheduling to minimize impact on your daily routine.'
+      },
+      {
+        question: 'How do I prepare my home for window installation?',
+        answer: 'Remove curtains, blinds, and window decorations. Clear furniture and belongings from around windows. Ensure easy access to the property and parking for installation vehicles. Protect valuable items from dust. Your installer should provide a detailed preparation checklist specific to your project.'
+      },
+      {
+        question: 'Will you remove and dispose of the old windows?',
+        answer: 'Reputable installers include removal and disposal of old windows in their service. They should dispose of materials responsibly, recycling where possible. Confirm this is included in your quote, as some companies charge extra for disposal. Old windows contain valuable materials that should be properly recycled.'
+      }
+    ]
+  },
+  {
+    id: 'materials',
+    title: '🪟 Style & Materials',
+    icon: '🪟',
+    faqs: [
+      {
+        question: 'What\'s the best type of window frame—uPVC, aluminium, or timber?',
+        answer: 'Each material has advantages: uPVC offers excellent value, low maintenance, and good insulation. Aluminium provides slim profiles, durability, and modern aesthetics. Timber offers natural beauty and authenticity but requires more maintenance. Choice depends on budget, property style, and personal preferences. Our material comparison guide provides detailed analysis.'
+      },
+      {
+        question: 'Should I get double or triple glazing?',
+        answer: 'Double glazing suits most UK homes and provides excellent thermal performance and value. Triple glazing offers superior insulation and noise reduction but costs 20-40% more. Consider triple glazing for very exposed properties, near busy roads, or if pursuing Passivhaus standards. The extra cost may not be justified for all situations.'
+      },
+      {
+        question: 'What window styles are available (casement, sash, tilt and turn, etc)?',
+        answer: 'Popular styles include: Casement (side-opening, most common), Sash (traditional sliding, perfect for period homes), Tilt & Turn (versatile, great for upper floors), Bay/Bow (add space and character), and Fixed (non-opening, maximum light). Style choice should complement your property\'s architecture and meet functional needs.'
+      },
+      {
+        question: 'Can I get custom window sizes?',
+        answer: 'Yes, most window manufacturers offer custom sizing to fit non-standard openings. Custom windows typically cost 10-30% more than standard sizes and may have longer lead times (4-8 weeks vs 2-4 weeks). Accurate measuring is crucial - professional surveys ensure perfect fit and avoid costly mistakes.'
+      },
+      {
+        question: 'What colours and finishes can I choose from?',
+        answer: 'uPVC windows come in white, cream, grey, black, and woodgrain effects. Aluminium offers unlimited powder-coated colors. Timber can be painted or stained in any color. Popular 2025 trends include anthracite grey, sage green, and black frames. Some finishes cost extra, and certain colors may have longer lead times.'
+      },
+      {
+        question: 'What are flush sash windows?',
+        answer: 'Flush sash windows have the opening sash sitting flush with the outer frame when closed, creating a smooth, streamlined appearance. This traditional style is popular in period properties and modern homes seeking clean lines. They offer better weather sealing than projecting sashes and suit both casement and sash window styles.'
+      }
+    ]
+  },
+  {
+    id: 'performance',
+    title: '🌡 Energy Efficiency & Performance',
+    icon: '🌡',
+    faqs: [
+      {
+        question: 'Are these windows A-rated for energy efficiency?',
+        answer: 'Quality double glazing easily achieves A-rating with proper specification. Look for U-values of 1.4 W/m²K or better, low-E glass, and gas-filled cavities. A-rated windows qualify for reduced VAT (5% instead of 20%) when replacing single glazing. Window Energy Ratings consider the whole window performance, not just the glass.'
+      },
+      {
+        question: 'What U-value should I look for in a window?',
+        answer: 'Building Regulations require maximum 1.6 W/m²K for replacement windows. Good double glazing achieves 1.2-1.4 W/m²K, while triple glazing reaches 0.8-1.0 W/m²K. Lower U-values mean better insulation. Consider the whole window U-value, not just the glass, as frames significantly impact overall performance.'
+      },
+      {
+        question: 'Will new windows reduce outside noise?',
+        answer: 'Quality double glazing reduces noise by 6-8 decibels compared to single glazing - roughly halving perceived noise levels. Acoustic glazing with laminated glass can achieve 10-15 decibel reductions. For maximum noise reduction near busy roads or airports, consider specialized acoustic windows with asymmetric glass thicknesses and wider cavities.'
+      },
+      {
+        question: 'How do new windows affect insulation and heating?',
+        answer: 'New windows eliminate drafts and reduce heat loss, making rooms more comfortable at lower temperatures. You may find you can reduce thermostat settings by 1-2°C while maintaining comfort. This improved efficiency reduces heating demand and can allow downsizing of heating systems during replacement.'
+      },
+      {
+        question: 'Are triple-glazed windows worth the extra cost?',
+        answer: 'Triple glazing provides 15-25% better thermal performance than quality double glazing but costs 20-40% more. Benefits include superior noise reduction, reduced condensation risk, and improved comfort. Most cost-effective in very exposed locations, near busy roads, or for eco-builds. Standard double glazing suits most UK homes well.'
+      }
+    ]
+  },
+  {
+    id: 'maintenance',
+    title: '🧼 Maintenance & Durability',
+    icon: '🧼',
+    faqs: [
+      {
+        question: 'How easy are these windows to clean?',
+        answer: 'Modern windows are designed for easy cleaning with smooth surfaces and accessible hardware. Tilt & turn windows allow cleaning of external surfaces from inside. Many windows feature easy-clean hinges that allow the sash to reverse for cleaning. Regular cleaning with standard window cleaners maintains appearance and prevents buildup of dirt and grime.'
+      },
+      {
+        question: 'Will they warp or fade over time?',
+        answer: 'Quality uPVC windows resist warping and fading for 20+ years with UV-stable formulations. Aluminium powder coating provides excellent color retention. Timber requires periodic maintenance to prevent warping and fading. Choose reputable manufacturers offering long-term color guarantees and UV-resistant materials.'
+      },
+      {
+        question: 'Are the hinges and locks rustproof?',
+        answer: 'Quality windows use stainless steel or zinc-plated hardware designed for decades of trouble-free operation. Look for manufacturers offering 10+ year guarantees on hardware. Coastal properties may require marine-grade hardware for maximum corrosion resistance. Regular lubrication extends hardware life and maintains smooth operation.'
+      },
+      {
+        question: 'What\'s the lifespan of these windows?',
+        answer: 'Expected lifespans: uPVC 20-25 years, aluminium 25-30 years, timber 15-20 years with maintenance. However, performance gradually declines, so replacement before complete failure maintains efficiency and security. Quality installation and regular maintenance significantly extend window life and performance.'
+      },
+      {
+        question: 'What kind of maintenance do timber vs uPVC vs aluminium windows need?',
+        answer: 'uPVC: Minimal - regular cleaning and occasional lubrication of hardware. Aluminium: Low - cleaning and hardware maintenance, occasional seal replacement. Timber: Regular painting/staining every 3-7 years, hardware lubrication, and prompt repair of any damage. Consider maintenance requirements when choosing materials.'
+      }
+    ]
+  },
+  {
+    id: 'security',
+    title: '🔐 Security',
+    icon: '🔐',
+    faqs: [
+      {
+        question: 'Are the windows secure and burglar-proof?',
+        answer: 'Quality windows feature multi-point locking, internal glazing beads, and reinforced frames that significantly enhance security. While no window is completely burglar-proof, modern windows with proper locks and laminated glass provide excellent protection. Look for PAS 24 or Secured by Design certification for verified security performance.'
+      },
+      {
+        question: 'Do they come with multi-point locking systems?',
+        answer: 'Yes, most quality casement and tilt & turn windows include multi-point locking as standard, securing the window at multiple points around the frame. This provides superior security compared to single-point locks and better weather sealing. Sash windows typically use high-security sash locks and additional security hardware.'
+      },
+      {
+        question: 'Can I get laminated or toughened safety glass?',
+        answer: 'Yes, both laminated and toughened glass are available. Laminated glass provides security (difficult to break through) and safety (holds together when broken). Toughened glass is stronger and breaks into small, safer pieces. Laminated glass offers better security and acoustic benefits, while toughened glass provides impact resistance.'
+      },
+      {
+        question: 'Are they PAS24 or Secured by Design certified?',
+        answer: 'Many quality window systems achieve PAS 24 certification (enhanced security performance) and Secured by Design accreditation (police-approved security standards). These certifications may qualify for insurance discounts and provide peace of mind. Ask installers about certified options and any insurance benefits.'
+      }
+    ]
+  },
+  {
+    id: 'compliance',
+    title: '📜 Guarantees & Compliance',
+    icon: '📜',
+    faqs: [
+      {
+        question: 'Do your windows come with a guarantee?',
+        answer: 'Reputable manufacturers offer 10-20 year guarantees on frames and hardware, with sealed unit guarantees typically 10-15 years. Installation guarantees usually cover workmanship for 2-10 years. Ensure guarantees are insurance-backed and transferable to new property owners. Read terms carefully to understand what\'s covered and any maintenance requirements.'
+      },
+      {
+        question: 'Are they FENSA or CERTASS registered?',
+        answer: 'Quality installers should be registered with FENSA, CERTASS, or similar competent person schemes. This ensures compliance with Building Regulations and provides insurance-backed guarantees. Registration is mandatory for replacement window installation in England and Wales. Always verify registration before appointing an installer.'
+      },
+      {
+        question: 'Will I get a certificate after installation?',
+        answer: 'Yes, registered installers must provide Building Regulations compliance certificates within 30 days of completion. This certificate is essential for property sales and insurance claims. Keep certificates safe and ensure they accurately describe the work completed. Non-registered installers require separate Building Control approval.'
+      },
+      {
+        question: 'Is your company fully insured?',
+        answer: 'Reputable installers carry comprehensive public liability insurance (minimum £2 million), employer\'s liability insurance, and professional indemnity cover. This protects you against damage to your property and injury during installation. Always verify insurance coverage and ask to see certificates before work begins.'
+      },
+      {
+        question: 'What\'s the warranty on the glazing and the frames?',
+        answer: 'Typical warranties: sealed units 10-15 years against failure, frames 10-20 years against manufacturing defects, hardware 10+ years, and installation workmanship 2-10 years. Premium manufacturers may offer longer warranties. Ensure warranties are insurance-backed and understand any conditions that might void coverage.'
+      }
+    ]
+  },
+  {
+    id: 'local',
+    title: '📍 Local & Supplier-Specific',
+    icon: '📍',
+    faqs: [
+      {
+        question: 'Do you work in my area?',
+        answer: 'Our network covers Bishop\'s Stortford and throughout Hertfordshire, including Harlow, Stevenage, Hertford, Ware, and surrounding villages. We connect you with local, vetted specialists who understand local building styles and requirements. Use our postcode checker or contact us to confirm coverage in your specific area.'
+      },
+      {
+        question: 'Can I see examples of your previous work?',
+        answer: 'Reputable installers should provide references, photos of recent projects, and ideally allow you to speak with previous customers. Look for examples of similar properties and window styles to yours. Many companies showcase work on websites and social media. Don\'t hesitate to ask for local references you can contact directly.'
+      },
+      {
+        question: 'How many years have you been in business?',
+        answer: 'Choose established companies with proven track records - ideally 5+ years in business with good local reputation. However, newer companies with experienced staff and proper accreditation can also provide excellent service. Check company registration, reviews, and ask about the experience of key personnel and installation teams.'
+      },
+      {
+        question: 'Do you offer free quotes or surveys?',
+        answer: 'Most reputable window companies offer free, no-obligation quotes and surveys. Professional surveys ensure accurate measurements and appropriate product recommendations. Be wary of companies charging for quotes unless providing detailed technical specifications. Quality companies invest in proper surveying to ensure successful installations.'
+      },
+      {
+        question: 'What brands or manufacturers do you use?',
+        answer: 'Quality installers work with established manufacturers like Rehau, Schuco, Veka, Duraflex, or Sash Window Workshop. Ask about manufacturer warranties, performance certifications, and why they recommend specific brands. Avoid installers who can\'t clearly explain their product choices or work exclusively with unknown brands.'
+      }
+    ]
+  },
+  {
+    id: 'concerns',
+    title: '🤔 Buyer Hesitations',
+    icon: '🤔',
+    faqs: [
+      {
+        question: 'What happens if there\'s a problem after installation?',
+        answer: 'Reputable installers provide clear complaints procedures and rapid response to issues. Problems should be reported promptly in writing. Insurance-backed guarantees protect you if the installer goes out of business. Keep all documentation and photos of any issues. Most problems are resolved quickly when reported to professional installers.'
+      },
+      {
+        question: 'Can I just repair my existing windows instead?',
+        answer: 'Window repairs can be cost-effective for minor issues like broken hardware, failed seals, or damaged timber sections. However, extensive repairs may cost 50-70% of replacement while providing limited performance improvement. Consider the age, condition, and efficiency of existing windows when deciding between repair and replacement.'
+      },
+      {
+        question: 'Will replacing windows increase the value of my home?',
+        answer: 'Quality window replacement typically increases property value by 5-10%, with energy-efficient windows being particularly attractive to buyers. New windows improve curb appeal, reduce maintenance concerns, and promise lower running costs. The exact value increase depends on property type, local market conditions, and window specification.'
+      },
+      {
+        question: 'How do I choose the right installer?',
+        answer: 'Key factors: proper registration (FENSA/CERTASS), comprehensive insurance, good local reputation, detailed written quotes, manufacturer accreditations, and willingness to provide references. Avoid high-pressure sales tactics, door-to-door sellers, and unusually low quotes. Take time to research and compare multiple installers before deciding.'
+      }
+    ]
+  }
+];
+
+// Generate FAQ schema markup
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqCategories.flatMap(category => 
+    category.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  )
+};
+
+// Breadcrumb schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": `https://${siteData.site.domain}`
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "FAQs",
+      "item": `https://${siteData.site.domain}/faqs`
+    }
+  ]
+};
+
+const schema = [faqSchema, breadcrumbSchema];
+---
+
+<Layout 
+  title="Window Installation FAQs | Expert Answers from Bishop's Stortford Specialists"
+  description="Get expert answers to all your window installation questions. Comprehensive FAQ covering costs, materials, installation process, energy efficiency, and more from Bishop's Stortford window specialists."
+  schema={schema}
+>
+  <!-- Hero Section -->
+  <section class="relative text-white overflow-hidden h-[60vh] md:h-[70vh] flex items-center" style="background-image: url('/images/windowsbishopsstortford-blogimages/604adc8da6fec868cd978d8f_types-of-windows_compressed-geotagged.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+    <div class="relative container-custom section-padding">
+      <div class="max-w-4xl">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+          <ol class="flex items-center space-x-2 text-sm text-green-200">
+            <li>
+              <a href="/" class="hover:text-white transition-colors">Home</a>
+            </li>
+            <li class="text-green-300">/</li>
+            <li class="text-white font-medium">FAQs</li>
+          </ol>
+        </nav>
+
+        <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tighter text-white">
+          Window Installation FAQs
+        </h1>
+        <p class="text-xl lg:text-2xl mb-8 text-green-50 font-medium leading-relaxed max-w-3xl">
+          Expert answers to all your window questions from 38 years of industry experience
+        </p>
+        <div class="flex items-center text-green-200">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span class="font-medium">{faqCategories.reduce((total, category) => total + category.faqs.length, 0)} Questions Answered</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Navigation -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-extrabold text-green-800 mb-4 tracking-tight">
+          Quick Navigation
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Jump to the section that interests you most, or browse all categories for comprehensive window knowledge.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+        {faqCategories.map((category) => (
+          <a 
+            href={`#${category.id}`} 
+            class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-200 hover:border-green-300 group"
+          >
+            <div class="text-2xl mb-2">{category.icon}</div>
+            <h3 class="font-semibold text-gray-800 group-hover:text-green-600 transition-colors text-sm">
+              {category.title.replace(/^[🏠💰🛠🪟🌡🧼🔐📜📍🤔]\s/, '')}
+            </h3>
+            <p class="text-xs text-gray-500 mt-1">{category.faqs.length} questions</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Content -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        {faqCategories.map((category, categoryIndex) => (
+          <div id={category.id} class="mb-16">
+            <div class="flex items-center mb-8">
+              <span class="text-4xl mr-4">{category.icon}</span>
+              <div>
+                <h2 class="text-3xl font-bold text-green-800 mb-2">{category.title}</h2>
+                <p class="text-gray-600">{category.faqs.length} frequently asked questions</p>
+              </div>
+            </div>
+            
+            <div class="space-y-4">
+              {category.faqs.map((faq, faqIndex) => (
+                <details class="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                  <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-100 transition-colors">
+                    <h3 class="font-semibold text-gray-800 pr-4 text-lg">{faq.question}</h3>
+                    <svg class="w-5 h-5 text-green-600 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </summary>
+                  <div class="px-6 pb-6">
+                    <div class="prose prose-gray max-w-none">
+                      <p class="text-gray-700 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Resources -->
+  <section class="section-padding bg-green-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-green-800 mb-8 text-center">Still Have Questions?</h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-800 mb-2">Expert Guides</h3>
+            <p class="text-gray-600 text-sm mb-4">Detailed articles covering every aspect of window installation and maintenance.</p>
+            <a href="/blog" class="text-green-600 hover:text-green-700 font-medium text-sm">Browse Blog →</a>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-800 mb-2">Compare Options</h3>
+            <p class="text-gray-600 text-sm mb-4">Detailed comparisons to help you choose the right windows for your home.</p>
+            <a href="/compare" class="text-blue-600 hover:text-blue-700 font-medium text-sm">View Comparisons →</a>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-800 mb-2">Get Personal Help</h3>
+            <p class="text-gray-600 text-sm mb-4">Speak with local window specialists who understand your specific needs.</p>
+            <a href="/contact" class="text-purple-600 hover:text-purple-700 font-medium text-sm">Contact Us →</a>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm text-center">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4">Ready to Get Started?</h3>
+          <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Connect with trusted local window specialists in Bishop's Stortford for free quotes, expert advice, and professional installation.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contact" class="btn-primary bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition-colors">
+              Get Free Quote
+            </a>
+            <a href="/#businesses" class="btn-secondary border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 rounded-xl font-semibold transition-colors">
+              Find Local Installers
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Add smooth scrolling for anchor links
+  document.addEventListener('DOMContentLoaded', function() {
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    
+    anchorLinks.forEach(link => {
+      link.addEventListener('click', function(e: Event) {
+        e.preventDefault();
+        const href = (e.target as HTMLAnchorElement).getAttribute('href');
+        if (href) {
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+
+    // Add search functionality
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.placeholder = 'Search FAQs...';
+    searchInput.className = 'w-full max-w-md mx-auto mb-8 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent';
+    
+    const navigationSection = document.querySelector('.section-padding.bg-gray-50 .container-custom');
+    const navigationGrid = navigationSection?.querySelector('.grid');
+    
+    if (navigationSection && navigationGrid) {
+      navigationSection.insertBefore(searchInput, navigationGrid);
+    }
+
+    // Search functionality
+    searchInput.addEventListener('input', function(e: Event) {
+      const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+      const faqSections = document.querySelectorAll('[id^="general"], [id^="pricing"], [id^="installation"], [id^="materials"], [id^="performance"], [id^="maintenance"], [id^="security"], [id^="compliance"], [id^="local"], [id^="concerns"]');
+      
+      faqSections.forEach(section => {
+        const questions = section.querySelectorAll('details');
+        let hasVisibleQuestions = false;
+        
+        questions.forEach(question => {
+          const questionElement = question.querySelector('h3');
+          const answerElement = question.querySelector('p');
+          
+          if (questionElement && answerElement) {
+            const questionText = questionElement.textContent?.toLowerCase() || '';
+            const answerText = answerElement.textContent?.toLowerCase() || '';
+            
+            if (questionText.includes(searchTerm) || answerText.includes(searchTerm) || searchTerm === '') {
+              (question as HTMLElement).style.display = 'block';
+              hasVisibleQuestions = true;
+            } else {
+              (question as HTMLElement).style.display = 'none';
+            }
+          }
+        });
+        
+        // Show/hide entire sections based on visible questions
+        if (hasVisibleQuestions || searchTerm === '') {
+          (section as HTMLElement).style.display = 'block';
+        } else {
+          (section as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

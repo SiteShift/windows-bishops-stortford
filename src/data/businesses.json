@@ -10,9 +10,9 @@
     "google_url": "https://maps.google.com/?cid=15059519774935649606",
     "domain": "markwell-ltd.com",
     "types": [
-      "point_of_interest",
       "general_contractor",
-      "establishment"
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -60,8 +60,8 @@
     "google_url": "https://maps.google.com/?cid=2780338047919075709",
     "domain": "facebook.com",
     "types": [
-      "point_of_interest",
-      "establishment"
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -76,8 +76,8 @@
     "google_url": "https://maps.google.com/?cid=12930376580401500751",
     "domain": null,
     "types": [
-      "point_of_interest",
-      "establishment"
+      "establishment",
+      "point_of_interest"
     ],
     "price_level": null
   },
@@ -92,9 +92,9 @@
     "google_url": "https://maps.google.com/?cid=7261158362635468022",
     "domain": "hertswd.com",
     "types": [
-      "general_contractor",
+      "establishment",
       "point_of_interest",
-      "establishment"
+      "general_contractor"
     ],
     "price_level": null
   },
@@ -109,9 +109,9 @@
     "google_url": "https://maps.google.com/?cid=10864565972703615924",
     "domain": "cuffleyconservatories.co.uk",
     "types": [
+      "establishment",
       "locksmith",
-      "point_of_interest",
-      "establishment"
+      "point_of_interest"
     ],
     "price_level": null
   }
