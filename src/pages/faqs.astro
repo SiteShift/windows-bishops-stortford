@@ -6,7 +6,7 @@ import siteData from '../data/siteData.json';
 const faqCategories = [
   {
     id: 'general',
-    title: '🏠 General Purchase Questions',
+    title: 'General Purchase Questions',
     icon: '🏠',
     faqs: [
       {
@@ -37,7 +37,7 @@ const faqCategories = [
   },
   {
     id: 'pricing',
-    title: '💰 Pricing & Budget',
+    title: 'Pricing & Budget',
     icon: '💰',
     faqs: [
       {
@@ -68,7 +68,7 @@ const faqCategories = [
   },
   {
     id: 'installation',
-    title: '🛠 Installation & Process',
+    title: 'Installation & Process',
     icon: '🛠',
     faqs: [
       {
@@ -99,7 +99,7 @@ const faqCategories = [
   },
   {
     id: 'materials',
-    title: '🪟 Style & Materials',
+    title: 'Style & Materials',
     icon: '🪟',
     faqs: [
       {
@@ -130,7 +130,7 @@ const faqCategories = [
   },
   {
     id: 'performance',
-    title: '🌡 Energy Efficiency & Performance',
+    title: 'Energy Efficiency & Performance',
     icon: '🌡',
     faqs: [
       {
@@ -157,7 +157,7 @@ const faqCategories = [
   },
   {
     id: 'maintenance',
-    title: '🧼 Maintenance & Durability',
+    title: 'Maintenance & Durability',
     icon: '🧼',
     faqs: [
       {
@@ -184,7 +184,7 @@ const faqCategories = [
   },
   {
     id: 'security',
-    title: '🔐 Security',
+    title: 'Security',
     icon: '🔐',
     faqs: [
       {
@@ -207,7 +207,7 @@ const faqCategories = [
   },
   {
     id: 'compliance',
-    title: '📜 Guarantees & Compliance',
+    title: 'Guarantees & Compliance',
     icon: '📜',
     faqs: [
       {
@@ -234,7 +234,7 @@ const faqCategories = [
   },
   {
     id: 'local',
-    title: '📍 Local & Supplier-Specific',
+    title: 'Local & Supplier-Specific',
     icon: '📍',
     faqs: [
       {
@@ -261,7 +261,7 @@ const faqCategories = [
   },
   {
     id: 'concerns',
-    title: '🤔 Buyer Hesitations',
+    title: 'Buyer Hesitations',
     icon: '🤔',
     faqs: [
       {
@@ -381,7 +381,7 @@ const schema = [faqSchema, breadcrumbSchema];
           >
             <div class="text-2xl mb-2">{category.icon}</div>
             <h3 class="font-semibold text-gray-800 group-hover:text-green-600 transition-colors text-sm">
-              {category.title.replace(/^[🏠💰🛠🪟🌡🧼🔐📜📍🤔]\s*/, '')}
+              {category.title}
             </h3>
             <p class="text-xs text-gray-500 mt-1">{category.faqs.length} questions</p>
           </a>
@@ -399,7 +399,7 @@ const schema = [faqSchema, breadcrumbSchema];
             <div class="flex items-center mb-8">
               <span class="text-4xl mr-4">{category.icon}</span>
               <div>
-                <h2 class="text-3xl font-bold text-green-800 mb-2">{category.title.replace(/^[🏠💰🛠🪟🌡🧼🔐📜📍🤔]\s*/, '')}</h2>
+                <h2 class="text-3xl font-bold text-green-800 mb-2">{category.title}</h2>
                 <p class="text-gray-600">{category.faqs.length} frequently asked questions</p>
               </div>
             </div>
