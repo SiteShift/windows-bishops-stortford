@@ -1,6 +1,6 @@
 ---
 title: "Hidden Window Installation Costs: What to Watch For in Bishop's Stortford"
-description: "Avoid nasty surprises. Oliver Greene reveals hidden costs in window quotes and how to keep your Bishop's Stortford project on budget."
+description: "Avoid nasty surprises with your window project. Oliver Greene reveals the hidden costs in window installation quotes and how to keep your Bishop's Stortford renovation on budget."
 publishDate: "2025-06-09"
 author: "Oliver Greene"
 heroImage: "/images/windowsbishopsstortford-blogimages/should-all-the-windows-in-your-home-be-the-same-style-01_compressed-geotagged.webp"

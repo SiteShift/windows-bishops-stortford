@@ -1,6 +1,6 @@
 ---
 title: "DIY vs Professional Window Repair: Bishop's Stortford Guide"
-description: "Should you repair windows yourself or hire professionals? Oliver Greene's expert guide to window repair costs, safety, and when to call specialists."
+description: "Should you repair windows yourself or hire professionals in Bishop's Stortford? Oliver Greene's expert guide to window repair costs, safety risks, and when to call certified specialists."
 publishDate: "2025-06-04"
 author: "Oliver Greene"
 heroImage: "/images/windowsbishopsstortford-blogimages/wood_windows_x-1_compressed-geotagged.webp"

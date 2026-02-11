@@ -1,4 +1,55 @@
+# Windows Bishop's Stortford - robots.txt
+# https://www.windowsbishopsstortford.com
+
+# Default rules for all crawlers
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_astro/
 
-Sitemap: https://www.windowsbishopsstortford.com/sitemap-index.xml 
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Google AI (Gemini)
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+
+# OpenAI browsing
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: anthropic-ai
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Microsoft Bing
+User-agent: Bingbot
+Allow: /
+
+# Apple (Applebot / Siri)
+User-agent: Applebot
+Allow: /
+
+# Meta
+User-agent: FacebookExternalHit
+Allow: /
+User-agent: facebookexternalhit
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.windowsbishopsstortford.com/sitemap-index.xml

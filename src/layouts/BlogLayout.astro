@@ -87,7 +87,7 @@ const blogPostSchema = {
     }
   },
   "datePublished": frontmatter.publishDate,
-  "dateModified": frontmatter.publishDate,
+  "dateModified": frontmatter.modifiedDate || frontmatter.publishDate,
   "url": `https://${siteData.site.domain}/blog/${slug}`,
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -134,9 +134,18 @@ const schema = [blogPostSchema, breadcrumbSchema];
 // SEO title and description - keep under 60 characters
 const seoTitle = frontmatter.title.length > 50 ? frontmatter.title : `${frontmatter.title} | Windows BS`;
 const seoDescription = frontmatter.description;
+
+// Article OG metadata for social sharing
+const articleMeta = {
+  publishedTime: frontmatter.publishDate,
+  modifiedTime: frontmatter.modifiedDate || frontmatter.publishDate,
+  author: frontmatter.author || "Oliver Greene",
+  section: "Window Installation and Repair",
+  tags: frontmatter.tags || [],
+};
 ---
 
-<Layout title={seoTitle} description={seoDescription} schema={schema}>
+<Layout title={seoTitle} description={seoDescription} schema={schema} article={articleMeta}>
   <!-- Hero Section with Featured Image -->
   <section class="relative">
     {frontmatter.heroImage ? (
@@ -336,7 +345,7 @@ const seoDescription = frontmatter.description;
                     <!-- Meta -->
                                          <div class="flex items-center justify-between text-xs text-gray-500">
                        <span>{new Date(post.data.publishDate).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                       <span>5 min read</span>
+                       <span>{post.data.readingTime || 5} min read</span>
                      </div>
                   </div>
                 </a>

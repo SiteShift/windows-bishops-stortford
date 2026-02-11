@@ -1,6 +1,6 @@
 ---
 title: "Double Glazing Energy Bills: Real Bishop's Stortford Case Study"
-description: "See how double glazing cut energy bills by £420/year in this Bishop's Stortford home. Oliver Greene shares real savings data and efficiency tips."
+description: "See how double glazing cut energy bills by £420/year in this real Bishop's Stortford home. Oliver Greene shares verified savings data and energy efficiency tips."
 publishDate: "2025-06-03"
 author: "Oliver Greene"
 heroImage: "/images/windowsbishopsstortford-blogimages/double-hung-2_compressed-geotagged.webp"

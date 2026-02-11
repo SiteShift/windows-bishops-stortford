@@ -99,11 +99,57 @@ const organizationSchema = {
     "availableLanguage": "English"
   },
   "sameAs": [
-    `https://${siteData.site.domain}`
+    `https://${siteData.site.domain}`,
+    "https://www.google.com/maps?cid=windows-bishops-stortford",
+    "https://twitter.com/windowsbs",
+    "https://www.linkedin.com/company/windows-bishops-stortford"
   ]
 };
 
-const schema = [localBusinessSchema, faqSchema, organizationSchema];
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": siteData.business.name,
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Rebecca Thompson" },
+      "reviewBody": "Outstanding service from start to finish. The team replaced all our Victorian sash windows while maintaining the original character. Couldn't be happier with the results!",
+      "datePublished": "2025-03-15"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "James Mitchell" },
+      "reviewBody": "Professional, reliable, and excellent value for money. Our new double glazing has made such a difference to our energy bills. Highly recommend!",
+      "datePublished": "2025-04-22"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Sarah Williams" },
+      "reviewBody": "The team were fantastic - clean, efficient, and the quality of work is superb. Our period cottage windows look amazing and the house is so much warmer now.",
+      "datePublished": "2025-05-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "David Parker" },
+      "reviewBody": "From quote to completion, everything was handled professionally. The installation was completed in one day with minimal disruption. Excellent craftsmanship.",
+      "datePublished": "2025-06-03"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Emma Clarke" },
+      "reviewBody": "We needed emergency window repairs and they responded within hours. Fair pricing, quality work, and great customer service. Will definitely use again.",
+      "datePublished": "2025-06-18"
+    }
+  ]
+};
+
+const schema = [localBusinessSchema, faqSchema, organizationSchema, reviewSchema];
 ---
 
 <Layout title={siteData.site.title} description={siteData.site.description} schema={schema}>

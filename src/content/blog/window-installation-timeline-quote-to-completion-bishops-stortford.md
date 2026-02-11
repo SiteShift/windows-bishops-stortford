@@ -1,6 +1,6 @@
 ---
 title: "Window Installation Timeline: Quote to Fit [Bishop's Stortford]"
-description: "How long does window installation take? Oliver Greene's complete timeline from initial quote to completion for Bishop's Stortford homeowners."
+description: "How long does window installation take in Bishop's Stortford? Oliver Greene's complete week-by-week timeline from initial quote to final completion for homeowners."
 publishDate: "2025-06-06"
 author: "Oliver Greene"
 heroImage: "/images/windowsbishopsstortford-blogimages/041_14-2-23_compressed-geotagged.webp"
