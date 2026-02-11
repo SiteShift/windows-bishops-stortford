@@ -19,6 +19,11 @@
       "dest": "/api/submit.js"
     },
     {
+      "src": "/sitemap.xml",
+      "status": 301,
+      "headers": { "Location": "/sitemap-index.xml" }
+    },
+    {
       "handle": "filesystem"
     },
     {
